@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
+
+  <script type=text/javascript src="{{ url_for('static', filename='js/azuretoken.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='js/tts.js') }}"></script>
+
+  <style>
+    .trad {
+      background-color: black;
+      color: white;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+      font-size: 20px;
+      text-align: left;
+      height: 200px;
+      overflow: scroll;
+    }
+
+    .subs {
+      background-color: black;
+      color: white;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+      font-size: 20px;
+      text-align: left;
+      height: 100px;
+      font-style: italic;
+    }
+
+    @media (min-width: 768px) {
+      .navbar-brand.abs {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+      }
+    }
+  </style>
+
+</head>
+
+<body onload="intialize()">
+
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class=" d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="index" class="nav-link px-2 text-white">Homepage</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-2 text-white">KUDO Speech-to-Speech translation</a>
+          </li>
+        </ul>
+        <ul>
+          <button class="btn btn-warning" type="button" id="recordButton" onclick="connnect()"><i
+              class="bi bi-record-circle" style="margin-right: 0.5em;"></i>Connect</button>
+        </ul>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        Channel: <a class="navbar-brand" id="enterSessionCode" href="#">kudosecret</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row mt-3">
+      <div id="translation" class="trad"></div>
+    </div>
+    <div class="row mt-3">
+      <div id="log"></div>
+    </div>
+  </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+<script src="../static/js/receiver.js"></script>
+<script>
+  var socket = io();
+  let translation = '';
+
+  socket.on("caption", (data) => {
+    initializeService(data.tl);
+
+    document.getElementById("translation").innerHTML = data.msg;
+  })
+
+  socket.on("machineTranslation", ({ text_translation, counter, flag, targetLanguage }) => {
+    let content = "";
+    for (let i = 0; i < text_translation.length; i++) {
+      content += `<div class='trans-${counter}'>
+            ${text_translation[i].translations[0].text}
+      </div>`;
+    }
+
+    text_translation.reverse();
+
+    document.getElementById("translation").innerHTML = content + document.getElementById("translation").innerHTML;
+
+    text_translation.forEach(sentence => speak(sentence.translations[0].text, targetLanguage.split(" ")[0]));
+  })
+
+  socket.on('connected', function () {
+    console.log("connect");
+  });
+  socket.on("status", (status) => {
+    console.log("received status: " + status.data);
+  });
+
+  let connection_status = 'disconnected';
+  function connnect() {
+    // hardcoded for now
+    let sessionCode = 'ciao';
+
+    if (connection_status === 'disconnected') {
+      console.log("ask server to join room: " + sessionCode);
+      socket.emit("join", { "user": Date.now(), "room": sessionCode, "targetLanguage": "" });
+      document.getElementById("recordButton").className = "btn btn-danger";
+      document.getElementById("recordButton").innerHTML = "Disconnect";
+      initializeService();
+      connection_status = 'connected';
+
+    }
+    else {
+      console.log("ask server to leave room: " + sessionCode);
+      socket.emit("leave", { "user": Date.now(), "room": sessionCode });
+      document.getElementById("recordButton").className = "btn btn-warning";
+      document.getElementById("recordButton").innerHTML = "Connect";
+      connection_status = 'disconnected';
+    }
+  }
+</script>
+
+</html>
