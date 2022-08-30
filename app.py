@@ -13,7 +13,7 @@ app.secret_key = 'caehvae89m'
 globalTargetLanguage = "eu-ES"
 socketio = SocketIO(app)
 
-CORS(app)    
+CORS(app)
 
 ###############################################
 # WELCOME
