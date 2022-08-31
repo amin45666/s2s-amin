@@ -13,7 +13,8 @@ let counter = 1;
 let sentence = "";
 let previousTextIdentity;
 
-let segmentationAPIURL = "http://127.0.0.1:8000/parse";
+let segmentationAPIURL = "https://asr-api.meetkudo.com/parse";
+//let segmentationAPIURL = "http://127.0.0.1:8000/parse";
 
 function intialize() {
   console.log("initialize");
@@ -111,6 +112,7 @@ async function populateSegment(counter, flag, sentence) {
   payload = JSON.stringify(payload);
   let options = {
     method: "POST",
+    mode: "no-cors",
     body: payload,
     headers: {
       "Content-Type": "application/json",
