@@ -8,7 +8,7 @@ This is the S2S-App for speech-to-speech translation. The FE is made of two main
 
 # How to run
 - Run the API segmenter locally as indicated in the repo
-- cd into app, $ python app.py, in browser http://127.0.0.1:5000/sender 
+- cd into app, $ flask run, in browser http://127.0.0.1:5000/sender 
 - click on Connect and start speaking in the mic (allow permissions)
 
 The full pipeline (also receiver) should be tested with the deployed version of the S2S-App available at https://kudo-s2s.herokuapp.com/ 
