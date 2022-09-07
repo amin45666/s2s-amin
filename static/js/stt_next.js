@@ -112,7 +112,6 @@ async function populateSegment(counter, flag, sentence) {
   payload = JSON.stringify(payload);
   let options = {
     method: "POST",
-    mode: "no-cors",
     body: payload,
     headers: {
       "Content-Type": "application/json",
