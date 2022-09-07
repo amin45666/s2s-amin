@@ -1,4 +1,4 @@
-# KUDO STS - FRONT-END
+# KUDO STS - APPLICATION
 
 This is the S2S-App for speech-to-speech translation. The FE is made of two main parts:
 
