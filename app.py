@@ -122,7 +122,8 @@ def segment(text, final):
     print("Calling Segmentation API")
 
     #API endpoint
-    endpoint = 'https://asr-api.meetkudo.com/parse'
+    #endpoint = 'http://127.0.0.1:8000/parse' # local version
+    endpoint = 'https://asr-api.meetkudo.com/parse' #web version
 
     #constructing parameters for call. tl should contain more languages
     pload = {'text': text, 'final': final}

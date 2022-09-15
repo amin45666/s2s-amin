@@ -15,6 +15,7 @@ Note: Requires python 3.9 for compatibility reasons with eventlet
 # How to run locally
 - Run separately the API segmenter locally as indicated in its respective repo
 - cd into app
+- adapt Endpoint in app.py (search for #API endpoint) to local
 - python app.py
 - app is available in Browser http://127.0.0.1:5000
 - click on Connect and start speaking in the mic (allow permissions)

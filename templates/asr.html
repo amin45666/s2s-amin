@@ -33,6 +33,17 @@
       height:200px;
       overflow-y: scroll;
     }
+
+
+    table { display: block; }
+    table {
+        height: 200px;       /* Just for the demo          */
+        overflow-y: auto;    /* Trigger vertical scroll    */
+        overflow-x: hidden;  /* Hide the horizontal scroll */
+    }
+    th, td {
+      padding: 5px;
+    }
     </style>
 
     
@@ -113,10 +124,10 @@
       <div class="row"></div>
       <div class="row">
         <table id="tableLog">
-          <tr>
-            <th>Original</th>
-            <th>Translation</th>
-          </tr>
+            <tr>
+              <th>Original</th>
+              <th>Translation</th>
+            </tr>
         </table> 
       </div>
     </div>
@@ -179,6 +190,9 @@
           // Add some text to the new cells:
           cell1.innerHTML = text_sl;
           cell2.innerHTML = text_tl; 
+
+          let elem = document.getElementById("tableLog");
+          elem.scrollTop = elem.scrollHeight;
         }
         
     })
