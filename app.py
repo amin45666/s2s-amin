@@ -45,6 +45,7 @@ def info():
         {'minor version': 1, 'details': 'adding version changelog', 'date': '2022-09-14'},
         {'minor version': 2, 'details': 'adding multichannel', 'date': '2022-09-14'},
         {'minor version': 3, 'details': 'improved UI for Sender/Receiver', 'date': '2022-09-15'},
+        {'minor version': 4, 'details': 'added automatic scrolling in Sender table', 'date': '2022-09-15'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
