@@ -11,6 +11,8 @@ app = flask.Flask(__name__)
 app.secret_key = 'jhgwjhdgwjhd3d'
 socketio = SocketIO(app)
 
+logfile = open('log/logAPP.txt', 'a')
+logfile.write("logline\n")
 ###############################################
 # WELCOME
 ###############################################
@@ -47,6 +49,7 @@ def info():
         {'minor version': 3, 'details': 'improved UI for Sender/Receiver', 'date': '2022-09-15'},
         {'minor version': 4, 'details': 'added automatic scrolling in Sender table', 'date': '2022-09-15'},
         {'minor version': 5, 'details': 'added timestamp of segment processing', 'date': '2022-09-15'},
+        {'minor version': 5, 'details': 'added logfile', 'date': '2022-09-15'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
@@ -74,7 +77,11 @@ def handleMessage(data):
     room = data['room']
 
     now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
+    current_time = now.strftime("%H:%M:%S.%f")
+    logfile.write("\n")
+    logline = str(current_time) + '\t' + 'ASR\t' + str(asr)
+    logfile.write(logline)
+    logfile.write("\n")
 
     print(f"\nProcessing '{asr}' with state '{final}' for Session '{room}' and time '{current_time}'")
 
@@ -104,7 +111,7 @@ def handleMessage(data):
         segment_payload_json = json.dumps(segment_payload)
 
         #emitting payload to client for TTS
-        emit("caption", {'asr' : asr, 'segment': segment_payload_json, 'current_time': current_time }, broadcast=True, room = room)
+        emit("caption", {'asr' : asr, 'segment': segment_payload_json }, broadcast=True, room = room)
     else:
         print("Nothing to be emitted")
 
@@ -130,6 +137,12 @@ def on_left(data):
 def segment(text, final):
     print("Calling Segmentation API")
 
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S.%f")
+    logline = str(current_time) + '\t' + 'CALLING SEGMENTER'
+    logfile.write(logline)
+    logfile.write("\n")
+
     #API endpoint
     #endpoint = 'http://127.0.0.1:8000/parse' # local version
     endpoint = 'https://asr-api.meetkudo.com/parse' #web version
@@ -140,6 +153,13 @@ def segment(text, final):
     response = requests.post(url=endpoint, json=pload)
     if response.ok:
         result = response.json()
+
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S.%f")
+        logline = str(current_time) + '\t' + 'RESPONSE SEGMENTER\t' + str(result)
+        logfile.write(logline)
+        logfile.write("\n")
+
         return result
     else:
         result = {"error": response}
@@ -147,6 +167,13 @@ def segment(text, final):
 
 def translate(text, tl):
     print("Calling Translation API")
+
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S.%f")
+    logline = str(current_time) + '\t' + 'CALLING TRANSLATOR'
+    logfile.write(logline)
+    logfile.write("\n")
+
     #Azure endpoint
     endpoint = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0'
     subscription_key = '830a4539e6914c8ea68e4b912ca678af'
@@ -176,6 +203,13 @@ def translate(text, tl):
     for translation_language in translation_list:
         translation = translation_language['text']
         print('Translation: ' + translation)
+
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S.%f")
+        logline = str(current_time) + '\t' + 'RESULT TRANSLATOR' + str(translation)
+        logfile.write(logline)
+        logfile.write("\n")
+
         return translation
 
 if __name__ == "__main__":

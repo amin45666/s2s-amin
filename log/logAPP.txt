@@ -1,0 +1,106 @@
+logline
+16:24:27.324027	ASR	you
+16:24:27.324092	CALLING SEGMENTER
+16:24:28.326697	RESPONSE SEGMENTER	[]
+16:24:28.328318	ASR	you feeling
+16:24:28.328416	CALLING SEGMENTER
+16:24:29.536989	RESPONSE SEGMENTER	[]
+16:24:29.537951	ASR	if you feel inclined but
+16:24:29.538007	CALLING SEGMENTER
+16:24:30.550626	RESPONSE SEGMENTER	[]
+16:24:30.552880	ASR	if you feel inclined but what i
+16:24:30.552967	CALLING SEGMENTER
+16:24:31.496836	RESPONSE SEGMENTER	[]
+16:24:31.497726	ASR	if you feel inclined but what i really
+16:24:31.497767	CALLING SEGMENTER
+16:24:32.518478	RESPONSE SEGMENTER	['if you feel inclined.']
+16:24:32.518629	CALLING TRANSLATOR
+16:24:32.931305	RESULT TRANSLATORsi te sientes inclinado.
+16:24:32.932523	ASR	if you feel inclined but what i really want to
+16:24:32.932584	CALLING SEGMENTER
+16:24:33.952254	RESPONSE SEGMENTER	[]
+16:24:33.953315	ASR	if you feel inclined but what i really want to do
+16:24:33.953371	CALLING SEGMENTER
+16:24:35.013984	RESPONSE SEGMENTER	[]
+16:24:35.015340	ASR	if you feel inclined but what i really want to do is
+16:24:35.015450	CALLING SEGMENTER
+16:24:36.029420	RESPONSE SEGMENTER	[]
+16:24:36.030272	ASR	if you feel inclined but what i really want to do is to talk
+16:24:36.030320	CALLING SEGMENTER
+16:24:37.003092	RESPONSE SEGMENTER	[]
+16:24:37.004764	ASR	if you feel inclined but what i really want to do is to talk about some of the
+16:24:37.004871	CALLING SEGMENTER
+16:24:38.126959	RESPONSE SEGMENTER	[]
+16:24:38.127900	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas
+16:24:38.127948	CALLING SEGMENTER
+16:24:40.017331	RESPONSE SEGMENTER	[]
+16:24:40.018137	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind
+16:24:40.018183	CALLING SEGMENTER
+16:24:41.069822	RESPONSE SEGMENTER	[]
+16:24:41.071830	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the
+16:24:41.071959	CALLING SEGMENTER
+16:24:42.156149	RESPONSE SEGMENTER	[]
+16:24:42.157878	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel
+16:24:42.158014	CALLING SEGMENTER
+16:24:43.218204	RESPONSE SEGMENTER	[]
+16:24:43.220050	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and
+16:24:43.220159	CALLING SEGMENTER
+16:24:44.289944	RESPONSE SEGMENTER	[]
+16:24:44.291620	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say
+16:24:44.291724	CALLING SEGMENTER
+16:24:45.343040	RESPONSE SEGMENTER	['but what i really want to do is to talk about some of the ideas behind the novel,']
+16:24:45.343127	CALLING TRANSLATOR
+16:24:45.979423	RESULT TRANSLATORpero lo que realmente quiero hacer es hablar sobre algunas de las ideas detrás de la novela,
+16:24:45.981355	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what
+16:24:45.981417	CALLING SEGMENTER
+16:24:46.945957	RESPONSE SEGMENTER	[]
+16:24:46.946706	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you
+16:24:46.946756	CALLING SEGMENTER
+16:24:47.930682	RESPONSE SEGMENTER	['and sometimes people say to me:']
+16:24:47.930763	CALLING TRANSLATOR
+16:24:48.338145	RESULT TRANSLATORy a veces la gente me dice:
+16:24:48.339307	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother
+16:24:48.339366	CALLING SEGMENTER
+16:24:49.448436	RESPONSE SEGMENTER	['you know,']
+16:24:49.448557	CALLING TRANSLATOR
+16:24:49.951097	RESULT TRANSLATORSabes
+16:24:49.952148	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a
+16:24:49.952236	CALLING SEGMENTER
+16:24:51.001351	RESPONSE SEGMENTER	[]
+16:24:51.003065	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a note
+16:24:51.003190	CALLING SEGMENTER
+16:24:52.052274	RESPONSE SEGMENTER	[]
+16:24:52.054184	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i
+16:24:52.054281	CALLING SEGMENTER
+16:24:53.160135	RESPONSE SEGMENTER	[]
+16:24:53.161554	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be
+16:24:53.161657	CALLING SEGMENTER
+16:24:54.729465	RESPONSE SEGMENTER	['why did you even bother to write a novel?']
+16:24:54.729565	CALLING TRANSLATOR
+16:24:55.196594	RESULT TRANSLATOR¿por qué te molestaste en escribir una novela?
+16:24:55.198248	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non
+16:24:55.198335	CALLING SEGMENTER
+16:24:56.416412	RESPONSE SEGMENTER	[]
+16:24:56.417183	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction
+16:24:56.417246	CALLING SEGMENTER
+16:24:57.558343	RESPONSE SEGMENTER	[]
+16:24:57.559691	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer
+16:24:57.560195	CALLING SEGMENTER
+16:24:58.957041	RESPONSE SEGMENTER	[]
+16:24:58.958665	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer and the
+16:24:58.958775	CALLING SEGMENTER
+16:25:00.438054	RESPONSE SEGMENTER	[]
+16:25:00.440136	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer and the reason i wrote an
+16:25:00.440362	CALLING SEGMENTER
+16:25:01.700261	RESPONSE SEGMENTER	['i thought you supposed to be non fiction writer']
+16:25:01.700405	CALLING TRANSLATOR
+16:25:02.172346	RESULT TRANSLATORPensé que se suponía que eras un escritor de no ficción
+16:25:02.174338	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer and the reason i wrote a novel
+16:25:02.174465	CALLING SEGMENTER
+16:25:03.754435	RESPONSE SEGMENTER	[]
+16:25:03.755279	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer and the reason i wrote a novel is that
+16:25:03.755327	CALLING SEGMENTER
+16:25:06.074236	RESPONSE SEGMENTER	[]
+16:25:06.075788	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer and the reason i wrote a novel is that i
+16:25:06.075895	CALLING SEGMENTER
+16:25:07.480350	RESPONSE SEGMENTER	[]
