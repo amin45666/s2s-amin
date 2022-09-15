@@ -4,8 +4,8 @@ from flask_socketio import SocketIO, send, emit, join_room, leave_room
 import os
 import json
 import requests, uuid
-from datetime import date
 import random
+from datetime import datetime
 
 app = flask.Flask(__name__)
 app.secret_key = 'jhgwjhdgwjhd3d'
@@ -46,6 +46,7 @@ def info():
         {'minor version': 2, 'details': 'adding multichannel', 'date': '2022-09-14'},
         {'minor version': 3, 'details': 'improved UI for Sender/Receiver', 'date': '2022-09-15'},
         {'minor version': 4, 'details': 'added automatic scrolling in Sender table', 'date': '2022-09-15'},
+        {'minor version': 5, 'details': 'added timestamp of segment processing', 'date': '2022-09-15'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
@@ -72,11 +73,18 @@ def handleMessage(data):
     final = data['final']
     room = data['room']
 
-    print(f"\nProcessing '{asr}' with state '{final}' for Session '{room}'")
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+
+    print(f"\nProcessing '{asr}' with state '{final}' for Session '{room}' and time '{current_time}'")
 
     #languages should be dynamic, and tl more than one
     sl = 'en'
     tl = 'es' # tl should be list containing more languages
+
+    #reducing number of time the API is called
+    number_of_words = len(asr.split())
+    print(number_of_words)
 
     #send asr to segmenter and see if there is a response
     segment_sl = segment(asr, final)
@@ -96,7 +104,7 @@ def handleMessage(data):
         segment_payload_json = json.dumps(segment_payload)
 
         #emitting payload to client for TTS
-        emit("caption", {'asr' : asr, 'segment': segment_payload_json }, broadcast=True, room = room)
+        emit("caption", {'asr' : asr, 'segment': segment_payload_json, 'current_time': current_time }, broadcast=True, room = room)
     else:
         print("Nothing to be emitted")
 

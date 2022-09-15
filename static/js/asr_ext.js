@@ -51,6 +51,10 @@ function fromMic() {
 		document.getElementById("ASR").innerHTML = e.result.text;
 		var sessionId = document.getElementById("sessionId").innerHTML; 
 		let asr = e.result.text
+
+		//reducing number of emissions -> moved to app.py
+		//let number_of_words = WordCount(asr);
+		//console.log(number_of_words);
 		//force socket to emit a value otherwise APP complains
 		if (!asr) {
 			asr = " "
@@ -90,6 +94,10 @@ function fromMic() {
 
 	recognizer.startContinuousRecognitionAsync();
 }
+
+function WordCount(str) { 
+	return str.split(" ").length;
+  }
 
 function record(){
 	console.log('RECOGNIZER STATUS: ' + recognizer_status);

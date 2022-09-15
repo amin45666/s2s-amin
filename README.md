@@ -27,7 +27,6 @@ Note: Requires python 3.9 for compatibility reasons with eventlet
 # Deployment on Heroku with git
 
 heroku login
-git commit -am "name of commit"
-git push heroku master
+git push heroku main
 
  

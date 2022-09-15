@@ -125,6 +125,7 @@
       <div class="row">
         <table id="tableLog">
             <tr>
+              <th></th>
               <th>Original</th>
               <th>Translation</th>
             </tr>
@@ -154,8 +155,9 @@
 	socket = io()
   let row_color='#F7CAC9'
 	socket.on("caption",(data)=>{
-    let asr = data.asr
+        let asr = data.asr
         let segment = data.segment
+        let current_time = data.current_time
 
         //var e = document.getElementById("targetLanguage");
         //var targetLanguage = e.value;
@@ -186,10 +188,12 @@
           // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
 
           // Add some text to the new cells:
-          cell1.innerHTML = text_sl;
-          cell2.innerHTML = text_tl; 
+          cell1.innerHTML = current_time;
+          cell2.innerHTML = text_sl;
+          cell3.innerHTML = text_tl; 
 
           let elem = document.getElementById("tableLog");
           elem.scrollTop = elem.scrollHeight;
