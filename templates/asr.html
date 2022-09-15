@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="KUDO Speech-to-Speech">
+    <meta name="author" content="KUDO Speech-to-Speech">
+    <meta name="generator" content="CF">
+    <title>KUDO Speech-to-Speech</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/e48ffae8e6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
+    <script src="https://kit.fontawesome.com/e48ffae8e6.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/asr_ext.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sticky-footer-navbar.css') }}">
+
+    <script
+    nomodule>window.MSInputMethodContext && document.documentMode && document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-ie11@5/css/bootstrap-ie11.min.css"><script src="https://cdn.jsdelivr.net/npm/ie11-custom-properties@4/ie11CustomProperties.min.js"><\/script>');</script>
+
+    <style>
+    .subs {
+      background-color: black;
+      color: white;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+      font-size: 20px;
+      text-align: left;
+      height:200px;
+      overflow-y: scroll;
+    }
+    </style>
+
+    
+  </head>
+
+<body onload="intialize()" class="d-flex flex-column h-100">
+    
+<header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md fixed-top  bg-light">
+        <div class="container-fluid">
+          <div class="float-md-start fw-bold fs-5">KUDO Speech-to-Speech  
+                 
+            <!--FREE <span id="time">05:00</span>-->
+            <span  style="font-size: 12px">Session ID:   <span id="sessionId">{{sessionId}}</span>  </span>
+          </div>
+    
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            </ul>    
+    
+                    <select id="sourceLanguage"  class="btn btn-light btn-sm mr-1">
+                        <option value="en-AU">English - AU</option>
+                        <option value="en-CA">English - CA</option>
+                        <option value="en-GB">English - GB</option>
+                        <option value="en-IN">English - IN</option>
+                        <option value="en-NZ">English - NZ</option>
+                        <option value="en-US" selected="selected">English - US</option>
+                    </select>
+                    
+            &nbsp;
+            <i class="bi bi-arrow-right-circle"></i>
+            &nbsp;                    
+                    <select id="targetLanguage"  class="btn btn-light btn-sm mr-1">
+                        {% for language in languages %}
+                             <option value="{{ language }}">{{ language }}</option>                
+                        {% endfor %} 
+                    </select>   
+                         
+                    &nbsp;&nbsp;&nbsp; 
+                          
+            
+            &nbsp;&nbsp; 
+            
+            <div class="btn-group" role="group" aria-label="Commands">
+              <button class="btn btn-danger btn-sm mr-2" type="button" id="recordButton" onclick="record()">Connect</button> 
+            </div>
+          
+          </div>
+        </div>
+      </nav>
+</header>
+  
+<main class="flex-shrink-0">
+
+    <div class="container" style="padding-top: 5em;">
+        <div id="ASR" class="subs"></div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="alert alert-warning" role="alert" id="infoField"  style="display:none">
+        <strong>Error:</strong> The free version does not support this Browser! Please use Google Chrome instead!
+    </div>
+    
+    <div class="alert alert-warning" role="alert" id="info_no_speech"  style="display:none">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+             <button type="button" class="btn-close" onclick="toggleLink('info_no_speech')"></button>
+        </div>
+        <strong>Error:</strong> No speech detected!
+    </div>
+               
+    <!-- MAIN RESULTS -->
+    
+    <div class="container-sm">
+      <div class="row"></div>
+      <div class="row">
+        <table id="tableLog">
+          <tr>
+            <th>Original</th>
+            <th>Translation</th>
+          </tr>
+        </table> 
+      </div>
+    </div>
+ 
+  
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="d-flex">
+    
+    <div class="ms-auto">
+      
+    <a href="/info">Version info</a>&nbsp;&nbsp;&nbsp; 
+
+    </div>
+
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+<script>
+
+//SOCKET
+	socket = io()
+  let row_color='#F7CAC9'
+	socket.on("caption",(data)=>{
+    let asr = data.asr
+        let segment = data.segment
+
+        //var e = document.getElementById("targetLanguage");
+        //var targetLanguage = e.value;
+            
+        console.log("Received ASR: " + asr);
+        console.log("Received SEGMENT: " + segment);
+
+        if (typeof segment !== 'undefined') {
+          let obj = JSON.parse(segment);
+
+          //languages should be dynamical
+          let text_sl = (obj.en)
+          let text_tl = (obj.es)
+
+          //adding log
+          var table = document.getElementById("tableLog");
+
+          // Create an empty <tr> element and add it to the 1st position of the table:
+          var row = table.insertRow(-1);
+          row.style.backgroundColor = row_color; 
+          
+          // alternating row colors
+          if (row_color === '#F7CAC9') {
+            row_color = '#92A8D1'
+          }else{
+            row_color='#F7CAC9'
+          }
+          // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+
+          // Add some text to the new cells:
+          cell1.innerHTML = text_sl;
+          cell2.innerHTML = text_tl; 
+        }
+        
+    })
+    
+    socket.on('connected', function() {
+        console.log("connect");
+    });
+    socket.on("status", (status) => {
+        console.log("received status: " + status.data);
+    });
+
+    function joinRoom() {
+        sessionCode = document.getElementById("sessionId").innerHTML;
+        console.log("ask server to join room: " + sessionCode);
+        socket.emit("join", { "user": Date.now(), "room": sessionCode });
+    }
+    function leaveRoom() {
+        sessionCode = document.getElementById("sessionId").innerHTML;
+        console.log("ask server to leave room: " + sessionCode);
+        socket.emit("leave", { "user": Date.now(), "room": sessionCode });
+    }
+
+
+    function removeElement(elementId) {
+    // Removes an element from the document.
+        var element = document. getElementById(elementId);
+        element. parentNode. removeChild(element);
+    }
+    
+    //scroll down
+    function updateScroll(){
+        var element = document.getElementById("ASR");
+        element.scrollTop = element.scrollHeight;
+    }
+ 
+
+
+</script>
+  
+  </body>
+</html>
+
+

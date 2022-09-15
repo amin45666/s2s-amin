@@ -2,27 +2,31 @@
 
 This is the S2S APP for speech-to-speech translation. The FE is made of two main parts:
 
-- /sender: uses AZURE ASR to transcribe the audio input (mic or other input audio), then it sends the transcription stream to the S2S-API (former called Segmenter) and displays the results in the UI and to connected receivers. Websockets are provided. 
-- /receiver: it receives the translation from the the S2S-App backend, requests text-to-speech from Azure
+- Sender: uses AZURE ASR to transcribe the audio input (mic or other input audio), then it sends the transcription stream to the S2S-API (former called Segmenter) and displays the results in the UI and to connected receivers. Websockets are provided. 
+- Receiver: it receives the translation from the the S2S-App backend, requests text-to-speech from Azure
 
+# Local installation
 
-# How to run
-- Run the API segmenter locally as indicated in the repo
-- cd into app, $ flask run, in browser http://127.0.0.1:5000/sender 
+cd this-app-folder
+pipenv install
+
+Note: Requires python 3.9 for compatibility reasons with eventlet 
+
+# How to run locally
+- Run separately the API segmenter locally as indicated in its respective repo
+- cd into app
+- python app.py
+- app is available in Browser http://127.0.0.1:5000
 - click on Connect and start speaking in the mic (allow permissions)
 
-The full pipeline (also receiver) should be tested with the deployed version of the S2S-App available at https://kudo-s2s.herokuapp.com/ 
+# How to run on Web
+- open Sender https://kudo-s2s-app.herokuapp.com/
+- open Receiver https://kudo-s2s-app.herokuapp.com/receiver in a Chrome browser, wear headset or use a different computer to receive the interpretation
 
-# How to deploy APP on Heroku with git (staging)
+# Deployment on Heroku with git
 
-In Shell/Terminal:
+heroku login
+git commit -am "name of commit"
+git push heroku master
 
-- heroku login
-- cd applicationFolder
-- git push heroku main
-
-Should you need to deploy a different branch:
-
-- git push heroku 'Name-Of-Branch':master
-
-
+ 

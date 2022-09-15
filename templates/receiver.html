@@ -12,22 +12,9 @@
   <script
     src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
 
-  <script type=text/javascript src="{{ url_for('static', filename='js/azuretoken.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='js/tts.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='js/receiver.js') }}"></script>
 
   <style>
-    .trad {
-      background-color: black;
-      color: white;
-      border: 2px solid black;
-      margin: 20px;
-      padding: 20px;
-      font-size: 20px;
-      text-align: left;
-      height: 200px;
-      overflow: scroll;
-    }
-
     .subs {
       background-color: black;
       color: white;
@@ -36,10 +23,9 @@
       padding: 20px;
       font-size: 20px;
       text-align: left;
-      height: 100px;
-      font-style: italic;
+      height:200px;
+      overflow-y: scroll;
     }
-
     @media (min-width: 768px) {
       .navbar-brand.abs {
         position: absolute;
@@ -48,80 +34,124 @@
         text-align: center;
       }
     }
+
   </style>
 
 </head>
 
 <body onload="intialize()">
 
-  <header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class=" d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li>
-            <a href="index" class="nav-link px-2 text-white">Homepage</a>
-          </li>
-          <li>
-            <a href="#" class="nav-link px-2 text-white">KUDO Speech-to-Speech translation</a>
-          </li>
-        </ul>
-        <ul>
-          <button class="btn btn-warning" type="button" id="recordButton" onclick="connnect()"><i
-              class="bi bi-record-circle" style="margin-right: 0.5em;"></i>Connect</button>
-        </ul>
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md fixed-top  bg-light">
+      <div class="container-fluid">
+        <div class="float-md-start fw-bold fs-5">KUDO Speech-to-Speech  
+               
+          &nbsp;&nbsp;&nbsp;
+          <label for="sessionId">Session ID </label>
+          <input id="sessionId">
+        </div>
+  
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          </ul>    
+  
+          &nbsp;                    
+                  <select id="targetLanguage"  class="btn btn-light btn-sm mr-1">
+                      {% for language in languages %}
+                           <option value="{{ language }}">{{ language }}</option>                
+                      {% endfor %} 
+                  </select>   
+                       
+                  &nbsp;&nbsp;&nbsp; 
+                        
+          
+          &nbsp;&nbsp; 
+          
+          <div class="btn-group" role="group" aria-label="Commands">
+            <button class="btn btn-warning" type="button" id="recordButton" onclick="connnect()"><i class="bi bi-record-circle" style="margin-right: 0.5em;"></i>Connect</button>
+          </div>
+        
+        </div>
       </div>
-
-    </div>
+    </nav>
   </header>
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
-      </div>
-      <div class="col">
-        Channel: <a class="navbar-brand" id="enterSessionCode" href="#">kudosecret</a>
+  <main class="flex-shrink-0">
+
+    <div class="container" style="padding-top: 5em;">
+        <div id="ASR" class="subs"></div>
+    </div>
+               
+    <!-- MAIN RESULTS -->
+    
+    <div class="container-sm">
+      <div class="row"></div>
+      <div class="row">
+        <table id="tableLog">
+          <tr>
+            <th>Translation</th>
+          </tr>
+        </table> 
       </div>
     </div>
-  </div>
+ 
+</main>
 
 
-  <div class="container">
-    <div class="row mt-3">
-      <div id="translation" class="trad"></div>
-    </div>
-    <div class="row mt-3">
-      <div id="log"></div>
-    </div>
-  </div>
 
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
-<script src="../static/js/receiver.js"></script>
 <script>
   var socket = io();
-  let translation = '';
 
-  socket.on("caption", (data) => {
-    initializeService(data.tl);
+  let row_color='#F7CAC9'
 
-    document.getElementById("translation").innerHTML = data.msg;
-  })
+  socket.on("caption",(data)=>{
+        let asr = data.asr
+        let segment = data.segment
 
-  socket.on("machineTranslation", ({ text_translation, counter, flag, targetLanguage }) => {
-    let content = "";
-    for (let i = 0; i < text_translation.length; i++) {
-      content += `<div class='trans-${counter}'>
-            ${text_translation[i].translations[0].text}
-      </div>`;
-    }
+        //var e = document.getElementById("targetLanguage");
+        //var targetLanguage = e.value;
+            
+        console.log("Received ASR: " + asr);
+        console.log("Received SEGMENT: " + segment);
 
-    text_translation.reverse();
+        if (typeof segment !== 'undefined') {
+          let obj = JSON.parse(segment);
 
-    document.getElementById("translation").innerHTML = content + document.getElementById("translation").innerHTML;
+          //languages should be dynamical
+          let text_sl = (obj.en)
+          let text_tl = (obj.es)
+          
+          speak(text_tl, 'es')
 
-    text_translation.forEach(sentence => speak(sentence.translations[0].text, targetLanguage.split(" ")[0]));
-  })
+          document.getElementById("translation").innerHTML = text_tl;
+
+          //adding log
+          var table = document.getElementById("tableLog");
+
+          // Create an empty <tr> element and add it to the 1st position of the table:
+          var row = table.insertRow(-1);
+          row.style.backgroundColor = row_color; 
+          
+          // alternating row colors
+          if (row_color === '#F7CAC9') {
+            row_color = '#92A8D1'
+          }else{
+            row_color='#F7CAC9'
+          }
+          // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+          var cell1 = row.insertCell(0);
+
+          // Add some text to the new cells:
+          cell1.innerHTML = text_tl;
+        }
+    })
 
   socket.on('connected', function () {
     console.log("connect");
@@ -131,16 +161,21 @@
   });
 
   let connection_status = 'disconnected';
-  function connnect() {
-    // hardcoded for now
-    let sessionCode = 'ciao';
+  let sessionCode = '';
 
+  function connnect() {
     if (connection_status === 'disconnected') {
+      sessionCode = document.getElementById("sessionId").value;
+
+      if ( sessionCode === '' ){
+        alert("Please, first insert the Session ID to connect to your session!");
+        return;
+      }
       console.log("ask server to join room: " + sessionCode);
       socket.emit("join", { "user": Date.now(), "room": sessionCode, "targetLanguage": "" });
       document.getElementById("recordButton").className = "btn btn-danger";
       document.getElementById("recordButton").innerHTML = "Disconnect";
-      initializeService();
+      initializeService('es-ES');//Language should be read by drop-down button
       connection_status = 'connected';
 
     }
