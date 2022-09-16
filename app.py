@@ -49,7 +49,8 @@ def info():
         {'minor version': 3, 'details': 'improved UI for Sender/Receiver', 'date': '2022-09-15'},
         {'minor version': 4, 'details': 'added automatic scrolling in Sender table', 'date': '2022-09-15'},
         {'minor version': 5, 'details': 'added timestamp of segment processing', 'date': '2022-09-15'},
-        {'minor version': 5, 'details': 'added logfile', 'date': '2022-09-15'},
+        {'minor version': 6, 'details': 'added logfile', 'date': '2022-09-15'},
+        {'minor version': 7, 'details': 'added parameter to reduce calls of API', 'date': '2022-09-16'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
