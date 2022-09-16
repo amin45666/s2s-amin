@@ -23,6 +23,7 @@ function intialize() {
 function fromMic() {
 	let speechConfig;
 	let languageOptions;
+	let number_of_words_previous = '';
 
 	if (ttsToken) {
 	  speechConfig = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(
@@ -52,14 +53,31 @@ function fromMic() {
 		var sessionId = document.getElementById("sessionId").innerHTML; 
 		let asr = e.result.text
 
-		//reducing number of emissions -> moved to app.py
-		//let number_of_words = WordCount(asr);
-		//console.log(number_of_words);
 		//force socket to emit a value otherwise APP complains
+
 		if (!asr) {
 			asr = " "
 		}
-        socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId});
+
+		//simple hack to reduce number of emissions
+		let delay_threasold = document.getElementById("delay").value;
+		let number_of_words = WordCount(asr);
+		let number_of_words_previous_with_threasold = number_of_words_previous + delay_threasold;
+		console.log("settings:");
+		console.log(delay_threasold);
+		console.log(number_of_words);
+		console.log(number_of_words_previous_with_threasold);
+
+		//emitting only if new number of words is greater than x tokens compared to previous
+
+
+		if (number_of_words > number_of_words_previous_with_threasold){
+			console.log('Sending ASR to APP ad temporary feed');
+        	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId});
+			//updating reference number of words
+			number_of_words_previous = number_of_words; 
+		}
+
 	};
 	
 	recognizer.recognized = (s, e) => {
@@ -72,7 +90,11 @@ function fromMic() {
 			if (!asr) {
 					asr = " "
 			}
+			console.log('Sending ASR to APP as finalized feed');
             socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId});
+			
+			//resetting to 0 reference number of words
+			number_of_words_previous=0;
 		//}
 		//else if (e.result.reason == ResultReason.NoMatch) {
 		//	console.log("NOMATCH: Speech could not be recognized.");
