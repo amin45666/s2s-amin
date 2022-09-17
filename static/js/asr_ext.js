@@ -44,7 +44,13 @@ function fromMic() {
 	
     let audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
     recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
-    
+
+	let phrases = document.getElementById("phrases");
+    if (phrases !== "") {
+        var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(recognizer);
+        phraseListGrammar.addPhrase(phrases.value.split(";"));
+    }	
+	
     console.log('Speak into your microphone.');    
 	
 	recognizer.recognizing = (s, e) => {
