@@ -51,7 +51,7 @@ def info():
         {'minor version': 5, 'details': 'added timestamp of segment processing', 'date': '2022-09-15'},
         {'minor version': 6, 'details': 'added logfile', 'date': '2022-09-15'},
         {'minor version': 7, 'details': 'added parameter to reduce calls of API', 'date': '2022-09-16'},
-        {'minor version': 9, 'details': 'added feature to improve accuracy with list of terms', 'date': '2022-09-17'},
+        {'minor version': 8, 'details': 'added feature to improve accuracy with list of terms', 'date': '2022-09-17'},
 
     ]
 
