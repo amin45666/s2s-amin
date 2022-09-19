@@ -81,12 +81,6 @@
   </header>
 
   <main class="flex-shrink-0">
-
-    <div class="container" style="padding-top: 5em;">
-        <div id="ASR" class="subs"></div>
-    </div>
-               
-    <!-- MAIN RESULTS -->
     
     <div class="container-sm">
       <div class="row"></div>
@@ -99,7 +93,7 @@
       </div>
     </div>
  
-</main>
+  </main>
 
 
 
@@ -149,6 +143,9 @@
 
           // Add some text to the new cells:
           cell1.innerHTML = text_tl;
+
+          let elem = document.getElementById("tableLog");
+          elem.scrollTop = elem.scrollHeight;
         }
     })
 
