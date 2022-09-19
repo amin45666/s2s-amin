@@ -63,17 +63,6 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
             </ul>
 
-            <span  style="font-size: 12px">Session ID:   <span id="sessionId">{{sessionId}}</span>  &nbsp;&nbsp;&nbsp; Latency:</span>
-
-            <select id="delay"  class="btn btn-light btn-sm mr-1">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3" selected="selected">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-
             <select id="sourceLanguage"  class="btn btn-light btn-sm mr-1">
               <option value="en-AU">English - AU</option>
               <option value="en-CA">English - CA</option>
@@ -109,13 +98,42 @@
     <div class="container" style="padding-top: 5em;">
       <div class="row">
         <div class="col-sm">
-          <p>Running speech recognition</p>
+          <p>RUNNING SPEECH RECOGNITION</p>
           <div id="ASR" class="subs"></div>
         </div>
         <div class="col-sm">
+
+          <div class="card">
+            <div class="card-body">
+
+          <p>SESSION SETTINGS</p>
+
+          <span  style="font-size: 12px">Session ID for RECEIVER:  <strong> <span id="sessionId">{{sessionId}}</span>  </strong> 
+          
+            &nbsp;&nbsp;&nbsp; 
+            
+            Sampling frequency:
+
+            <select id="delay"  class="btn btn-light btn-sm mr-1">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected="selected">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+
+          <br><br>
+
           <p>Special words for improving accuracy, separated by ';' max. 500</p>
           <textarea id="phrases" type="text" rows="4"  cols="50"> 
           </textarea>
+          <button type="button" class="btn btn-light btn-sm mr-2" onclick="autoGeneratewordlist()"><i class="bi bi-list">Automatically generate list of words about an event</i></button>
+        </span>
+
+      </div></div>
+
+
         </div>
       </div>
     </div>
@@ -126,16 +144,23 @@
     </div>
                
     <!-- MAIN RESULTS -->
-  
+    <br>
     <div class="container-sm">
-      <div class="row"></div>
+
+      <div class="card">
+        <div class="card-body">
+
+      <div class="row"><p>SEGMENTATION AND TRANSLATION LOG</p></div>
       <div class="row">
         <table id="tableLog" style="width:100%">
             <tr>
-              <th WIDTH="50%">Original</th>
-              <th WIDTH="50%">Translation</th>
+              <td WIDTH="50%">Original</td>
+              <td WIDTH="50%">Translation</td>
             </tr>
         </table> 
+      </div>
+
+      </div>
       </div>
     </div>
  
@@ -236,7 +261,10 @@
         element.scrollTop = element.scrollHeight;
     }
  
-
+    function autoGeneratewordlist(){
+      alert("This feature is still not available. You will be able to enter event documents or a Webpage or a description of a topic to get the most relevant proper names in order to improve accuracy of the application");
+    }
+    
 
 </script>
   

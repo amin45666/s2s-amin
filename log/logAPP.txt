@@ -104,3 +104,1104 @@ logline
 16:25:06.075788	ASR	if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even bother to write a novel i thought you supposed to be non fiction writer and the reason i wrote a novel is that i
 16:25:06.075895	CALLING SEGMENTER
 16:25:07.480350	RESPONSE SEGMENTER	[]
+logline
+
+22:18:37.090058	ASR	this morning i want to
+22:18:37.090128	CALLING SEGMENTER
+22:18:38.150248	RESPONSE SEGMENTER	[]
+
+22:18:59.292112	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was being torn apart by its second catastrophic conflict in a generation a war which saw the streets of european cities strewn with rubble the skies of london lit by flames night
+22:18:59.292278	CALLING SEGMENTER
+22:19:00.815731	RESPONSE SEGMENTER	['this morning i want to talk about the future of europe, but first let us remember the past. 70 years ago,']
+22:19:00.815807	CALLING TRANSLATOR
+22:19:01.864916	RESULT TRANSLATOREsta mañana quiero hablar del futuro de Europa, pero primero recordemos el pasado. Hace 70 años,
+
+22:19:01.866572	ASR	This morning I want to talk about the future of Europe. But first let us remember the past. 70 years ago, Europe was being torn apart by its second catastrophic conflict in a generation, a war which saw the streets of European cities strewn with rubble, the skies of London lit by flames night after night.
+22:19:01.866672	CALLING SEGMENTER
+22:19:03.093986	RESPONSE SEGMENTER	['Europe was being torn apart by its second catastrophic conflict in a generation, a war which saw the streets of European cities strewn with rubble. the skies of London lit by flames night after night.']
+22:19:03.094083	CALLING TRANSLATOR
+22:19:04.017999	RESULT TRANSLATOREuropa estaba siendo destrozada por su segundo conflicto catastrófico en una generación, una guerra que vio las calles de las ciudades europeas sembradas de escombros. los cielos de Londres iluminados por las llamas noche tras noche.
+
+22:19:04.019925	ASR	and millions dead across
+22:19:04.020029	CALLING SEGMENTER
+22:19:05.012584	RESPONSE SEGMENTER	[]
+
+22:19:05.630927	ASR	And millions dead across the world in the battle for peace and liberty.
+22:19:05.631048	CALLING SEGMENTER
+22:19:06.602507	RESPONSE SEGMENTER	['And millions dead across the world in the battle for peace and liberty.']
+22:19:06.602622	CALLING TRANSLATOR
+22:19:07.537882	RESULT TRANSLATORY millones de muertos en todo el mundo en la batalla por la paz y la libertad.
+
+22:19:07.615493	ASR	as we remember the
+22:19:07.615574	CALLING SEGMENTER
+22:19:08.658467	RESPONSE SEGMENTER	[]
+
+22:19:25.368463	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship and
+22:19:25.368579	CALLING SEGMENTER
+22:19:26.579424	RESPONSE SEGMENTER	["as we remember the sacrifice, so we should also remember how the shift in europe from war to sustained peace came about. it didn't happen like a change in the weather. it happened because of determined work over generations,"]
+22:19:26.579491	CALLING TRANSLATOR
+22:19:27.473822	RESULT TRANSLATORasí como recordamos el sacrificio, también debemos recordar cómo se produjo el cambio en Europa de la guerra a la paz sostenida. no sucedió como un cambio en el clima. sucedió debido a un trabajo determinado a lo largo de generaciones,
+
+22:19:35.066994	ASR	As we remember the sacrifice, so we should also remember how the shift in Europe from war to sustained peace came about. It didn't happen like a change in the weather. It happened because of determined work over generations, a commitment to friendship and a resolve never to revisit that dark past, a commitment epitomised by the Elysee Treaty signed 50 years ago this week.
+22:19:35.067086	CALLING SEGMENTER
+22:19:36.617007	RESPONSE SEGMENTER	['a commitment to friendship and a resolve never to revisit that dark past, a commitment epitomised by the Elysee Treaty, signed 50 years ago this week.']
+22:19:36.617132	CALLING TRANSLATOR
+22:19:37.710810	RESULT TRANSLATORun compromiso con la amistad y la determinación de no volver a visitar nunca ese oscuro pasado, un compromiso personificado por el Tratado del Elíseo, firmado hace 50 años esta semana.
+
+22:19:37.712586	ASR	 
+22:19:37.712689	CALLING SEGMENTER
+22:19:38.344974	RESPONSE SEGMENTER	['']
+22:19:38.345066	CALLING TRANSLATOR
+22:19:39.290318	RESULT TRANSLATOR
+
+22:19:39.291047	ASR	 
+22:19:39.291088	CALLING SEGMENTER
+22:19:40.076585	RESPONSE SEGMENTER	['']
+22:19:40.076659	CALLING TRANSLATOR
+22:19:40.826925	RESULT TRANSLATOR
+
+22:19:40.829166	ASR	i will
+22:19:40.829265	CALLING SEGMENTER
+22:19:41.712012	RESPONSE SEGMENTER	[]
+
+22:19:48.006126	ASR	i will never forget it the abandoned checkpoints the sense of excitement about the future the knowledge that a great continent
+22:19:48.006191	CALLING SEGMENTER
+22:19:49.054372	RESPONSE SEGMENTER	['i will never forget it:']
+22:19:49.054626	CALLING TRANSLATOR
+22:19:49.861058	RESULT TRANSLATORNunca lo olvidaré:
+
+22:19:49.863068	ASR	I will never forget it. The abandoned checkpoints, the sense of excitement about the future, the knowledge that a great continent was coming together.
+22:19:49.863156	CALLING SEGMENTER
+22:19:51.149460	RESPONSE SEGMENTER	['The abandoned checkpoints, the sense of excitement about the future, the knowledge that a great continent was coming together.']
+22:19:51.149536	CALLING TRANSLATOR
+22:19:52.198314	RESULT TRANSLATORLos puestos de control abandonados, la sensación de entusiasmo por el futuro, el conocimiento de que un gran continente se estaba uniendo.
+
+22:19:52.199683	ASR	healing
+22:19:52.199751	CALLING SEGMENTER
+22:19:52.979761	RESPONSE SEGMENTER	[]
+
+22:19:55.101261	ASR	healing those wounds of our history is the central story of
+22:19:55.101360	CALLING SEGMENTER
+22:19:56.394307	RESPONSE SEGMENTER	[]
+
+22:20:13.764516	ASR	Healing those wounds of our history is the central story of the European Union. What Churchill described as the twin Marauders of war and tyranny have almost entirely been banished from our continent. Today. Hundreds of 1,000,000 dwell in freedom from the Baltic to the Adriatic, from the western approaches to the Agean.
+22:20:13.764644	CALLING SEGMENTER
+22:20:15.270542	RESPONSE SEGMENTER	['Healing those wounds of our history is the central story of the European Union. What Churchill described as the twin Marauders of war and tyranny have almost entirely been banished from our continent. Today, Hundreds of 1,000,000 dwell in freedom from the Baltic to the Adriatic, from the western approaches to the Agean.']
+22:20:15.270702	CALLING TRANSLATOR
+22:20:16.317581	RESULT TRANSLATORCurar esas heridas de nuestra historia es la historia central de la Unión Europea. Lo que Churchill describió como los merodeadores gemelos de la guerra y la tiranía han sido desterrados casi por completo de nuestro continente. Hoy en día, cientos de 1.000.000 viven en libertad desde el Báltico hasta el Adriático, desde los accesos occidentales al Agean.
+
+22:20:16.318597	ASR	and why
+22:20:16.318651	CALLING SEGMENTER
+22:20:17.364980	RESPONSE SEGMENTER	[]
+
+22:20:22.323737	ASR	and while we must never take this for granted the first purpose of the european union to secure peace has been achieved
+22:20:22.323952	CALLING SEGMENTER
+22:20:23.657069	RESPONSE SEGMENTER	['and while we must never take this for granted, the first purpose of the european union,']
+22:20:23.657171	CALLING TRANSLATOR
+22:20:24.047351	RESULT TRANSLATORy aunque nunca debemos dar esto por sentado, el primer propósito de la Unión Europea,
+
+22:20:29.661224	ASR	And while we must never take this for granted, the first purpose of the European Union to secure peace has been achieved, and we should pay tribute to all those in the European Union, alongside NATO, who made that happen.
+22:20:29.661291	CALLING SEGMENTER
+22:20:31.000245	RESPONSE SEGMENTER	['And while we must never take this for granted, the first purpose of the European Union, to secure peace, has been achieved, and we should pay tribute to all those in the European Union, alongside NATO, who made that happen.']
+22:20:31.000405	CALLING TRANSLATOR
+22:20:31.778068	RESULT TRANSLATORY aunque nunca debemos dar esto por sentado, el primer propósito de la Unión Europea, asegurar la paz, se ha logrado, y debemos rendir homenaje a todos los que están en la Unión Europea, junto con la OTAN, que lo hicieron posible.
+
+22:20:31.781888	ASR	but
+22:20:31.782025	CALLING SEGMENTER
+22:20:32.661209	RESPONSE SEGMENTER	[]
+
+22:20:35.195161	ASR	but today the overriding the main purpose of the european union
+22:20:35.195265	CALLING SEGMENTER
+22:20:36.238520	RESPONSE SEGMENTER	[]
+
+22:20:36.634988	ASR	But today, the overriding the main purpose of the European Union is different.
+22:20:36.635062	CALLING SEGMENTER
+22:20:37.694975	RESPONSE SEGMENTER	['But today the overriding, the main purpose of the European Union is different.']
+22:20:37.695074	CALLING TRANSLATOR
+22:20:38.098025	RESULT TRANSLATORPero hoy en día, el objetivo primordial, el objetivo principal de la Unión Europea es diferente.
+
+22:20:38.099237	ASR	not to
+22:20:38.099304	CALLING SEGMENTER
+22:20:38.947272	RESPONSE SEGMENTER	[]
+
+22:20:38.948880	ASR	Not to win peace.
+22:20:38.948931	CALLING SEGMENTER
+22:20:39.932193	RESPONSE SEGMENTER	['Not to win peace.']
+22:20:39.932273	CALLING TRANSLATOR
+22:20:40.593487	RESULT TRANSLATORNo para ganar la paz.
+
+22:20:40.595586	ASR	 
+22:20:40.595697	CALLING SEGMENTER
+22:20:41.266807	RESPONSE SEGMENTER	['']
+22:20:41.266975	CALLING TRANSLATOR
+22:20:41.878293	RESULT TRANSLATOR
+
+22:32:09.009916	ASR	this morning i woke
+22:32:09.009978	CALLING SEGMENTER
+22:32:10.406312	RESPONSE SEGMENTER	[]
+
+22:32:10.406993	ASR	this morning i want to
+22:32:10.407038	CALLING SEGMENTER
+22:32:11.458146	RESPONSE SEGMENTER	[]
+
+22:32:11.459549	ASR	this morning i want to talk
+22:32:11.459643	CALLING SEGMENTER
+22:32:12.506706	RESPONSE SEGMENTER	[]
+
+22:32:12.508269	ASR	this morning i want to talk about
+22:32:12.508366	CALLING SEGMENTER
+22:32:14.061633	RESPONSE SEGMENTER	[]
+
+22:32:14.062555	ASR	this morning i want to talk about the
+22:32:14.062591	CALLING SEGMENTER
+22:32:15.000019	RESPONSE SEGMENTER	[]
+
+22:32:15.002200	ASR	this morning i want to talk about the future
+22:32:15.002324	CALLING SEGMENTER
+22:32:16.188007	RESPONSE SEGMENTER	[]
+
+22:32:16.189850	ASR	this morning i want to talk about the future of
+22:32:16.189944	CALLING SEGMENTER
+22:32:17.227176	RESPONSE SEGMENTER	[]
+
+22:32:17.229151	ASR	this morning i want to talk about the future of europe
+22:32:17.229260	CALLING SEGMENTER
+22:32:18.266638	RESPONSE SEGMENTER	[]
+
+22:32:18.267385	ASR	this morning i want to talk about the future of europe but
+22:32:18.267429	CALLING SEGMENTER
+22:32:19.332919	RESPONSE SEGMENTER	[]
+
+22:32:19.333983	ASR	this morning i want to talk about the future of europe but first
+22:32:19.334037	CALLING SEGMENTER
+22:32:20.416345	RESPONSE SEGMENTER	[]
+
+22:32:20.418148	ASR	this morning i want to talk about the future of europe but first let
+22:32:20.418268	CALLING SEGMENTER
+22:32:21.439069	RESPONSE SEGMENTER	[]
+
+22:32:21.440492	ASR	this morning i want to talk about the future of europe but first let us remember
+22:32:21.440572	CALLING SEGMENTER
+22:32:22.589939	RESPONSE SEGMENTER	['this morning i want to talk about the future of europe,']
+22:32:22.590019	CALLING TRANSLATOR
+22:32:23.499372	RESULT TRANSLATOResta mañana quiero hablar sobre el futuro de Europa,
+
+22:32:23.500728	ASR	this morning i want to talk about the future of europe but first let us remember the
+22:32:23.500782	CALLING SEGMENTER
+22:32:24.541764	RESPONSE SEGMENTER	[]
+
+22:32:24.543044	ASR	this morning i want to talk about the future of europe but first let us remember the past
+22:32:24.543155	CALLING SEGMENTER
+22:32:25.650900	RESPONSE SEGMENTER	[]
+
+22:32:25.653082	ASR	this morning i want to talk about the future of europe but first let us remember the past 70
+22:32:25.653264	CALLING SEGMENTER
+22:32:26.655168	RESPONSE SEGMENTER	[]
+
+22:32:26.656883	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years
+22:32:26.657029	CALLING SEGMENTER
+22:32:27.751582	RESPONSE SEGMENTER	[]
+
+22:32:27.752326	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago
+22:32:27.752372	CALLING SEGMENTER
+22:32:28.752570	RESPONSE SEGMENTER	[]
+
+22:32:28.754242	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe
+22:32:28.754349	CALLING SEGMENTER
+22:32:29.834840	RESPONSE SEGMENTER	['but first let us remember the past,']
+22:32:29.835011	CALLING TRANSLATOR
+22:32:30.334945	RESULT TRANSLATORpero primero recordemos el pasado,
+
+22:32:30.337275	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was
+22:32:30.337404	CALLING SEGMENTER
+22:32:31.381587	RESPONSE SEGMENTER	[]
+
+22:32:31.383193	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was being torn
+22:32:31.383313	CALLING SEGMENTER
+22:32:32.432010	RESPONSE SEGMENTER	['70 years ago,']
+22:32:32.432166	CALLING TRANSLATOR
+22:32:33.089957	RESULT TRANSLATORHace 70 años,
+
+22:32:33.092300	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was being torn apart
+22:32:33.092420	CALLING SEGMENTER
+22:32:34.156834	RESPONSE SEGMENTER	[]
+
+22:32:34.159962	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was being torn apart by
+22:32:34.160072	CALLING SEGMENTER
+22:32:35.291899	RESPONSE SEGMENTER	[]
+
+22:32:35.293583	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was being torn apart by its
+22:32:35.293716	CALLING SEGMENTER
+22:32:36.356961	RESPONSE SEGMENTER	[]
+
+22:32:36.358474	ASR	this morning i want to talk about the future of europe but first let us remember the past 70 years ago europe was being torn apart by its second
+22:32:36.358573	CALLING SEGMENTER
+22:32:37.673527	RESPONSE SEGMENTER	[]
+
+22:32:37.675430	ASR	This morning I want to talk about the future of Europe. But first, let us remember the past 70 years ago, Europe was being torn apart by its second.
+22:32:37.675546	CALLING SEGMENTER
+22:32:38.722554	RESPONSE SEGMENTER	['Europe was being torn apart by its second']
+22:32:38.722711	CALLING TRANSLATOR
+22:32:39.116279	RESULT TRANSLATOREuropa estaba siendo destrozada por su segundo
+
+22:32:39.117550	ASR	 
+22:32:39.117633	CALLING SEGMENTER
+22:32:39.968958	RESPONSE SEGMENTER	['']
+22:32:39.969105	CALLING TRANSLATOR
+22:32:40.387379	RESULT TRANSLATOR
+
+22:34:12.847413	ASR	but to secure prosperity
+22:34:12.847509	CALLING SEGMENTER
+22:34:13.898087	RESPONSE SEGMENTER	[]
+
+22:34:13.898883	ASR	But to secure prosperity?
+22:34:13.898930	CALLING SEGMENTER
+22:34:14.792959	RESPONSE SEGMENTER	['But to secure prosperity.']
+22:34:14.793105	CALLING TRANSLATOR
+22:34:15.318548	RESULT TRANSLATORPero para asegurar la prosperidad.
+
+22:34:15.594626	ASR	consonant was coming together
+22:34:15.594728	CALLING SEGMENTER
+22:34:16.650413	RESPONSE SEGMENTER	[]
+
+22:34:16.652069	ASR	Consonant was coming together.
+22:34:16.652236	CALLING SEGMENTER
+22:34:17.680430	RESPONSE SEGMENTER	['Consonant was coming together.']
+22:34:17.680533	CALLING TRANSLATOR
+22:34:18.351940	RESULT TRANSLATORLa consonante se estaba uniendo.
+
+22:34:18.353083	ASR	healing those wounds of
+22:34:18.353133	CALLING SEGMENTER
+22:34:19.390255	RESPONSE SEGMENTER	[]
+
+22:34:19.391500	ASR	healing those wounds of our
+22:34:19.391575	CALLING SEGMENTER
+22:34:20.435678	RESPONSE SEGMENTER	[]
+
+22:34:20.436915	ASR	healing those wounds of our history
+22:34:20.436983	CALLING SEGMENTER
+22:34:21.485634	RESPONSE SEGMENTER	[]
+
+22:34:21.488094	ASR	healing those wounds of our history is the
+22:34:21.488176	CALLING SEGMENTER
+22:34:22.536036	RESPONSE SEGMENTER	[]
+
+22:34:22.537076	ASR	healing those wounds of our history is the central
+22:34:22.537115	CALLING SEGMENTER
+22:34:23.618875	RESPONSE SEGMENTER	[]
+
+22:34:23.619667	ASR	Healing those wounds of our history is the central.
+22:34:23.619710	CALLING SEGMENTER
+22:34:24.630581	RESPONSE SEGMENTER	['Healing those wounds of our history is the central.']
+logline
+logline
+
+22:38:02.280244	ASR	And millions dead across the world in the battle for peace and liberty.
+22:38:02.280325	CALLING SEGMENTER
+22:38:03.351370	RESPONSE SEGMENTER	['And millions dead across the world in the battle for peace and liberty.']
+22:38:03.351499	CALLING TRANSLATOR
+22:38:03.974656	RESULT TRANSLATORY millones de muertos en todo el mundo en la batalla por la paz y la libertad.
+
+22:38:05.317697	ASR	As we remember the sacrifice.
+22:38:05.317828	CALLING SEGMENTER
+22:38:06.285713	RESPONSE SEGMENTER	['As we remember the sacrifice.']
+22:38:06.285850	CALLING TRANSLATOR
+22:38:06.626096	RESULT TRANSLATORComo recordamos el sacrificio.
+
+22:38:06.627747	ASR	 
+22:38:06.627845	CALLING SEGMENTER
+22:38:07.383544	RESPONSE SEGMENTER	['']
+22:38:07.383699	CALLING TRANSLATOR
+22:38:07.678471	RESULT TRANSLATOR
+
+22:38:42.857261	ASR	excitement about the future
+22:38:42.857349	CALLING SEGMENTER
+22:38:44.030533	RESPONSE SEGMENTER	[]
+
+22:38:44.031666	ASR	excitement about the future the
+22:38:44.031734	CALLING SEGMENTER
+22:38:45.082402	RESPONSE SEGMENTER	[]
+
+22:38:45.083200	ASR	excitement about the future the knowledge that
+22:38:45.083255	CALLING SEGMENTER
+22:38:46.173795	RESPONSE SEGMENTER	[]
+
+22:38:46.175447	ASR	excitement about the future the knowledge that a great
+22:38:46.175547	CALLING SEGMENTER
+22:38:47.213059	RESPONSE SEGMENTER	[]
+
+22:38:47.214690	ASR	excitement about the future the knowledge that a great continent
+22:38:47.214798	CALLING SEGMENTER
+22:38:48.228169	RESPONSE SEGMENTER	[]
+
+22:38:48.229292	ASR	excitement about the future the knowledge that a great continent was
+22:38:48.229359	CALLING SEGMENTER
+22:38:49.277099	RESPONSE SEGMENTER	[]
+
+22:38:49.278375	ASR	excitement about the future the knowledge that a great continent was coming
+22:38:49.278433	CALLING SEGMENTER
+22:38:51.509718	RESPONSE SEGMENTER	[]
+
+22:38:51.510677	ASR	excitement about the future the knowledge that a great continent was coming together
+22:38:51.510740	CALLING SEGMENTER
+22:38:52.620512	RESPONSE SEGMENTER	[]
+
+22:38:52.622257	ASR	Excitement about the future, the knowledge that a great continent was coming together.
+22:38:52.622366	CALLING SEGMENTER
+22:38:53.625372	RESPONSE SEGMENTER	['Excitement about the future, the knowledge that a great continent was coming together.']
+22:38:53.625442	CALLING TRANSLATOR
+22:38:54.127311	RESULT TRANSLATOREntusiasmo por el futuro, el conocimiento de que un gran continente se estaba uniendo.
+
+22:38:54.129580	ASR	Healing those wounds.
+22:38:54.129655	CALLING SEGMENTER
+22:38:55.988226	RESPONSE SEGMENTER	['Healing those wounds.']
+22:38:55.988380	CALLING TRANSLATOR
+22:38:56.504790	RESULT TRANSLATORCurando esas heridas.
+
+22:38:56.507185	ASR	 
+22:38:56.507306	CALLING SEGMENTER
+22:38:57.275041	RESPONSE SEGMENTER	['']
+22:38:57.275219	CALLING TRANSLATOR
+22:38:57.665654	RESULT TRANSLATOR
+
+22:39:38.173618	ASR	Secure prosperity.
+22:39:38.173722	CALLING SEGMENTER
+22:39:39.218409	RESPONSE SEGMENTER	['Secure prosperity.']
+22:39:39.218563	CALLING TRANSLATOR
+22:39:39.612192	RESULT TRANSLATORProsperidad segura.
+
+22:39:41.838113	ASR	it didn't happen like a
+22:39:41.838199	CALLING SEGMENTER
+22:39:42.867278	RESPONSE SEGMENTER	[]
+
+22:39:48.765963	ASR	It didn't happen like a change in the weather. It happened because of determined work over generations, a commitment to friends.
+22:39:48.766040	CALLING SEGMENTER
+22:39:49.731374	RESPONSE SEGMENTER	["It didn't happen like a change in the weather. It happened because of determined work over generations, a commitment to friends."]
+22:39:49.731518	CALLING TRANSLATOR
+22:39:50.156230	RESULT TRANSLATORNo sucedió como un cambio en el clima. Sucedió debido a un trabajo decidido a lo largo de generaciones, un compromiso con los amigos.
+
+22:39:50.158073	ASR	 
+22:39:50.158187	CALLING SEGMENTER
+22:39:51.011546	RESPONSE SEGMENTER	['']
+22:39:51.011616	CALLING TRANSLATOR
+22:39:51.375040	RESULT TRANSLATOR
+
+22:42:58.117621	ASR	or to sustained peace
+22:42:58.117730	CALLING SEGMENTER
+22:42:59.240462	RESPONSE SEGMENTER	[]
+
+22:43:03.209087	ASR	Or to sustained peace came about. It didn't happen like a change in the weather.
+22:43:03.209164	CALLING SEGMENTER
+22:43:04.309376	RESPONSE SEGMENTER	["Or to sustained peace came about. It didn't happen like a change in the weather."]
+22:43:04.309484	CALLING TRANSLATOR
+22:43:05.455860	RESULT TRANSLATORO a la paz sostenida. No sucedió como un cambio en el clima.
+
+22:43:05.458145	ASR	It happened.
+22:43:05.458238	CALLING SEGMENTER
+22:43:07.239626	RESPONSE SEGMENTER	['It happened.']
+22:43:07.239697	CALLING TRANSLATOR
+22:43:09.204823	RESULT TRANSLATORSucedió.
+
+22:43:09.206264	ASR	 
+22:43:09.206363	CALLING SEGMENTER
+22:43:09.993122	RESPONSE SEGMENTER	['']
+22:43:09.993259	CALLING TRANSLATOR
+22:43:10.712150	RESULT TRANSLATOR
+
+22:45:54.123972	ASR	A war which saw the streets of European cities strewn with rubble, the skies of London.
+22:45:54.124097	CALLING SEGMENTER
+22:45:55.249178	RESPONSE SEGMENTER	['A war which saw the streets of European cities strewn with rubble, the skies of London.']
+22:45:55.249372	CALLING TRANSLATOR
+22:45:56.388736	RESULT TRANSLATORUna guerra que vio las calles de las ciudades europeas sembradas de escombros, los cielos de Londres.
+
+22:45:56.389499	ASR	 
+22:45:56.389540	CALLING SEGMENTER
+22:45:57.254801	RESPONSE SEGMENTER	['']
+22:45:57.254883	CALLING TRANSLATOR
+22:45:58.182151	RESULT TRANSLATOR
+
+22:46:42.345711	ASR	the excitement about the
+22:46:42.345780	CALLING SEGMENTER
+22:46:43.346289	RESPONSE SEGMENTER	[]
+
+22:46:43.891159	ASR	the excitement about the future the knowledge that
+22:46:43.891452	CALLING SEGMENTER
+22:46:44.937246	RESPONSE SEGMENTER	[]
+
+22:46:45.553320	ASR	the excitement about the future the knowledge that a great continent was
+22:46:45.553442	CALLING SEGMENTER
+22:46:46.555837	RESPONSE SEGMENTER	[]
+
+22:46:46.653060	ASR	The excitement about the future, the knowledge that a great continent was coming together.
+22:46:46.653183	CALLING SEGMENTER
+22:46:47.817697	RESPONSE SEGMENTER	['The excitement about the future, the knowledge that a great continent was coming together.']
+22:46:47.817838	CALLING TRANSLATOR
+22:46:48.720464	RESULT TRANSLATORLa emoción por el futuro, el conocimiento de que un gran continente se estaba uniendo.
+
+22:46:49.130184	ASR	healing those wounds of
+22:46:49.130245	CALLING SEGMENTER
+22:46:50.176503	RESPONSE SEGMENTER	[]
+
+22:46:51.230904	ASR	healing those wounds of our history is the
+22:46:51.230959	CALLING SEGMENTER
+22:46:52.275534	RESPONSE SEGMENTER	[]
+
+22:46:52.277820	ASR	Healing those wounds of our history is the central story.
+22:46:52.278041	CALLING SEGMENTER
+22:46:53.321424	RESPONSE SEGMENTER	['Healing those wounds of our history is the central story.']
+22:46:53.321499	CALLING TRANSLATOR
+22:46:54.127376	RESULT TRANSLATORSanar esas heridas de nuestra historia es la historia central.
+
+22:46:54.128678	ASR	 
+22:46:54.128751	CALLING SEGMENTER
+22:46:54.819582	RESPONSE SEGMENTER	['']
+22:46:54.819754	CALLING TRANSLATOR
+22:46:55.581757	RESULT TRANSLATOR
+
+22:49:19.864639	ASR	for peace and liberty
+22:49:19.864750	CALLING SEGMENTER
+22:49:20.820137	RESPONSE SEGMENTER	[]
+
+22:49:20.821983	ASR	For peace and liberty.
+22:49:20.822074	CALLING SEGMENTER
+22:49:21.966864	RESPONSE SEGMENTER	['For peace and liberty.']
+22:49:21.967086	CALLING TRANSLATOR
+22:49:22.665198	RESULT TRANSLATORPor la paz y la libertad.
+
+22:49:22.666908	ASR	as we remember the
+22:49:22.666965	CALLING SEGMENTER
+22:49:23.666864	RESPONSE SEGMENTER	[]
+
+22:49:24.947802	ASR	as we remember the sacrifice so we should also
+22:49:24.947903	CALLING SEGMENTER
+22:49:25.964280	RESPONSE SEGMENTER	['as we remember the sacrifice,']
+22:49:25.964420	CALLING TRANSLATOR
+22:49:26.881444	RESULT TRANSLATORal recordar el sacrificio,
+
+22:49:26.883720	ASR	as we remember the sacrifice so we should also remember how the shift in
+22:49:26.883841	CALLING SEGMENTER
+22:49:27.879649	RESPONSE SEGMENTER	['so we should also remember,']
+22:49:27.879808	CALLING TRANSLATOR
+22:49:28.520132	RESULT TRANSLATORasí que también debemos recordar,
+
+22:49:28.522036	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to
+22:49:28.522148	CALLING SEGMENTER
+22:49:29.295979	RESPONSE SEGMENTER	[]
+
+22:49:30.628509	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about
+22:49:30.629886	CALLING SEGMENTER
+22:49:31.667372	RESPONSE SEGMENTER	[]
+
+22:49:32.715465	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a
+22:49:32.715563	CALLING SEGMENTER
+22:49:33.766185	RESPONSE SEGMENTER	['how the shift in europe from war to sustained peace came about.']
+22:49:33.766376	CALLING TRANSLATOR
+22:49:34.438225	RESULT TRANSLATORcómo se produjo el cambio en Europa de la guerra a la paz sostenida.
+
+22:49:34.440548	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather
+22:49:34.440676	CALLING SEGMENTER
+22:49:35.454361	RESPONSE SEGMENTER	[]
+
+22:49:35.901226	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of
+22:49:35.901357	CALLING SEGMENTER
+22:49:36.910632	RESPONSE SEGMENTER	["it didn't happen like a change in the weather."]
+22:49:36.910946	CALLING TRANSLATOR
+22:49:37.301649	RESULT TRANSLATORno sucedió como un cambio en el clima.
+
+22:49:37.703932	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations
+22:49:37.704063	CALLING SEGMENTER
+22:49:38.638400	RESPONSE SEGMENTER	[]
+
+22:49:39.807185	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship
+22:49:39.807321	CALLING SEGMENTER
+22:49:40.843664	RESPONSE SEGMENTER	['it happened because of determined work over generations,']
+22:49:40.843807	CALLING TRANSLATOR
+22:49:41.384206	RESULT TRANSLATORsucedió debido a un trabajo determinado a lo largo de generaciones,
+
+22:49:42.156648	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship and a resolve never to
+22:49:42.156725	CALLING SEGMENTER
+22:49:43.200054	RESPONSE SEGMENTER	[]
+
+22:49:43.818023	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past
+22:49:43.818161	CALLING SEGMENTER
+22:49:44.787707	RESPONSE SEGMENTER	[]
+
+22:49:46.742368	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the
+22:49:46.742510	CALLING SEGMENTER
+22:49:47.835605	RESPONSE SEGMENTER	['a commitment to friendship and a resolve never to revisit that dark past.']
+22:49:47.835701	CALLING TRANSLATOR
+22:49:48.187294	RESULT TRANSLATORun compromiso con la amistad y la determinación de nunca volver a visitar ese oscuro pasado.
+
+22:49:48.446483	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50
+22:49:48.446559	CALLING SEGMENTER
+22:49:49.491789	RESPONSE SEGMENTER	[]
+
+22:49:49.493110	ASR	as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about it didn't happen like a change in the weather it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50 years ago this week
+22:49:49.493186	CALLING SEGMENTER
+22:49:50.542164	RESPONSE SEGMENTER	[]
+
+22:49:50.543965	ASR	As we remember the sacrifice, so we should also remember how the shift in Europe from war to sustained peace came about. It didn't happen like a change in the weather. It happened because of determined work over generations, a commitment to friendship and a resolve never to revisit that dark past, a commitment epitomised by the Elysee Treaty signed 50 years ago this week.
+22:49:50.544080	CALLING SEGMENTER
+22:49:51.589456	RESPONSE SEGMENTER	['a commitment epitomised by the Elysee Treaty, signed 50 years ago this week.']
+22:49:51.589568	CALLING TRANSLATOR
+22:49:52.004026	RESULT TRANSLATORun compromiso personificado por el Tratado del Elíseo, firmado hace 50 años esta semana.
+
+22:49:52.171351	ASR	after the berlin wall came
+22:49:52.171461	CALLING SEGMENTER
+22:49:53.194878	RESPONSE SEGMENTER	[]
+
+22:49:53.872108	ASR	after the berlin wall came down i visited that
+22:49:53.872200	CALLING SEGMENTER
+22:49:54.741678	RESPONSE SEGMENTER	[]
+
+22:49:55.491919	ASR	after the berlin wall came down i visited that city and i will never
+22:49:55.492084	CALLING SEGMENTER
+22:49:56.583283	RESPONSE SEGMENTER	['after the berlin wall came down, i visited that city']
+22:49:56.583444	CALLING TRANSLATOR
+22:49:57.109625	RESULT TRANSLATORdespués de que cayó el muro de Berlín, visité esa ciudad
+
+22:49:58.302480	ASR	after the berlin wall came down i visited that city and i will never forget it the abandoned checkpoints
+22:49:58.302611	CALLING SEGMENTER
+22:49:59.325364	RESPONSE SEGMENTER	[]
+
+22:50:00.042371	ASR	after the berlin wall came down i visited that city and i will never forget it the abandoned checkpoints the sense of excitement
+22:50:00.042427	CALLING SEGMENTER
+22:50:01.029880	RESPONSE SEGMENTER	['and i will never forget it:']
+22:50:01.030029	CALLING TRANSLATOR
+22:50:01.419545	RESULT TRANSLATORy nunca lo olvidaré:
+
+22:50:01.598358	ASR	after the berlin wall came down i visited that city and i will never forget it the abandoned checkpoints the sense of excitement about the future the knowledge
+22:50:01.598451	CALLING SEGMENTER
+22:50:02.631249	RESPONSE SEGMENTER	[]
+
+22:50:03.189593	ASR	after the berlin wall came down i visited that city and i will never forget it the abandoned checkpoints the sense of excitement about the future the knowledge that a great continent
+22:50:03.189721	CALLING SEGMENTER
+22:50:04.176229	RESPONSE SEGMENTER	[]
+
+22:50:04.631051	ASR	After the Berlin Wall came down, I visited that city and I will never forget it. The abandoned checkpoints, the sense of excitement about the future, the knowledge that a great continent was coming together.
+22:50:04.631161	CALLING SEGMENTER
+22:50:05.768377	RESPONSE SEGMENTER	['The abandoned checkpoints, the sense of excitement about the future, the knowledge that a great continent was coming together.']
+22:50:05.768523	CALLING TRANSLATOR
+22:50:06.272401	RESULT TRANSLATORLos puestos de control abandonados, la sensación de entusiasmo por el futuro, el conocimiento de que un gran continente se estaba uniendo.
+
+22:50:07.289236	ASR	healing those wounds of
+22:50:07.289296	CALLING SEGMENTER
+22:50:08.369262	RESPONSE SEGMENTER	[]
+
+22:50:08.768962	ASR	healing those wounds of our history is the
+22:50:08.769020	CALLING SEGMENTER
+22:50:09.810119	RESPONSE SEGMENTER	[]
+
+22:50:10.857790	ASR	healing those wounds of our history is the central story of the european
+22:50:10.857892	CALLING SEGMENTER
+22:50:11.946309	RESPONSE SEGMENTER	[]
+
+22:50:12.604045	ASR	Healing those wounds of our history is the central story of the European Union. What cha?
+22:50:12.604102	CALLING SEGMENTER
+logline
+logline
+logline
+logline
+
+23:18:59.764937	ASR	 
+23:18:59.765018	CALLING SEGMENTER
+23:19:00.358575	RESPONSE SEGMENTER	['']
+23:19:00.358656	CALLING TRANSLATOR
+23:19:00.972291	RESULT TRANSLATOR
+
+23:19:15.275259	ASR	 
+23:19:15.275316	CALLING SEGMENTER
+23:19:15.845530	RESPONSE SEGMENTER	['']
+23:19:15.845671	CALLING TRANSLATOR
+23:19:16.410658	RESULT TRANSLATOR
+
+23:19:20.852166	ASR	 
+23:19:20.852282	CALLING SEGMENTER
+23:19:21.444191	RESPONSE SEGMENTER	['']
+23:19:21.444333	CALLING TRANSLATOR
+23:19:22.077985	RESULT TRANSLATOR
+
+23:19:22.079550	ASR	 
+23:19:22.079642	CALLING SEGMENTER
+23:19:22.661395	RESPONSE SEGMENTER	['']
+23:19:22.661534	CALLING TRANSLATOR
+23:19:22.969888	RESULT TRANSLATOR
+
+23:19:35.354561	ASR	arizona and an institute
+23:19:35.354623	CALLING SEGMENTER
+23:19:36.237214	RESPONSE SEGMENTER	[]
+
+23:19:38.151765	ASR	arizona and an institute professor emeritus at the
+23:19:38.151904	CALLING SEGMENTER
+23:19:39.005409	RESPONSE SEGMENTER	['arizona and an institute.']
+23:19:39.005477	CALLING TRANSLATOR
+23:19:39.686178	RESULT TRANSLATORarizona y un instituto.
+
+23:19:39.854157	ASR	arizona and an institute professor emeritus at the massachusetts institute of technology
+23:19:39.854227	CALLING SEGMENTER
+23:19:40.757435	RESPONSE SEGMENTER	['arizona']
+23:19:40.757510	CALLING TRANSLATOR
+23:19:41.049945	RESULT TRANSLATORArizona
+
+23:19:41.050970	ASR	Arizona and an institute professor emeritus at the Massachusetts Institute of Technology.
+23:19:41.051016	CALLING SEGMENTER
+23:19:41.882999	RESPONSE SEGMENTER	['Arizona and an institute professor emeritus at the Massachusetts Institute of Technology.']
+23:19:41.883076	CALLING TRANSLATOR
+23:19:42.241453	RESULT TRANSLATORArizona y un profesor emérito del Instituto de Tecnología de Massachusetts.
+
+23:19:42.818729	ASR	he is a towering
+23:19:42.818789	CALLING SEGMENTER
+23:19:43.612117	RESPONSE SEGMENTER	[]
+
+23:19:43.821756	ASR	he is a towering figure in the field of linguistics
+23:19:43.821828	CALLING SEGMENTER
+23:19:44.643519	RESPONSE SEGMENTER	[]
+
+23:19:46.524802	ASR	he is a towering figure in the field of linguistics the creator of several
+23:19:46.524868	CALLING SEGMENTER
+23:19:47.393920	RESPONSE SEGMENTER	['he is a towering figure in the field of linguistics,']
+23:19:47.393991	CALLING TRANSLATOR
+23:19:47.727331	RESULT TRANSLATORes una figura imponente en el campo de la lingüística,
+
+23:19:48.324401	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that
+23:19:48.324465	CALLING SEGMENTER
+23:19:49.117968	RESPONSE SEGMENTER	[]
+
+23:19:49.527938	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field
+23:19:49.528004	CALLING SEGMENTER
+23:19:50.395495	RESPONSE SEGMENTER	[]
+
+23:19:51.829149	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field is also a major
+23:19:51.829208	CALLING SEGMENTER
+23:19:52.698156	RESPONSE SEGMENTER	[]
+
+23:19:52.834055	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field is also a major figure in cognitive science
+23:19:52.834169	CALLING SEGMENTER
+23:19:53.704193	RESPONSE SEGMENTER	[]
+
+23:19:54.634210	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field is also a major figure in cognitive science and analytic philosophy and he
+23:19:54.634268	CALLING SEGMENTER
+23:19:55.640208	RESPONSE SEGMENTER	[]
+
+23:19:55.641123	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field is also a major figure in cognitive science and analytic philosophy and he was one of the
+23:19:55.641169	CALLING SEGMENTER
+23:19:56.589846	RESPONSE SEGMENTER	['the creator of several major theoretical programs that have shaped the field, is also a major figure in cognitive science and analytic philosophy,']
+23:19:56.589933	CALLING TRANSLATOR
+23:19:56.983997	RESULT TRANSLATORel creador de varios programas teóricos importantes que han dado forma al campo, es también una figura importante en la ciencia cognitiva y la filosofía analítica,
+
+23:19:56.984945	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field is also a major figure in cognitive science and analytic philosophy and he was one of the pioneers of the cognitive
+23:19:56.984989	CALLING SEGMENTER
+23:19:57.811184	RESPONSE SEGMENTER	[]
+
+23:19:57.954284	ASR	he is a towering figure in the field of linguistics the creator of several major theoretical programs that have shaped the field is also a major figure in cognitive science and analytic philosophy and he was one of the pioneers of the cognitive revolution of the 19
+23:19:57.954344	CALLING SEGMENTER
+23:19:58.821528	RESPONSE SEGMENTER	[]
+
+23:19:58.822604	ASR	He is a towering figure in the field of linguistics. The creator of several major theoretical programs that have shaped the field is also a major figure in cognitive science and analytic philosophy, and he was one of The Pioneers of the cognitive revolution of the 1960s.
+23:19:58.822668	CALLING SEGMENTER
+23:20:00.107622	RESPONSE SEGMENTER	['and he was one of The Pioneers of the cognitive revolution of the 1960s.']
+23:20:00.107701	CALLING TRANSLATOR
+23:20:00.486512	RESULT TRANSLATORy fue uno de los pioneros de la revolución cognitiva de la década de 1960.
+
+23:20:01.143568	ASR	and in addition to
+23:20:01.143657	CALLING SEGMENTER
+23:20:01.911171	RESPONSE SEGMENTER	[]
+
+23:20:02.445682	ASR	and in addition to his scientific work he is
+23:20:02.445743	CALLING SEGMENTER
+23:20:03.251506	RESPONSE SEGMENTER	[]
+
+23:20:04.548390	ASR	and in addition to his scientific work he is also a highly influential
+23:20:04.548463	CALLING SEGMENTER
+23:20:05.391027	RESPONSE SEGMENTER	['and in addition to his scientific work,']
+23:20:05.391105	CALLING TRANSLATOR
+23:20:05.721649	RESULT TRANSLATORy además de su trabajo científico,
+
+23:20:06.849486	ASR	and in addition to his scientific work he is also a highly influential social critic and political
+23:20:06.849551	CALLING SEGMENTER
+23:20:07.674958	RESPONSE SEGMENTER	[]
+
+23:20:07.676173	ASR	And in addition to his scientific work, he is also a highly influential social critic and political activist.
+23:20:07.676237	CALLING SEGMENTER
+23:20:08.563851	RESPONSE SEGMENTER	['he is also a highly influential social critic and political activist.']
+23:20:08.563920	CALLING TRANSLATOR
+23:20:08.907510	RESULT TRANSLATORtambién es un crítico social y activista político muy influyente.
+
+23:20:09.895064	ASR	who advocates for libertarian
+23:20:09.895125	CALLING SEGMENTER
+23:20:10.686355	RESPONSE SEGMENTER	[]
+
+23:20:12.796977	ASR	who advocates for libertarian socialism he's the author
+23:20:12.797059	CALLING SEGMENTER
+23:20:13.624402	RESPONSE SEGMENTER	[]
+
+23:20:13.625240	ASR	who advocates for libertarian socialism he's the author of more than a
+23:20:13.625283	CALLING SEGMENTER
+23:20:14.478965	RESPONSE SEGMENTER	['who advocates for libertarian socialism.']
+23:20:14.479044	CALLING TRANSLATOR
+23:20:14.827152	RESULT TRANSLATORque aboga por el socialismo libertario.
+
+23:20:16.111302	ASR	who advocates for libertarian socialism he's the author of more than 150 books and he's one of the most
+23:20:16.111360	CALLING SEGMENTER
+23:20:16.979480	RESPONSE SEGMENTER	["he's the author of more than 150 books"]
+23:20:16.979558	CALLING TRANSLATOR
+23:20:17.310231	RESULT TRANSLATORes autor de más de 150 libros
+
+23:20:18.680045	ASR	Who advocates for libertarian socialism? He's the author of more than 150 books, and he's one of the most cited scholars alive.
+23:20:18.680104	CALLING SEGMENTER
+23:20:19.705202	RESPONSE SEGMENTER	["and he's one of the most cited scholars alive."]
+23:20:19.705307	CALLING TRANSLATOR
+23:20:20.067927	RESULT TRANSLATORy es uno de los eruditos vivos más citados.
+
+23:20:21.225039	ASR	and in addition he is the
+23:20:21.225116	CALLING SEGMENTER
+23:20:21.996342	RESPONSE SEGMENTER	[]
+
+logline
+
+08:53:26.322120	ASR	generations a
+08:53:26.322186	CALLING SEGMENTER
+08:53:28.588667	RESPONSE SEGMENTER	[]
+
+08:53:28.589857	ASR	generations a commitment to
+08:53:28.589910	CALLING SEGMENTER
+08:53:29.568970	RESPONSE SEGMENTER	[]
+
+08:53:29.569756	ASR	generations a commitment to friendship and a
+08:53:29.569797	CALLING SEGMENTER
+08:53:30.556958	RESPONSE SEGMENTER	[]
+
+08:53:30.557775	ASR	generations a commitment to friendship and a resolve never to
+08:53:30.557813	CALLING SEGMENTER
+08:53:31.724373	RESPONSE SEGMENTER	[]
+
+08:53:31.725306	ASR	generations a commitment to friendship and a resolve never to revisit that
+08:53:31.725343	CALLING SEGMENTER
+08:53:32.757349	RESPONSE SEGMENTER	[]
+
+08:53:32.758504	ASR	generations a commitment to friendship and a resolve never to revisit that dark past
+08:53:32.758543	CALLING SEGMENTER
+08:53:33.715100	RESPONSE SEGMENTER	[]
+
+08:53:33.716349	ASR	generations a commitment to friendship and a resolve never to revisit that dark past a commitment of
+08:53:33.716409	CALLING SEGMENTER
+08:53:34.788950	RESPONSE SEGMENTER	['generations.']
+08:53:34.789074	CALLING TRANSLATOR
+08:53:35.791186	RESULT TRANSLATORGeneraciones.
+
+08:53:35.792642	ASR	generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the
+08:53:35.792783	CALLING SEGMENTER
+08:53:37.208583	RESPONSE SEGMENTER	['a commitment to friendship and a resolve never to revisit that dark past.']
+08:53:37.208710	CALLING TRANSLATOR
+08:53:38.257298	RESULT TRANSLATORun compromiso con la amistad y la determinación de nunca volver a visitar ese oscuro pasado.
+
+08:53:38.261069	ASR	generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty
+08:53:38.261161	CALLING SEGMENTER
+08:53:39.302963	RESPONSE SEGMENTER	[]
+
+08:53:39.303753	ASR	generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50 years
+08:53:39.303804	CALLING SEGMENTER
+08:53:40.350822	RESPONSE SEGMENTER	[]
+
+08:53:40.351634	ASR	generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50 years ago this
+08:53:40.351678	CALLING SEGMENTER
+08:53:41.399203	RESPONSE SEGMENTER	[]
+
+08:53:41.400245	ASR	Generations, a commitment to friendship and a resolve never to revisit that dark past, a commitment epitomised by the Elysee Treaty signed 50 years ago this week.
+08:53:41.400300	CALLING SEGMENTER
+08:53:42.447790	RESPONSE SEGMENTER	['a commitment epitomised by the Elysee Treaty, signed 50 years ago this week.']
+08:53:42.447860	CALLING TRANSLATOR
+08:53:43.273084	RESULT TRANSLATORun compromiso personificado por el Tratado del Elíseo, firmado hace 50 años esta semana.
+
+08:53:43.274303	ASR	after the
+08:53:43.274358	CALLING SEGMENTER
+08:53:44.248331	RESPONSE SEGMENTER	[]
+
+08:53:44.249158	ASR	after the berlin wall
+08:53:44.249235	CALLING SEGMENTER
+08:53:45.262511	RESPONSE SEGMENTER	[]
+
+08:53:45.263321	ASR	after the berlin wall came down
+08:53:45.263370	CALLING SEGMENTER
+08:53:46.325226	RESPONSE SEGMENTER	[]
+
+08:53:46.326241	ASR	after the berlin wall came down i visited
+08:53:46.326289	CALLING SEGMENTER
+08:53:47.407194	RESPONSE SEGMENTER	[]
+
+08:53:47.408810	ASR	after the berlin wall came down i visited that city
+08:53:47.408870	CALLING SEGMENTER
+08:53:48.331469	RESPONSE SEGMENTER	['after the berlin wall came down,']
+08:53:48.331537	CALLING TRANSLATOR
+08:53:49.151553	RESULT TRANSLATORdespués de la caída del muro de Berlín,
+
+08:53:49.152866	ASR	after the berlin wall came down i visited that city and i will
+08:53:49.152938	CALLING SEGMENTER
+08:53:50.172797	RESPONSE SEGMENTER	[]
+
+08:53:50.175087	ASR	after the berlin wall came down i visited that city and i will never forget
+08:53:50.175191	CALLING SEGMENTER
+08:53:51.224451	RESPONSE SEGMENTER	['i visited that city']
+08:53:51.224525	CALLING TRANSLATOR
+08:53:52.131918	RESULT TRANSLATORVisité esa ciudad
+
+08:53:52.133345	ASR	After the Berlin Wall came down, I visited that city and I will never forget it.
+08:53:52.133403	CALLING SEGMENTER
+08:53:53.061295	RESPONSE SEGMENTER	['and I will never forget it.']
+08:53:53.061373	CALLING TRANSLATOR
+08:53:53.977070	RESULT TRANSLATORy nunca lo olvidaré.
+
+08:53:53.978211	ASR	and and
+08:53:53.978264	CALLING SEGMENTER
+08:53:55.028602	RESPONSE SEGMENTER	[]
+
+08:53:55.029472	ASR	and and check and compromise
+08:53:55.029517	CALLING SEGMENTER
+08:53:56.074584	RESPONSE SEGMENTER	[]
+
+08:53:56.075591	ASR	and and check and compromise sense excitement
+08:53:56.075630	CALLING SEGMENTER
+08:53:57.121891	RESPONSE SEGMENTER	[]
+
+08:53:57.122941	ASR	and and check and compromise sense excitement about the
+08:53:57.123000	CALLING SEGMENTER
+08:53:59.219020	RESPONSE SEGMENTER	[]
+
+08:53:59.219892	ASR	and and check and compromise sense excitement about the future knowledge
+08:53:59.219983	CALLING SEGMENTER
+08:54:00.266953	RESPONSE SEGMENTER	[]
+
+08:54:00.267795	ASR	and and check and compromise sense excitement about the knowledge that a great
+08:54:00.267849	CALLING SEGMENTER
+08:54:01.319088	RESPONSE SEGMENTER	['and compromise sense,']
+08:54:01.319165	CALLING TRANSLATOR
+08:54:02.079405	RESULT TRANSLATORy sentido del compromiso,
+
+08:54:02.081209	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was
+08:54:02.081329	CALLING SEGMENTER
+08:54:03.136009	RESPONSE SEGMENTER	[]
+
+08:54:03.136935	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together
+08:54:03.136982	CALLING SEGMENTER
+08:54:04.211663	RESPONSE SEGMENTER	[]
+
+08:54:04.212496	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was
+08:54:04.212537	CALLING SEGMENTER
+08:54:05.508616	RESPONSE SEGMENTER	[]
+
+08:54:05.509478	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was like those
+08:54:05.509540	CALLING SEGMENTER
+08:54:06.558768	RESPONSE SEGMENTER	['excitement about the knowledge that a great consciousness manner was coming together.']
+08:54:06.558868	CALLING TRANSLATOR
+08:54:07.392979	RESULT TRANSLATORentusiasmo por el conocimiento de que una gran manera de conciencia se estaba uniendo.
+
+08:54:07.394433	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was like those wounds of our
+08:54:07.394491	CALLING SEGMENTER
+08:54:08.654805	RESPONSE SEGMENTER	[]
+
+08:54:08.655571	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was like those wounds of our history is the
+08:54:08.655622	CALLING SEGMENTER
+08:54:09.703664	RESPONSE SEGMENTER	[]
+
+08:54:09.704490	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was like those wounds of our history is the central story
+08:54:09.704528	CALLING SEGMENTER
+08:54:10.751975	RESPONSE SEGMENTER	[]
+
+08:54:10.753013	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was like those wounds of our history is the central story of the
+08:54:10.753061	CALLING SEGMENTER
+08:54:11.799350	RESPONSE SEGMENTER	[]
+
+08:54:11.800117	ASR	and and check and compromise sense excitement about the knowledge that a great consciousness manner was coming together this was like those wounds of our history is the central story of the european union
+08:54:11.800161	CALLING SEGMENTER
+08:54:12.849879	RESPONSE SEGMENTER	[]
+
+08:54:12.851130	ASR	And and check and compromise sense, excitement about the knowledge that a great consciousness manner was coming together. This was like those wounds of our history is the central story of the European Union.
+08:54:12.851187	CALLING SEGMENTER
+08:54:13.896321	RESPONSE SEGMENTER	['This was like those wounds of our history is the central story of the European Union.']
+08:54:13.896396	CALLING TRANSLATOR
+08:54:14.947135	RESULT TRANSLATOREsto fue como si esas heridas de nuestra historia fueran la historia central de la Unión Europea.
+
+08:54:14.949453	ASR	what churchill
+08:54:14.949517	CALLING SEGMENTER
+08:54:15.994710	RESPONSE SEGMENTER	[]
+
+08:54:15.995622	ASR	what churchill described as
+08:54:15.995673	CALLING SEGMENTER
+08:54:17.056591	RESPONSE SEGMENTER	[]
+
+08:54:17.057664	ASR	what churchill described as the twin
+08:54:17.057717	CALLING SEGMENTER
+08:54:18.092631	RESPONSE SEGMENTER	[]
+
+08:54:18.093475	ASR	what churchill described as the twin marauders of
+08:54:18.093516	CALLING SEGMENTER
+08:54:19.140358	RESPONSE SEGMENTER	[]
+
+08:54:19.141920	ASR	what churchill described as the twin marauders of war and
+08:54:19.142007	CALLING SEGMENTER
+08:54:20.187882	RESPONSE SEGMENTER	[]
+
+08:54:20.189228	ASR	what churchill described as the twin marauders of war and tyranny he sent the most
+08:54:20.189278	CALLING SEGMENTER
+08:54:21.237870	RESPONSE SEGMENTER	['what churchill described as the twin marauders of war and tyranny.']
+08:54:21.237943	CALLING TRANSLATOR
+08:54:22.285955	RESULT TRANSLATORlo que Churchill describió como los merodeadores gemelos de la guerra y la tiranía.
+
+08:54:22.287149	ASR	what churchill described as the twin marauders of war and tyranny he sent the most entirely being
+08:54:22.287211	CALLING SEGMENTER
+08:54:23.334332	RESPONSE SEGMENTER	[]
+
+08:54:23.335215	ASR	what churchill described as the twin marauders of war and tyranny he sent the most entirely being banished from
+08:54:23.335259	CALLING SEGMENTER
+08:54:24.129194	RESPONSE SEGMENTER	[]
+
+08:54:24.130003	ASR	what churchill described as the twin marauders of war and tyranny he sent the most entirely being banished from our continent
+08:54:24.130044	CALLING SEGMENTER
+08:54:25.052797	RESPONSE SEGMENTER	['he sent the most,']
+08:54:25.052875	CALLING TRANSLATOR
+08:54:26.042098	RESULT TRANSLATORél envió la mayoría,
+
+08:54:26.043390	ASR	what churchill described as the twin marauders of war and tyranny he sent the most entirely being banished from our continent today hundreds of
+08:54:26.043453	CALLING SEGMENTER
+08:54:27.028167	RESPONSE SEGMENTER	[]
+
+08:54:27.029370	ASR	What Churchill described as the twin Marauders of war and tyranny of the most entirely being banished from our continent today. Hundreds of well.
+08:54:27.029443	CALLING SEGMENTER
+08:54:28.176836	RESPONSE SEGMENTER	['entirely, being banished from our continent today Hundreds of well.']
+08:54:28.176908	CALLING TRANSLATOR
+08:54:29.009017	RESULT TRANSLATORíntegramente, siendo desterrado de nuestro continente hoy Cientos de pozos.
+
+08:54:29.010376	ASR	captain the adriatic
+08:54:29.010471	CALLING SEGMENTER
+08:54:30.019043	RESPONSE SEGMENTER	[]
+
+08:54:30.019939	ASR	captain the adriatic from the western
+08:54:30.020048	CALLING SEGMENTER
+08:54:30.823596	RESPONSE SEGMENTER	[]
+
+08:54:30.824335	ASR	captain the adriatic from the western approaches to the agent
+08:54:30.824369	CALLING SEGMENTER
+08:54:31.747306	RESPONSE SEGMENTER	[]
+
+08:54:31.748339	ASR	captain the adriatic from the western approaches to the aegean while we
+08:54:31.748388	CALLING SEGMENTER
+08:54:32.773935	RESPONSE SEGMENTER	[]
+
+08:54:32.774782	ASR	captain the adriatic from the western approaches to the aegean while we never take
+08:54:32.774821	CALLING SEGMENTER
+08:54:33.821045	RESPONSE SEGMENTER	[]
+
+08:54:33.822218	ASR	Captain the Adriatic from the western approaches to the Aegean, while we must never take this.
+08:54:33.822273	CALLING SEGMENTER
+08:54:34.869848	RESPONSE SEGMENTER	['Captain the Adriatic from the western approaches to the Aegean. while we must never take this,']
+08:54:34.869934	CALLING TRANSLATOR
+08:54:35.923688	RESULT TRANSLATORCapitán del Adriático desde las aproximaciones occidentales al Egeo. si bien nunca debemos tomar esto,
+
+08:54:35.925376	ASR	you know
+08:54:35.925469	CALLING SEGMENTER
+08:54:37.214138	RESPONSE SEGMENTER	[]
+
+08:54:37.215135	ASR	you know of the
+08:54:37.215190	CALLING SEGMENTER
+08:54:38.026317	RESPONSE SEGMENTER	[]
+
+08:54:38.027189	ASR	you know of the european union
+08:54:38.027233	CALLING SEGMENTER
+08:54:39.064657	RESPONSE SEGMENTER	[]
+
+08:54:39.065797	ASR	you know of the european union to secure
+08:54:39.065908	CALLING SEGMENTER
+08:54:40.112687	RESPONSE SEGMENTER	[]
+
+08:54:40.113688	ASR	you know of the european union to secure peace look it has
+08:54:40.113725	CALLING SEGMENTER
+08:54:41.159946	RESPONSE SEGMENTER	[]
+
+08:54:41.160911	ASR	you know of the european union to secure peace look it has been achieved
+08:54:41.160964	CALLING SEGMENTER
+08:54:42.603066	RESPONSE SEGMENTER	['you know of the european union to secure peace. look,']
+08:54:42.603143	CALLING TRANSLATOR
+08:54:43.510047	RESULT TRANSLATORustedes conocen la Unión Europea para garantizar la paz. mirar
+
+08:54:43.511227	ASR	You know of the European Union to secure peace. Look, it has been achieved.
+08:54:43.511281	CALLING SEGMENTER
+08:54:44.385924	RESPONSE SEGMENTER	['You know of the European Union to secure peace. Look, it has been achieved.']
+08:54:44.386058	CALLING TRANSLATOR
+08:54:45.131301	RESULT TRANSLATORUstedes conocen la Unión Europea para garantizar la paz. Mira, se ha conseguido.
+
+08:54:45.132704	ASR	all those in the
+08:54:45.132867	CALLING SEGMENTER
+08:54:46.136503	RESPONSE SEGMENTER	[]
+
+08:54:46.137370	ASR	all those in the european union
+08:54:46.137422	CALLING SEGMENTER
+08:54:47.086282	RESPONSE SEGMENTER	[]
+
+08:54:47.087444	ASR	all those in the european union in your side
+08:54:47.087496	CALLING SEGMENTER
+08:54:49.031435	RESPONSE SEGMENTER	[]
+
+08:54:49.032367	ASR	all those in the european union your side NATO who made
+08:54:49.032405	CALLING SEGMENTER
+08:54:50.108788	RESPONSE SEGMENTER	[]
+
+08:54:50.109642	ASR	all those in the european union your side NATO who made that interamente
+08:54:50.109683	CALLING SEGMENTER
+08:54:51.136932	RESPONSE SEGMENTER	[]
+
+08:54:51.137706	ASR	all those in the european union your side NATO who made that interamente sindor estrada
+08:54:51.137749	CALLING SEGMENTER
+08:54:52.213060	RESPONSE SEGMENTER	[]
+
+08:54:52.213994	ASR	All those in the European Union, your side, NATO, who made that interamente siendo de terrado.
+08:54:52.214038	CALLING SEGMENTER
+08:54:53.744749	RESPONSE SEGMENTER	['All those in the European Union, your side, NATO, who made that interamente siendo de terrado.']
+08:54:53.744848	CALLING TRANSLATOR
+08:54:54.795803	RESULT TRANSLATORTodos los de la Unión Europea, de su lado, la OTAN, que hicieron que interamente siendo de terrado.
+
+08:54:54.797321	ASR	right the main
+08:54:54.797382	CALLING SEGMENTER
+08:54:55.841621	RESPONSE SEGMENTER	[]
+
+08:54:55.842492	ASR	right the main purpose of the
+08:54:55.842547	CALLING SEGMENTER
+08:54:56.620138	RESPONSE SEGMENTER	[]
+
+08:54:56.620965	ASR	right the main purpose of the european union
+08:54:56.621010	CALLING SEGMENTER
+08:54:57.644128	RESPONSE SEGMENTER	[]
+
+08:54:57.645052	ASR	right the main purpose of the european union is difficult
+08:54:57.645110	CALLING SEGMENTER
+08:54:59.816616	RESPONSE SEGMENTER	[]
+
+08:54:59.818499	ASR	Right, the main purpose of the European Union is difficult.
+08:54:59.818600	CALLING SEGMENTER
+08:55:01.084255	RESPONSE SEGMENTER	['Right. the main purpose of the European Union is difficult.']
+08:55:01.084328	CALLING TRANSLATOR
+08:55:01.890588	RESULT TRANSLATORDerecha. el objetivo principal de la Unión Europea es difícil.
+
+08:55:01.893210	ASR	alex haley
+08:55:01.893319	CALLING SEGMENTER
+08:55:03.573838	RESPONSE SEGMENTER	[]
+
+08:55:03.574643	ASR	alex haley feel but
+08:55:03.574687	CALLING SEGMENTER
+08:55:04.625029	RESPONSE SEGMENTER	[]
+
+08:55:04.626466	ASR	alex haley feel but to secure
+08:55:04.626548	CALLING SEGMENTER
+08:55:05.672988	RESPONSE SEGMENTER	[]
+
+08:55:05.674738	ASR	Alex Haley feel but to secure prosperity.
+08:55:05.674841	CALLING SEGMENTER
+08:55:06.728906	RESPONSE SEGMENTER	['Alex Haley feel, but to secure prosperity.']
+08:55:06.729066	CALLING TRANSLATOR
+08:55:07.603237	RESULT TRANSLATORAlex Haley siente, pero para asegurar la prosperidad.
+
+08:55:07.606063	ASR	will stay
+08:55:07.606210	CALLING SEGMENTER
+08:55:08.477722	RESPONSE SEGMENTER	[]
+
+08:55:08.479483	ASR	osteitis conocen la union europea
+08:55:08.479585	CALLING SEGMENTER

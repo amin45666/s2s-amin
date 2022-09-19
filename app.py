@@ -52,6 +52,7 @@ def info():
         {'minor version': 6, 'details': 'added logfile', 'date': '2022-09-15'},
         {'minor version': 7, 'details': 'added parameter to reduce calls of API', 'date': '2022-09-16'},
         {'minor version': 8, 'details': 'added feature to improve accuracy with list of terms', 'date': '2022-09-17'},
+        {'minor version': 9, 'details': 'improved SENDER UI; fix sampling frequency logic', 'date': '2022-09-19'},
 
     ]
 
@@ -93,18 +94,21 @@ def handleMessage(data):
     tl = 'es' # tl should be list containing more languages
 
     #reducing number of time the API is called
-    number_of_words = len(asr.split())
-    print(number_of_words)
+    #number_of_words = len(asr.split())
+    #print(number_of_words)
 
     #send asr to segmenter and see if there is a response
     segment_sl = segment(asr, final)
 
     if segment_sl:
-        print("API returned segment: ")
+        print("Segment returned: ")
         print(segment_sl)
 
         #translate segment to targ languages (will be more than one tl)
         translation = translate(segment_sl[0], tl)
+
+        print("Translation returned: ")
+        print(translation)
 
         #creating payload. This will need to be dynamic
         segment_payload = {
@@ -114,6 +118,7 @@ def handleMessage(data):
         segment_payload_json = json.dumps(segment_payload)
 
         #emitting payload to client for TTS
+        print("Emitting payload to receiver")
         emit("caption", {'asr' : asr, 'segment': segment_payload_json }, broadcast=True, room = room)
     else:
         print("Nothing to be emitted")
@@ -205,7 +210,6 @@ def translate(text, tl):
     translation_list = response[0]['translations']
     for translation_language in translation_list:
         translation = translation_language['text']
-        print('Translation: ' + translation)
 
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S.%f")
