@@ -13,6 +13,7 @@ socketio = SocketIO(app)
 
 logfile = open('log/logAPP.txt', 'a')
 logfile.write("logline\n")
+
 ###############################################
 # WELCOME
 ###############################################
@@ -53,6 +54,7 @@ def info():
         {'minor version': 7, 'details': 'added parameter to reduce calls of API', 'date': '2022-09-16'},
         {'minor version': 8, 'details': 'added feature to improve accuracy with list of terms', 'date': '2022-09-17'},
         {'minor version': 9, 'details': 'improved SENDER UI; fix sampling frequency logic', 'date': '2022-09-19'},
+        {'minor version': 9, 'details': 'improved Receiver UI; removed sampling frequency logic from APP (to be moved into API)', 'date': '2022-09-19'},
 
     ]
 
@@ -83,7 +85,7 @@ def handleMessage(data):
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
     logfile.write("\n")
-    logline = str(current_time) + '\t' + 'ASR\t' + str(asr)
+    logline = str(current_time) + '\t' + 'ASR received\t' + str(asr) + '(with status: ' + final + ')'
     logfile.write(logline)
     logfile.write("\n")
 
@@ -140,6 +142,9 @@ def on_left(data):
     room = data["room"]
     print(f"client {user} wants to leave: {room}")
     leave_room(room)
+
+    logfile.close()
+    
     emit("caption", f"User {user} left event {room},", room=room)
 
 def segment(text, final):
@@ -147,7 +152,7 @@ def segment(text, final):
 
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
-    logline = str(current_time) + '\t' + 'CALLING SEGMENTER'
+    logline = str(current_time) + '\t' + 'CALLING SEGMENTER for: ' + text
     logfile.write(logline)
     logfile.write("\n")
 
@@ -178,7 +183,7 @@ def translate(text, tl):
 
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
-    logline = str(current_time) + '\t' + 'CALLING TRANSLATOR'
+    logline = str(current_time) + '\t' + 'CALLING TRANSLATOR for: ' + text
     logfile.write(logline)
     logfile.write("\n")
 

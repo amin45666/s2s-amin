@@ -23,7 +23,7 @@ function intialize() {
 function fromMic() {
 	let speechConfig;
 	let languageOptions;
-	let number_of_words_previous = '';
+	//let number_of_words_previous = '';
 
 	if (ttsToken) {
 	  speechConfig = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(
@@ -66,19 +66,19 @@ function fromMic() {
 		}
 
 		//simple hack to reduce number of emissions
-		let delay_threasold = document.getElementById("delay").value;
-		let number_of_words_previous_with_threasold = Number(number_of_words_previous) + Number(delay_threasold);
-		console.log("settings:");
-		console.log(WordCount(asr));
-		console.log(number_of_words_previous_with_threasold);
+		//let delay_threasold = document.getElementById("delay").value;
+		//let number_of_words_previous_with_threasold = Number(number_of_words_previous) + Number(delay_threasold);
+		//console.log("settings:");
+		//console.log(WordCount(asr));
+		//console.log(number_of_words_previous_with_threasold);
 
 		//emitting only if new number of words is greater than latency in tokens compared to previous asr
 
-		if (WordCount(asr) > number_of_words_previous_with_threasold){
+		//if (WordCount(asr) > number_of_words_previous_with_threasold){
 			console.log('Sending ASR TEMPORARY FEED to APP');
-			number_of_words_previous = WordCount(asr); 
+		//	number_of_words_previous = WordCount(asr); 
         	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId});
-		}
+		//}
 
 	};
 	
@@ -96,7 +96,7 @@ function fromMic() {
             socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId});
 			
 			//resetting to 0 reference number of words
-			number_of_words_previous=0;
+			//number_of_words_previous=0;
 		//}
 		//else if (e.result.reason == ResultReason.NoMatch) {
 		//	console.log("NOMATCH: Speech could not be recognized.");
