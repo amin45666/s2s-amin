@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -26,6 +27,16 @@
       height:200px;
       overflow-y: scroll;
     }
+    td{
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    #table {
+      width: 100%;
+      margin: auto;
+    }
+
     @media (min-width: 768px) {
       .navbar-brand.abs {
         position: absolute;
@@ -34,6 +45,44 @@
         text-align: center;
       }
     }
+
+    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+      width: 88%;
+    }
+
+    .container{
+      width: 88%;
+      margin-top: 7em;
+    }
+
+    .mobile-input{
+      margin-top: -3em !important;
+      width: 50%;
+      margin-left: 4.5em !important;
+      position: fixed;
+    }
+
+    @media screen and (min-width: 1066px) {
+      .mobile-input{ 
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 1066px) {
+      #sessionId{ 
+        display: none;
+      }
+      .pc-screen {
+        display: none;
+      }
+      .container{
+        width: 88%;
+        margin-top: 8em;
+      }
+      
+    }
+
+    
 
   </style>
 
@@ -46,10 +95,14 @@
     <nav class="navbar navbar-expand-md fixed-top  bg-light">
       <div class="container-fluid">
         <div class="float-md-start fw-bold fs-5">KUDO Speech-to-Speech  
-               
-          &nbsp;&nbsp;&nbsp;
-          <label for="sessionId">Session ID </label>
-          <input id="sessionId">
+        </div>
+        <div class="row g-2 align-items-center mx-3 pc-screen">
+          <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Session ID</label>
+          </div>
+          <div class="col-auto">
+            <input type="text" id="sessionId" class="form-control" aria-describedby="passwordHelpInline">
+          </div>
         </div>
   
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +113,7 @@
           </ul>    
   
           &nbsp;                    
-                  <select id="targetLanguage"  class="btn btn-light btn-sm mr-1">
+                  <select id="targetLanguage"  class="btn btn-light btn-lg mr-1">
                       {% for language in languages %}
                            <option value="{{ language }}">{{ language }}</option>                
                       {% endfor %} 
@@ -69,26 +122,34 @@
                   &nbsp;&nbsp;&nbsp; 
                         
           
-          &nbsp;&nbsp; 
+          &nbsp;&nbsp;
           
           <div class="btn-group" role="group" aria-label="Commands">
-            <button class="btn btn-warning" type="button" id="recordButton" onclick="connnect()"><i class="bi bi-record-circle" style="margin-right: 0.5em;"></i>Connect</button>
+            <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
           </div>
         
         </div>
       </div>
     </nav>
   </header>
+  <div class="row g-2 align-items-center mx-3 mobile-input">
+    <div class="col-auto">
+      <label for="inputPassword6" class="col-form-label">Session ID</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="outside-sessionId" class="form-control" aria-describedby="passwordHelpInline">
+    </div>
+  </div>
 
   <main class="flex-shrink-0">
     
-    <div class="container-sm">
-      <div class="row"></div>
-      <div class="row">
-        <table id="tableLog">
+    <div class="container">
+        <table id="table">
+          <thead>
           <tr>
-            <th>Translation</th>
+            <th scope="col" class="fs-3 text-center">Translation</th>
           </tr>
+        </thead>
         </table> 
       </div>
     </div>
@@ -126,11 +187,12 @@
 
 
           //adding log
-          var table = document.getElementById("tableLog");
+          var table = document.getElementById("table");
 
           // Create an empty <tr> element and add it to the 1st position of the table:
           var row = table.insertRow(-1);
           row.style.backgroundColor = row_color; 
+          row.style.fontSize = "1.5em";
           
           // alternating row colors
           if (row_color === '#F7CAC9') {
@@ -144,7 +206,7 @@
           // Add some text to the new cells:
           cell1.innerHTML = text_tl;
 
-          let elem = document.getElementById("tableLog");
+          let elem = document.getElementById("table");
           elem.scrollTop = elem.scrollHeight;
         }
     })
@@ -161,9 +223,15 @@
 
   function connnect() {
     if (connection_status === 'disconnected') {
-      sessionCode = document.getElementById("sessionId").value;
+      var x = document.getElementById("sessionId");
+      if (window.getComputedStyle(x).display === "none") {
+        sessionCode = document.getElementById("outside-sessionId");
+      }
+      else {
+        sessionCode = x;
+      }
 
-      if ( sessionCode === '' ){
+      if ( sessionCode.value === '' ){
         alert("Please, first insert the Session ID to connect to your session!");
         return;
       }
@@ -173,6 +241,9 @@
       document.getElementById("recordButton").innerHTML = "Disconnect";
       initializeService('es-ES');//Language should be read by drop-down button
       connection_status = 'connected';
+      if (connection_status === 'connected') {
+        sessionCode.parentElement.parentElement.classList.add("d-none");
+      }
 
     }
     else {
@@ -181,6 +252,9 @@
       document.getElementById("recordButton").className = "btn btn-warning";
       document.getElementById("recordButton").innerHTML = "Connect";
       connection_status = 'disconnected';
+      if (connection_status === 'disconnected') {
+        sessionCode.parentElement.parentElement.classList.remove("d-none");
+      }
     }
   }
 </script>
