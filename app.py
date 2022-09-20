@@ -157,8 +157,8 @@ def segment(text, final):
     logfile.write("\n")
 
     #API endpoint
-    endpoint = 'http://127.0.0.1:8000/parse' # local version
-    #endpoint = 'https://asr-api.meetkudo.com/parse' #web version
+    #endpoint = 'http://127.0.0.1:8000/parse' # local version
+    endpoint = 'https://asr-api.meetkudo.com/parse' #web version
 
     #constructing parameters for call. tl should contain more languages
     pload = {'text': text, 'final': final}
