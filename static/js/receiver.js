@@ -74,17 +74,30 @@ async function speak(inputText, targetLanguageAbb) {
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
 
-  await synthesizer.speakTextAsync(
-    inputText,
-    function (result) {
-      window.console.log(result);
+  let voice_lang = 'en-US'
+  let voice_type = 'en-US-JennyNeural';
+  let voice_speed = 1;
+  let voice_style = 'customerservice';
+
+  const ssml = `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xmlns:emo="http://www.w3.org/2009/10/emotionml" version="1.0" xml:lang="${voice_lang}">
+  <voice name="${voice_type}">
+  <mstts:express-as style="${voice_style}">
+  <prosody rate="${voice_speed}%" pitch="0%">
+  ${inputText}
+  </prosody>
+  </mstts:express-as>
+  </voice>
+  </speak>`;
+
+
+  await synthesizer.speakSsmlAsync(
+    ssml,
+    result => {
+        if (result.errorDetails) {
+            console.error(result.errorDetails);
+        } else {
+            console.log(JSON.stringify(result));
+        }
     },
-    function (err) {
-      startSpeakTextAsyncButton.disabled = false;
-      document.getElementById("log").innerHTML = "Error: ";
-      document.getElementById("log").innerHTML = err;
-      document.getElementById("log").innerHTML = "\n";
-      window.console.log(err);
-    }
   );
 }
