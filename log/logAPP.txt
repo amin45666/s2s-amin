@@ -1,0 +1,591 @@
+logline
+
+09:40:25.635736	ASR received	thank (with status: False)
+09:40:25.635964	CALLING SEGMENTER	thank
+09:40:26.520509	RESPONSE SEGMENTER	[]
+
+09:40:26.521396	ASR received	thank you thank (with status: False)
+09:40:26.521449	CALLING SEGMENTER	thank you thank
+09:40:27.333180	RESPONSE SEGMENTER	[]
+
+09:40:27.334766	ASR received	thank you thank you (with status: False)
+09:40:27.334864	CALLING SEGMENTER	thank you thank you
+09:40:28.231153	RESPONSE SEGMENTER	[]
+
+09:40:28.232851	ASR received	thank you thank you so much (with status: False)
+09:40:28.232930	CALLING SEGMENTER	thank you thank you so much
+09:40:29.635217	RESPONSE SEGMENTER	[]
+
+09:40:29.636846	ASR received	thank you thank you so much what a (with status: False)
+09:40:29.636937	CALLING SEGMENTER	thank you thank you so much what a
+09:40:30.323459	RESPONSE SEGMENTER	[]
+
+09:40:30.325308	ASR received	thank you thank you so much what a pleasure (with status: False)
+09:40:30.325408	CALLING SEGMENTER	thank you thank you so much what a pleasure
+09:40:31.323533	RESPONSE SEGMENTER	['thank you.']
+09:40:31.323691	CALLING TRANSLATOR	thank you.
+09:40:32.278540	RESULT TRANSLATOR	Gracias.
+
+09:40:32.280737	ASR received	thank you thank you so much what a pleasure to be (with status: False)
+09:40:32.280840	CALLING SEGMENTER	thank you thank you so much what a pleasure to be
+09:40:33.325133	RESPONSE SEGMENTER	['so much.']
+09:40:33.325271	CALLING TRANSLATOR	so much.
+09:40:33.964950	RESULT TRANSLATOR	tanto.
+
+09:40:33.967080	ASR received	thank you thank you so much what a pleasure to be back in (with status: False)
+09:40:33.967168	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in
+09:40:36.171556	RESPONSE SEGMENTER	[]
+
+09:40:36.173451	ASR received	thank you thank you so much what a pleasure to be back in australia (with status: False)
+09:40:36.173547	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia
+09:40:37.520638	RESPONSE SEGMENTER	[]
+
+09:40:37.522679	ASR received	thank you thank you so much what a pleasure to be back in australia to be (with status: False)
+09:40:37.522800	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be
+09:40:38.570272	RESPONSE SEGMENTER	[]
+
+09:40:38.572059	ASR received	thank you thank you so much what a pleasure to be back in australia to be back (with status: False)
+09:40:38.572166	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back
+09:40:39.618783	RESPONSE SEGMENTER	[]
+
+09:40:39.620442	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at (with status: False)
+09:40:39.620551	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at
+09:40:40.666938	RESPONSE SEGMENTER	['what a pleasure to be back in australia,']
+09:40:40.667138	CALLING TRANSLATOR	what a pleasure to be back in australia,
+09:40:41.056125	RESULT TRANSLATOR	qué placer estar de vuelta en Australia,
+
+09:40:41.058034	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera (with status: False)
+09:40:41.058130	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera
+09:40:42.106573	RESPONSE SEGMENTER	[]
+
+09:40:42.108280	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house (with status: False)
+09:40:42.108388	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house
+09:40:43.158414	RESPONSE SEGMENTER	[]
+
+09:40:43.160218	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you (with status: False)
+09:40:43.160344	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you
+09:40:44.233113	RESPONSE SEGMENTER	[]
+
+09:40:44.234673	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much (with status: False)
+09:40:44.234759	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much
+09:40:45.252261	RESPONSE SEGMENTER	['to be back at the opera house.']
+09:40:45.252402	CALLING TRANSLATOR	to be back at the opera house.
+09:40:45.917202	RESULT TRANSLATOR	para estar de vuelta en la ópera.
+
+09:40:45.918972	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for (with status: False)
+09:40:45.919074	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for
+09:40:46.958580	RESPONSE SEGMENTER	[]
+
+09:40:46.960335	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out (with status: False)
+09:40:46.960442	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out
+09:40:48.008510	RESPONSE SEGMENTER	[]
+
+09:40:48.010519	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight (with status: False)
+09:40:48.010626	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight
+09:40:49.055243	RESPONSE SEGMENTER	[]
+
+09:40:49.056789	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as (with status: False)
+09:40:49.056875	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as
+09:40:50.102936	RESPONSE SEGMENTER	[]
+
+09:40:50.105103	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just (with status: False)
+09:40:50.105191	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just
+09:40:51.152517	RESPONSE SEGMENTER	[]
+
+09:40:51.154934	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said (with status: False)
+09:40:51.155111	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said
+09:40:52.199754	RESPONSE SEGMENTER	['thank you so much for coming out tonight.']
+09:40:52.199971	CALLING TRANSLATOR	thank you so much for coming out tonight.
+09:40:52.595423	RESULT TRANSLATOR	muchas gracias por salir esta noche.
+
+09:40:52.597884	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written (with status: False)
+09:40:52.597996	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written
+09:40:53.642247	RESPONSE SEGMENTER	[]
+
+09:40:53.644108	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written an (with status: False)
+09:40:53.644213	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written an
+09:40:55.804618	RESPONSE SEGMENTER	[]
+
+09:40:55.806548	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel (with status: False)
+09:40:55.806764	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel
+09:40:57.202438	RESPONSE SEGMENTER	['as anna just said,']
+09:40:57.202511	CALLING TRANSLATOR	as anna just said,
+09:40:57.836777	RESULT TRANSLATOR	como anna acaba de decir,
+
+09:40:57.839353	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't (with status: False)
+09:40:57.839462	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't
+09:40:58.893186	RESPONSE SEGMENTER	[]
+
+09:40:58.894376	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to (with status: False)
+09:40:58.894446	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to
+09:41:00.018538	RESPONSE SEGMENTER	["i've written a novel,"]
+09:41:00.018730	CALLING TRANSLATOR	i've written a novel,
+09:41:00.589586	RESULT TRANSLATOR	He escrito una novela,
+
+09:41:00.591085	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk (with status: False)
+09:41:00.591156	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk
+09:41:01.634834	RESPONSE SEGMENTER	[]
+
+09:41:01.635553	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly (with status: False)
+09:41:01.635596	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly
+09:41:02.688224	RESPONSE SEGMENTER	[]
+
+09:41:02.689701	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the (with status: False)
+09:41:02.689792	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the
+09:41:03.737062	RESPONSE SEGMENTER	[]
+
+09:41:03.738756	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel (with status: False)
+09:41:03.738899	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel
+09:41:04.784415	RESPONSE SEGMENTER	[]
+
+09:41:04.786053	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please (with status: False)
+09:41:04.786206	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please
+09:41:05.605047	RESPONSE SEGMENTER	[]
+
+09:41:05.606298	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it (with status: False)
+09:41:05.606376	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it
+09:41:06.880125	RESPONSE SEGMENTER	[]
+
+09:41:06.881328	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after (with status: False)
+09:41:06.881405	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after
+09:41:07.942423	RESPONSE SEGMENTER	["but i don't want to talk particularly specifically about the novel."]
+09:41:07.942565	CALLING TRANSLATOR	but i don't want to talk particularly specifically about the novel.
+09:41:08.621644	RESULT TRANSLATOR	pero no quiero hablar particularmente específicamente de la novela.
+
+09:41:08.623452	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you're (with status: False)
+09:41:08.623833	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you're
+09:41:09.744057	RESPONSE SEGMENTER	[]
+
+09:41:09.745702	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you're feeling (with status: False)
+09:41:09.745935	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you're feeling
+09:41:10.819081	RESPONSE SEGMENTER	[]
+
+09:41:10.820868	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but (with status: False)
+09:41:10.820972	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but
+09:41:11.845602	RESPONSE SEGMENTER	[]
+
+09:41:11.847158	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what (with status: False)
+09:41:11.847261	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what
+09:41:12.796053	RESPONSE SEGMENTER	[]
+
+09:41:12.798007	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really (with status: False)
+09:41:12.798119	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really
+09:41:13.951974	RESPONSE SEGMENTER	['please buy it after if you feel inclined.']
+09:41:13.952130	CALLING TRANSLATOR	please buy it after if you feel inclined.
+09:41:14.614557	RESULT TRANSLATOR	por favor, cómpralo después si te sientes inclinado.
+
+09:41:14.616745	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do (with status: False)
+09:41:14.616885	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do
+09:41:15.660038	RESPONSE SEGMENTER	[]
+
+09:41:15.661591	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is (with status: False)
+09:41:15.661688	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is
+09:41:16.710768	RESPONSE SEGMENTER	[]
+
+09:41:16.712690	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk (with status: False)
+09:41:16.712795	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk
+09:41:17.762009	RESPONSE SEGMENTER	[]
+
+09:41:17.764357	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about (with status: False)
+09:41:17.764469	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about
+09:41:18.815420	RESPONSE SEGMENTER	[]
+
+09:41:18.817173	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the (with status: False)
+09:41:18.817274	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the
+09:41:19.907542	RESPONSE SEGMENTER	[]
+
+09:41:19.909456	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas (with status: False)
+09:41:19.909557	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas
+09:41:20.917024	RESPONSE SEGMENTER	[]
+
+09:41:20.918149	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind (with status: False)
+09:41:20.918208	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind
+09:41:21.996730	RESPONSE SEGMENTER	[]
+
+09:41:21.998457	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the (with status: False)
+09:41:21.998558	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the
+09:41:23.055267	RESPONSE SEGMENTER	[]
+
+09:41:23.056818	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel (with status: False)
+09:41:23.056913	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel
+09:41:24.195840	RESPONSE SEGMENTER	[]
+
+09:41:24.197404	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and (with status: False)
+09:41:24.197509	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and
+09:41:25.292469	RESPONSE SEGMENTER	[]
+
+09:41:25.294098	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people (with status: False)
+09:41:25.294199	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people
+09:41:26.357261	RESPONSE SEGMENTER	[]
+
+09:41:26.358187	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me (with status: False)
+09:41:26.358243	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me
+09:41:27.392340	RESPONSE SEGMENTER	['but what i really want to do is to talk about some of the ideas behind the novel.']
+09:41:27.392462	CALLING TRANSLATOR	but what i really want to do is to talk about some of the ideas behind the novel.
+09:41:28.038643	RESULT TRANSLATOR	pero lo que realmente quiero hacer es hablar sobre algunas de las ideas detrás de la novela.
+
+09:41:28.041259	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what (with status: False)
+09:41:28.041375	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what
+09:41:28.953554	RESPONSE SEGMENTER	[]
+
+09:41:28.955393	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did (with status: False)
+09:41:28.955498	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did
+09:41:29.951244	RESPONSE SEGMENTER	['and sometimes people say to me:']
+09:41:29.951368	CALLING TRANSLATOR	and sometimes people say to me:
+09:41:30.345276	RESULT TRANSLATOR	y a veces la gente me dice:
+
+09:41:30.348202	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you (with status: False)
+09:41:30.348314	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you
+09:41:31.417900	RESPONSE SEGMENTER	[]
+
+09:41:31.419430	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but what i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know why did you even (with status: False)
+logline
+logline
+
+13:41:56.320829	ASR received	  (with status: True)
+13:41:56.320903	CALLING SEGMENTER	 
+13:41:57.278875	RESPONSE SEGMENTER	['']
+13:41:57.279038	CALLING TRANSLATOR	
+13:41:57.776434	RESULT TRANSLATOR	
+logline
+logline
+
+13:52:38.099991	ASR received	thank you thank you so much (with status: False)
+13:52:38.100194	CALLING SEGMENTER	thank you thank you so much
+13:52:40.978082	RESPONSE SEGMENTER	['thank you.']
+13:52:40.978253	CALLING TRANSLATOR	thank you.
+13:52:41.415163	RESULT TRANSLATOR	Gracias.
+
+13:52:41.417400	ASR received	thank you thank you so much what a pleasure to be back in australia to be (with status: False)
+13:52:41.417507	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be
+13:52:42.454086	RESPONSE SEGMENTER	['so much.']
+13:52:42.454236	CALLING TRANSLATOR	so much.
+13:52:42.785666	RESULT TRANSLATOR	tanto.
+
+13:52:42.787130	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so (with status: False)
+13:52:42.787204	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so
+13:52:44.121618	RESPONSE SEGMENTER	['what a pleasure to be back in australia,']
+13:52:44.121705	CALLING TRANSLATOR	what a pleasure to be back in australia,
+13:52:44.512772	RESULT TRANSLATOR	qué placer estar de vuelta en Australia,
+
+13:52:44.515061	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight (with status: False)
+13:52:44.515176	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight
+13:52:45.578640	RESPONSE SEGMENTER	['to be back at the opera house.']
+13:52:45.578832	CALLING TRANSLATOR	to be back at the opera house.
+13:52:45.878264	RESULT TRANSLATOR	para estar de vuelta en la ópera.
+
+13:52:45.881043	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've (with status: False)
+13:52:45.881169	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've
+13:52:46.897001	RESPONSE SEGMENTER	['thank you so much for coming out tonight.']
+13:52:46.897140	CALLING TRANSLATOR	thank you so much for coming out tonight.
+13:52:47.418730	RESULT TRANSLATOR	muchas gracias por salir esta noche.
+
+13:52:47.421093	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't (with status: False)
+13:52:47.421200	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't
+13:52:48.327457	RESPONSE SEGMENTER	['as anna just said,']
+13:52:48.327564	CALLING TRANSLATOR	as anna just said,
+13:52:48.710448	RESULT TRANSLATOR	como anna acaba de decir,
+
+13:52:48.808118	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically (with status: False)
+13:52:48.808176	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically
+13:52:51.139071	RESPONSE SEGMENTER	["i've written a novel,"]
+13:52:51.139179	CALLING TRANSLATOR	i've written a novel,
+13:52:51.653634	RESULT TRANSLATOR	He escrito una novela,
+
+13:52:51.654947	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy (with status: False)
+13:52:51.655124	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy
+13:52:52.602351	RESPONSE SEGMENTER	[]
+
+13:52:52.603192	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would (with status: False)
+13:52:52.603237	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would
+13:52:53.561201	RESPONSE SEGMENTER	["but i don't want to talk particularly specifically about the novel."]
+13:52:53.561336	CALLING TRANSLATOR	but i don't want to talk particularly specifically about the novel.
+13:52:54.234003	RESULT TRANSLATOR	pero no quiero hablar particularmente específicamente de la novela.
+
+13:52:54.235664	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about (with status: False)
+13:52:54.235787	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about
+13:52:55.660087	RESPONSE SEGMENTER	['please buy it after if you feel inclined,']
+13:52:55.660220	CALLING TRANSLATOR	please buy it after if you feel inclined,
+13:52:56.332588	RESULT TRANSLATOR	por favor cómpralo después si te sientes inclinado,
+
+13:52:56.334262	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel (with status: False)
+13:52:56.334334	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel
+13:52:57.532091	RESPONSE SEGMENTER	[]
+
+13:52:59.222263	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know (with status: False)
+13:52:59.222366	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know
+13:53:00.359620	RESPONSE SEGMENTER	['but would i really want to do is to talk about some of the ideas behind the novel.']
+13:53:00.359898	CALLING TRANSLATOR	but would i really want to do is to talk about some of the ideas behind the novel.
+13:53:00.901397	RESULT TRANSLATOR	pero lo que realmente me gustaría hacer es hablar de algunas de las ideas detrás de la novela.
+
+13:53:00.902906	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what why did you even (with status: False)
+13:53:00.902985	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what why did you even
+13:53:01.949322	RESPONSE SEGMENTER	['and sometimes people say to me:']
+13:53:01.949468	CALLING TRANSLATOR	and sometimes people say to me:
+13:53:02.342657	RESULT TRANSLATOR	y a veces la gente me dice:
+
+13:53:02.344828	ASR received	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what why did you even bother to write a novel i thought you (with status: False)
+13:53:02.344942	CALLING SEGMENTER	thank you thank you so much what a pleasure to be back in australia to be back at the opera house thank you so much for coming out tonight as anna just said i've written a novel but i don't want to talk particularly specifically about the novel please buy it after if you feel inclined but would i really want to do is to talk about some of the ideas behind the novel and sometimes people say to me you know what why did you even bother to write a novel i thought you
+13:53:03.426276	RESPONSE SEGMENTER	['you know what?']
+13:53:03.426455	CALLING TRANSLATOR	you know what?
+13:53:03.726225	RESULT TRANSLATOR	¿Sabes qué?
+
+13:53:03.728306	ASR received	Thank you. Thank you so much. What a pleasure to be back in Australia, to be back at the Opera House. Thank you so much for coming out tonight. As Anna just said, I've written a novel, but I don't want to talk particularly specifically about the novel. Please buy it after if you feel inclined. But would I really want to do is to talk about some of the ideas behind the novel and sometimes people say to me, you know, why did you even bother to write a novel? I thought you supposed to be a non. (with status: True)
+13:53:03.728398	CALLING SEGMENTER	Thank you. Thank you so much. What a pleasure to be back in Australia, to be back at the Opera House. Thank you so much for coming out tonight. As Anna just said, I've written a novel, but I don't want to talk particularly specifically about the novel. Please buy it after if you feel inclined. But would I really want to do is to talk about some of the ideas behind the novel and sometimes people say to me, you know, why did you even bother to write a novel? I thought you supposed to be a non.
+13:53:04.869734	RESPONSE SEGMENTER	['you know why did you even bother to write a novel? I thought you supposed to be a non.']
+13:53:04.869875	CALLING TRANSLATOR	you know why did you even bother to write a novel? I thought you supposed to be a non.
+13:53:05.488406	RESULT TRANSLATOR	¿Sabes por qué te molestaste en escribir una novela? Pensé que suponías ser un no.
+
+13:53:05.490456	ASR received	fiction writer and the reason i wrote (with status: False)
+13:53:05.490559	CALLING SEGMENTER	fiction writer and the reason i wrote
+13:53:06.532820	RESPONSE SEGMENTER	[]
+
+13:53:06.533946	ASR received	fiction writer and the reason i wrote a novel is that (with status: False)
+13:53:06.534009	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that
+13:53:07.587447	RESPONSE SEGMENTER	[]
+
+13:53:07.943093	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our (with status: False)
+13:53:07.943210	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our
+13:53:08.943080	RESPONSE SEGMENTER	[]
+
+13:53:10.746005	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from (with status: False)
+13:53:10.746104	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from
+13:53:11.823285	RESPONSE SEGMENTER	[]
+
+13:53:12.953414	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs (with status: False)
+13:53:12.953510	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs
+13:53:14.113424	RESPONSE SEGMENTER	[]
+
+13:53:15.753771	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very (with status: False)
+13:53:15.753884	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very
+13:53:16.824825	RESPONSE SEGMENTER	['fiction writer, and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels.']
+13:53:16.825037	CALLING TRANSLATOR	fiction writer, and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels.
+13:53:17.330323	RESULT TRANSLATOR	escritor de ficción, y la razón por la que escribí una novela es que creo que muchas de nuestras ideas sobre el amor provienen de la lectura de novelas.
+
+13:53:19.120411	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read (with status: False)
+13:53:19.120495	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read
+13:53:20.208242	RESPONSE SEGMENTER	[]
+
+13:53:21.918280	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend (with status: False)
+13:53:21.918382	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend
+13:53:22.934057	RESPONSE SEGMENTER	['also songs, films, etcetera, but essentially we are very shaped by the love narratives that we read. and this could seem a little cruel,']
+13:53:22.934220	CALLING TRANSLATOR	also songs, films, etcetera, but essentially we are very shaped by the love narratives that we read. and this could seem a little cruel,
+13:53:23.425555	RESULT TRANSLATOR	también canciones, películas, etcétera, pero esencialmente estamos muy moldeados por las narrativas de amor que leemos. y esto podría parecer un poco cruel,
+
+13:53:25.442217	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that (with status: False)
+13:53:25.442329	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that
+13:53:26.464625	RESPONSE SEGMENTER	[]
+
+13:53:26.534748	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that we're not influenced by what we (with status: False)
+13:53:26.534830	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that we're not influenced by what we
+13:53:27.544076	RESPONSE SEGMENTER	['love spontaneously,']
+13:53:27.544189	CALLING TRANSLATOR	love spontaneously,
+13:53:28.165081	RESULT TRANSLATOR	amar espontáneamente,
+
+13:53:28.675525	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that we're not influenced by what we read and by what we see but i think that (with status: False)
+13:53:28.675582	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that we're not influenced by what we read and by what we see but i think that
+13:53:29.862648	RESPONSE SEGMENTER	["that we're not influenced by what we read and by what we see,"]
+13:53:29.862784	CALLING TRANSLATOR	that we're not influenced by what we read and by what we see,
+13:53:30.504977	RESULT TRANSLATOR	que no estamos influenciados por lo que leemos y por lo que vemos,
+
+13:53:32.970004	ASR received	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that we're not influenced by what we read and by what we see but i think that we are we love within a very historical social (with status: False)
+13:53:32.970182	CALLING SEGMENTER	fiction writer and the reason i wrote a novel is that i believe that many of our ideas on love come from reading novels also songs films etcetera but essentially we are very shaped by the love narratives that we read and this could seem a little cruel we we tend to think that we love spontaneously that we're not influenced by what we read and by what we see but i think that we are we love within a very historical social
+13:53:33.953596	RESPONSE SEGMENTER	['but i think that we are,']
+13:53:33.953751	CALLING TRANSLATOR	but i think that we are,
+13:53:34.458002	RESULT TRANSLATOR	pero creo que lo somos,
+
+13:53:34.460064	ASR received	Fiction writer and the reason I wrote a novel is that I believe that many of our ideas on love come from reading novels, also songs, films, etcetera. But essentially we are very shaped by the love narratives that we read, and this could seem a little cruel. We we tend to think that we love spontaneously, that we're not influenced by what we read and by what we see. But I think that we are, we love within a very historical social. (with status: True)
+13:53:34.460173	CALLING SEGMENTER	Fiction writer and the reason I wrote a novel is that I believe that many of our ideas on love come from reading novels, also songs, films, etcetera. But essentially we are very shaped by the love narratives that we read, and this could seem a little cruel. We we tend to think that we love spontaneously, that we're not influenced by what we read and by what we see. But I think that we are, we love within a very historical social.
+13:53:35.504526	RESPONSE SEGMENTER	['we love within a very historical social.']
+13:53:35.504648	CALLING TRANSLATOR	we love within a very historical social.
+13:53:35.898736	RESULT TRANSLATOR	nos encanta dentro de un social muy histórico.
+
+13:53:36.958635	ASR received	context is that lovely biting aphorism from lauchu court he says (with status: False)
+13:53:36.958692	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says
+13:53:38.034126	RESPONSE SEGMENTER	['context is that lovely,']
+13:53:38.034233	CALLING TRANSLATOR	context is that lovely,
+13:53:38.384527	RESULT TRANSLATOR	el contexto es así de encantador,
+
+13:53:39.700240	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen (with status: False)
+13:53:39.700309	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen
+13:53:40.778160	RESPONSE SEGMENTER	['biting aphorism from lauchu court.']
+13:53:40.778236	CALLING TRANSLATOR	biting aphorism from lauchu court.
+13:53:41.164317	RESULT TRANSLATOR	mordiendo el aforismo de la corte lauchu.
+
+13:53:41.849034	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was (with status: False)
+13:53:41.849091	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was
+13:53:42.843805	RESPONSE SEGMENTER	[]
+
+13:53:44.545806	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extra (with status: False)
+13:53:44.545910	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extra
+13:53:45.735072	RESPONSE SEGMENTER	["he says there are some people who would never have fallen in love if they hadn't heard there was such a thing."]
+13:53:45.735258	CALLING TRANSLATOR	he says there are some people who would never have fallen in love if they hadn't heard there was such a thing.
+13:53:46.281377	RESULT TRANSLATOR	dice que hay algunas personas que nunca se habrían enamorado si no hubieran escuchado que existía tal cosa.
+
+13:53:47.458556	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that (with status: False)
+13:53:47.458648	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that
+13:53:48.486012	RESPONSE SEGMENTER	["that's a little extreme,"]
+13:53:48.486123	CALLING TRANSLATOR	that's a little extreme,
+13:53:48.816972	RESULT TRANSLATOR	eso es un poco extremo,
+
+13:53:50.658728	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our queues (with status: False)
+13:53:50.658892	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our queues
+13:53:51.686830	RESPONSE SEGMENTER	['but you get the the idea that really when we love,']
+13:53:51.686980	CALLING TRANSLATOR	but you get the the idea that really when we love,
+13:53:52.285099	RESULT TRANSLATOR	pero te haces a la idea de que realmente cuando amamos,
+
+13:53:53.568432	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain (with status: False)
+13:53:53.568610	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain
+13:53:54.895527	RESPONSE SEGMENTER	[]
+
+13:53:55.843576	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other (with status: False)
+13:53:55.843687	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other
+13:53:56.967666	RESPONSE SEGMENTER	['we are taking a lot of our cues from the outside world.']
+13:53:56.967748	CALLING TRANSLATOR	we are taking a lot of our cues from the outside world.
+13:53:57.524485	RESULT TRANSLATOR	estamos tomando muchas de nuestras señales del mundo exterior.
+
+13:53:57.526300	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other people are telling us to honor them (with status: False)
+13:53:57.526379	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other people are telling us to honor them
+13:53:58.578479	RESPONSE SEGMENTER	[]
+
+13:54:00.293564	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other people are telling us to honor them we suppress other feelings because people (with status: False)
+13:54:00.293729	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other people are telling us to honor them we suppress other feelings because people
+13:54:01.460866	RESPONSE SEGMENTER	['we honour certain feelings that we experience because other people are telling us to honor them.']
+13:54:01.460978	CALLING TRANSLATOR	we honour certain feelings that we experience because other people are telling us to honor them.
+13:54:01.961831	RESULT TRANSLATOR	honramos ciertos sentimientos que experimentamos porque otras personas nos dicen que los honremos.
+
+13:54:02.375454	ASR received	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other people are telling us to honor them we suppress other feelings because people have told us not to pay them particular (with status: False)
+13:54:02.375584	CALLING SEGMENTER	context is that lovely biting aphorism from lauchu court he says there are some people who would never have fallen in love if they hadn't heard there was such a thing that's a little extreme but you get the the idea that really when we love we are taking a lot of our cues from the outside world we honour certain feelings that we experience because other people are telling us to honor them we suppress other feelings because people have told us not to pay them particular
+13:54:03.555943	RESPONSE SEGMENTER	[]
+
+13:54:03.557737	ASR received	Context is that lovely, biting aphorism from lauchu court. He says there are some people who would never have fallen in love if they hadn't heard there was such a thing. That's a little extreme, but you get the the idea that really, when we love, we are taking a lot of our cues from the outside world. We honour certain feelings that we experience because other people are telling us to honor them. We suppress other feelings because people have told us not to pay them particular. (with status: True)
+13:54:03.557849	CALLING SEGMENTER	Context is that lovely, biting aphorism from lauchu court. He says there are some people who would never have fallen in love if they hadn't heard there was such a thing. That's a little extreme, but you get the the idea that really, when we love, we are taking a lot of our cues from the outside world. We honour certain feelings that we experience because other people are telling us to honor them. We suppress other feelings because people have told us not to pay them particular.
+13:54:04.622617	RESPONSE SEGMENTER	['We suppress other feelings because people have told us not to pay them particular.']
+13:54:04.622747	CALLING TRANSLATOR	We suppress other feelings because people have told us not to pay them particular.
+13:54:05.259453	RESULT TRANSLATOR	Reprimimos otros sentimientos porque la gente nos ha dicho que no les paguemos en particular.
+
+13:54:06.965664	ASR received	attention now we are nowadays firmly in (with status: False)
+13:54:06.965738	CALLING SEGMENTER	attention now we are nowadays firmly in
+13:54:08.013687	RESPONSE SEGMENTER	['attention now.']
+13:54:08.013851	CALLING TRANSLATOR	attention now.
+13:54:08.404021	RESULT TRANSLATOR	atención ahora.
+
+13:54:09.456493	ASR received	attention now we are nowadays firmly in a very distinctive era in the history (with status: False)
+13:54:09.456569	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history
+13:54:10.753292	RESPONSE SEGMENTER	[]
+
+13:54:11.554167	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in (with status: False)
+13:54:11.554303	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in
+13:54:12.675361	RESPONSE SEGMENTER	[]
+
+13:54:14.437441	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romantic (with status: False)
+13:54:14.437588	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romantic
+13:54:15.385237	RESPONSE SEGMENTER	['we are nowadays firmly in a very distinctive era in the history of love.']
+13:54:15.385387	CALLING TRANSLATOR	we are nowadays firmly in a very distinctive era in the history of love.
+13:54:15.784007	RESULT TRANSLATOR	hoy estamos firmemente en una era muy distintiva en la historia del amor.
+
+13:54:18.237204	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales (with status: False)
+13:54:18.237326	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales
+13:54:19.547405	RESPONSE SEGMENTER	['we are living in the era of romanticism.']
+13:54:19.547561	CALLING TRANSLATOR	we are living in the era of romanticism.
+13:54:19.953209	RESULT TRANSLATOR	vivimos en la era del romanticismo.
+
+13:54:22.138885	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists write (with status: False)
+13:54:22.138974	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists write
+13:54:23.181737	RESPONSE SEGMENTER	[]
+
+13:54:24.968076	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of (with status: False)
+13:54:24.968137	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of
+13:54:26.112443	RESPONSE SEGMENTER	['romanticism is an intellectual movement that began in the sales studies garrets of european poets, novelists, writers.']
+13:54:26.112626	CALLING TRANSLATOR	romanticism is an intellectual movement that began in the sales studies garrets of european poets, novelists, writers.
+13:54:26.892009	RESULT TRANSLATOR	El romanticismo es un movimiento intelectual que comenzó en los estudios de ventas de las buhardillas de poetas, novelistas y escritores europeos.
+
+13:54:27.352391	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of the 18th century and nowadays (with status: False)
+13:54:27.352475	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of the 18th century and nowadays
+13:54:28.327481	RESPONSE SEGMENTER	[]
+
+13:54:29.536711	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of the 18th century and nowadays even if you've never heard of a single romantic (with status: False)
+13:54:29.536792	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of the 18th century and nowadays even if you've never heard of a single romantic
+13:54:30.729677	RESPONSE SEGMENTER	[]
+
+13:54:31.557939	ASR received	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of the 18th century and nowadays even if you've never heard of a single romantic poet or novelist from any garret (with status: False)
+13:54:31.558044	CALLING SEGMENTER	attention now we are nowadays firmly in a very distinctive era in the history of love we are living in the era of romanticism romanticism is an intellectual movement that began in the sales studies garrets of european poets novelists writers in the end middle end of the 18th century and nowadays even if you've never heard of a single romantic poet or novelist from any garret
+13:54:32.646928	RESPONSE SEGMENTER	['in the end,']
+13:54:32.647075	CALLING TRANSLATOR	in the end,
+13:54:33.689513	RESULT TRANSLATOR	al final,
+
+13:54:33.691361	ASR received	Attention now. We are nowadays firmly in a very distinctive era in the history of love. We are living in the era of romanticism. Romanticism is an intellectual movement that began in the salos studies garrets of European poets, novelists, writers, in the end, middle end of the 18th century. And nowadays, even if you've never heard of a single romantic poet or novelist from any Garret in old Europe, and you're just having. (with status: True)
+13:54:33.691433	CALLING SEGMENTER	Attention now. We are nowadays firmly in a very distinctive era in the history of love. We are living in the era of romanticism. Romanticism is an intellectual movement that began in the salos studies garrets of European poets, novelists, writers, in the end, middle end of the 18th century. And nowadays, even if you've never heard of a single romantic poet or novelist from any Garret in old Europe, and you're just having.
+13:54:35.276463	RESPONSE SEGMENTER	["middle end of the 18th century And nowadays, even if you've never heard of a single romantic poet or novelist from any Garret in old Europe and you're just having"]
+13:54:35.276592	CALLING TRANSLATOR	middle end of the 18th century And nowadays, even if you've never heard of a single romantic poet or novelist from any Garret in old Europe and you're just having
+13:54:35.813838	RESULT TRANSLATOR	Finales del siglo 18 Y hoy en día, incluso si nunca has oído hablar de un solo poeta romántico o novelista de cualquier Garret en la vieja Europa y solo estás teniendo
+
+13:54:35.815445	ASR received	your love life here in sydney you are (with status: False)
+13:54:35.815517	CALLING SEGMENTER	your love life here in sydney you are
+13:54:36.835675	RESPONSE SEGMENTER	[]
+
+13:54:39.135948	ASR received	Your love life here in Sydney, you are influenced because we all are by romanticism. (with status: True)
+13:54:39.136018	CALLING SEGMENTER	Your love life here in Sydney, you are influenced because we all are by romanticism.
+13:54:40.517479	RESPONSE SEGMENTER	['Your love life here in Sydney. you are influenced- because we all are- by romanticism.']
+13:54:40.517559	CALLING TRANSLATOR	Your love life here in Sydney. you are influenced- because we all are- by romanticism.
+13:54:40.909531	RESULT TRANSLATOR	Tu vida amorosa aquí en Sydney. estás influenciado -porque todos lo estamos- por el romanticismo.
+
+13:55:13.186576	ASR received	  (with status: True)
+13:55:13.186708	CALLING SEGMENTER	 
+13:55:14.076275	RESPONSE SEGMENTER	['']
+13:55:14.076423	CALLING TRANSLATOR	
+13:55:14.470270	RESULT TRANSLATOR	
+
+13:55:28.113650	ASR received	  (with status: True)
+13:55:28.113770	CALLING SEGMENTER	 
+13:55:28.908947	RESPONSE SEGMENTER	['']
+13:55:28.909020	CALLING TRANSLATOR	
+13:55:29.284320	RESULT TRANSLATOR	
+
+13:55:43.085756	ASR received	  (with status: True)
+13:55:43.085869	CALLING SEGMENTER	 
+13:55:43.881017	RESPONSE SEGMENTER	['']
+13:55:43.881163	CALLING TRANSLATOR	
+13:55:44.486563	RESULT TRANSLATOR	
+
+13:55:58.248744	ASR received	  (with status: True)
+13:55:58.248831	CALLING SEGMENTER	 
+13:55:58.835992	RESPONSE SEGMENTER	['']
+13:55:58.836143	CALLING TRANSLATOR	
+13:55:59.320589	RESULT TRANSLATOR	
+
+13:56:13.054240	ASR received	  (with status: True)
+13:56:13.054307	CALLING SEGMENTER	 
+13:56:13.846984	RESPONSE SEGMENTER	['']
+13:56:13.847166	CALLING TRANSLATOR	
+13:56:14.240592	RESULT TRANSLATOR	
+
+13:56:28.133146	ASR received	  (with status: True)
+13:56:28.133239	CALLING SEGMENTER	 
+13:56:28.917976	RESPONSE SEGMENTER	['']
+13:56:28.918041	CALLING TRANSLATOR	
+13:56:29.227608	RESULT TRANSLATOR	
+
+13:56:43.215041	ASR received	  (with status: True)
+13:56:43.215148	CALLING SEGMENTER	 
+13:56:43.921793	RESPONSE SEGMENTER	['']
+13:56:43.921909	CALLING TRANSLATOR	
+13:56:44.427654	RESULT TRANSLATOR	
+
+13:56:58.115681	ASR received	  (with status: True)
+13:56:58.115752	CALLING SEGMENTER	 
+13:56:58.935720	RESPONSE SEGMENTER	['']
+13:56:58.935917	CALLING TRANSLATOR	
+13:56:59.235667	RESULT TRANSLATOR	
+
+13:57:13.397867	ASR received	  (with status: True)
+13:57:13.397981	CALLING SEGMENTER	 
+13:57:14.293235	RESPONSE SEGMENTER	['']
+13:57:14.293321	CALLING TRANSLATOR	
+13:57:14.839190	RESULT TRANSLATOR	
+
+13:57:28.487025	ASR received	  (with status: True)
+13:57:28.487127	CALLING SEGMENTER	 
+13:57:29.356034	RESPONSE SEGMENTER	['']
+13:57:29.356146	CALLING TRANSLATOR	
+13:57:29.739726	RESULT TRANSLATOR	

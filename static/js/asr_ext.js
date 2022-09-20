@@ -23,7 +23,7 @@ function intialize() {
 function fromMic() {
 	let speechConfig;
 	let languageOptions;
-	//let number_of_words_previous = '';
+	let number_of_callbacks = 0;
 
 	if (ttsToken) {
 	  speechConfig = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(
@@ -54,7 +54,7 @@ function fromMic() {
     console.log('Speak into your microphone.');    
 	
 	recognizer.recognizing = (s, e) => {
-		console.log(`ASR TEMPORARY FEED IS: ${e.result.text}`);
+		console.log(`ASR TEMPORARY FEED FROM AZURE: ${e.result.text}`);
 		document.getElementById("ASR").innerHTML = e.result.text;
 		var sessionId = document.getElementById("sessionId").innerHTML; 
 		let asr = e.result.text
@@ -66,25 +66,26 @@ function fromMic() {
 		}
 
 		//simple hack to reduce number of emissions
-		//let delay_threasold = document.getElementById("delay").value;
+		let sampling_threasold = document.getElementById("delay").value;
 		//let number_of_words_previous_with_threasold = Number(number_of_words_previous) + Number(delay_threasold);
-		//console.log("settings:");
-		//console.log(WordCount(asr));
-		//console.log(number_of_words_previous_with_threasold);
+		console.log("settings:");
+		console.log(number_of_callbacks);
+		console.log(sampling_threasold);
 
 		//emitting only if new number of words is greater than latency in tokens compared to previous asr
+		number_of_callbacks=Number(number_of_callbacks)+1;
 
-		//if (WordCount(asr) > number_of_words_previous_with_threasold){
+		if (number_of_callbacks > sampling_threasold){
 			console.log('Sending ASR TEMPORARY FEED to APP');
-		//	number_of_words_previous = WordCount(asr); 
         	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId});
-		//}
-
+			number_of_callbacks=0;
+		}
+		
 	};
 	
 	recognizer.recognized = (s, e) => {
 		//if (e.result.reason == ResultReason.RecognizedSpeech) {
-			console.log(`ASR RECOGNIZED: Text=${e.result.text}`);
+			console.log(`ASR FINAL FEED FROM AZURE: Text=${e.result.text}`);
 			document.getElementById("ASR").innerHTML = e.result.text;
 	    	var sessionId = document.getElementById("sessionId").innerHTML; 
 			let asr = e.result.text
@@ -92,11 +93,11 @@ function fromMic() {
 			if (!asr) {
 					asr = " "
 			}
-			console.log('Sending ASR to APP as finalized feed');
+			console.log('Sending ASR FINAL FEED to APP');
             socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId});
 			
-			//resetting to 0 reference number of words
-			//number_of_words_previous=0;
+			//resetting to 0 counter for callbacks
+			number_of_callbacks=0;
 		//}
 		//else if (e.result.reason == ResultReason.NoMatch) {
 		//	console.log("NOMATCH: Speech could not be recognized.");
