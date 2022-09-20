@@ -69,17 +69,15 @@ function initializeService(TL) {
   synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
 }
 
-async function speak(inputText, targetLanguageAbb) {
+async function speak(inputText, targetLanguageAbb, voice_type='en-US-JennyNeural', voice_speed=1, voice_style='sad') {
   console.log("Inizialising config");
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
+  console.log("voice type: " + voice_type);
+  console.log("voice style: " + voice_style);
+  console.log("voice speed: " + voice_speed);
 
-  let voice_lang = 'en-US'
-  let voice_type = 'en-US-JennyNeural';
-  let voice_speed = 1;
-  let voice_style = 'customerservice';
-
-  const ssml = `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xmlns:emo="http://www.w3.org/2009/10/emotionml" version="1.0" xml:lang="${voice_lang}">
+  const ssml = `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xmlns:emo="http://www.w3.org/2009/10/emotionml" version="1.0" xml:lang="${targetLanguageAbb}">
   <voice name="${voice_type}">
   <mstts:express-as style="${voice_style}">
   <prosody rate="${voice_speed}%" pitch="0%">
@@ -99,5 +97,12 @@ async function speak(inputText, targetLanguageAbb) {
             console.log(JSON.stringify(result));
         }
     },
+    function (err) {
+      startSpeakTextAsyncButton.disabled = false;
+      document.getElementById("log").innerHTML = "Error: ";
+      document.getElementById("log").innerHTML = err;
+      document.getElementById("log").innerHTML = "\n";
+      window.console.log(err);
+    }
   );
 }
