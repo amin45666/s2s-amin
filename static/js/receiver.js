@@ -69,18 +69,21 @@ function initializeService(TL) {
   synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
 }
 
-async function speak(inputText, targetLanguageAbb, voice_type='en-US-JennyNeural', voice_speed=1, voice_style='sad') {
+async function speak(inputText, targetLanguageAbb) {
   console.log("Inizialising config");
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
-  console.log("voice type: " + voice_type);
-  console.log("voice style: " + voice_style);
-  console.log("voice speed: " + voice_speed);
+  voiceType='en-US-JennyNeural';
+  voiceSpeed=1;
+  voiceStyle='sad';
+  console.log("voice type: " + voiceType);
+  console.log("voice style: " + voiceStyle);
+  console.log("voice speed: " + voiceSpeed);
 
   const ssml = `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xmlns:emo="http://www.w3.org/2009/10/emotionml" version="1.0" xml:lang="${targetLanguageAbb}">
-  <voice name="${voice_type}">
-  <mstts:express-as style="${voice_style}">
-  <prosody rate="${voice_speed}%" pitch="0%">
+  <voice name="${voiceType}">
+  <mstts:express-as style="${voiceStyle}">
+  <prosody rate="${voiceSpeed}%" pitch="0%">
   ${inputText}
   </prosody>
   </mstts:express-as>
