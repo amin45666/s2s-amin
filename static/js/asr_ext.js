@@ -65,12 +65,8 @@ function fromMic() {
 			asr = " "
 		}
 
-		//simple hack to reduce number of emissions
+		//simple hack to reduce number of API calls 
 		let sampling_threasold = document.getElementById("delay").value;
-		//let number_of_words_previous_with_threasold = Number(number_of_words_previous) + Number(delay_threasold);
-		console.log("settings:");
-		console.log(number_of_callbacks);
-		console.log(sampling_threasold);
 
 		//emitting only if new number of words is greater than latency in tokens compared to previous asr
 		number_of_callbacks=Number(number_of_callbacks)+1;
