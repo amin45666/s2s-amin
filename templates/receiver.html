@@ -235,8 +235,8 @@
         alert("Please, first insert the Session ID to connect to your session!");
         return;
       }
-      console.log("ask server to join room: " + sessionCode);
-      socket.emit("join", { "user": Date.now(), "room": sessionCode, "targetLanguage": "" });
+      console.log("ask server to join room: " + sessionCode.value);
+      socket.emit("join", { "user": Date.now(), "room": sessionCode.value, "targetLanguage": "" });
       document.getElementById("recordButton").className = "btn btn-danger";
       document.getElementById("recordButton").innerHTML = "Disconnect";
       initializeService('es-ES');//Language should be read by drop-down button
