@@ -75,7 +75,7 @@ def info():
         {'minor version': 11, 'details': 'improves sampling frequency logic from APP', 'date': '2022-09-20'},
         {'minor version': 12, 'details': 'improves UI Sender; make logging optional (hard coded switch)', 'date': '2022-09-21'},
         {'minor version': 13, 'details': 'adds optional AI rephrasing for longer sentences >20 tokens', 'date': '2022-09-21'},
-        {'minor version': 14, 'details': 'adds sessionID to Segmenter API payload', 'date': '2022-09-21'},
+        {'minor version': 14, 'details': 'adds API initialisation call with sessionID', 'date': '2022-09-21'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
