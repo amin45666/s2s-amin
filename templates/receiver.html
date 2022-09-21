@@ -37,6 +37,32 @@
       margin: auto;
     }
 
+    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+      width: 88%;
+    }
+
+    .container{
+      margin-top: 3em;
+    }
+
+    .mobile-input{
+      margin-top: 0em !important;
+      width: 50%;
+      margin-left: 4.5em !important;
+      position: fixed;
+    }
+
+    .inner-form{
+      width: 13em;
+    }
+
+    #targetLanguage{
+      padding-bottom: 12px;
+      margin-right: 1em;
+      margin-bottom: 0.5em;
+      padding-right: 10px;
+    }
+
     @media (min-width: 768px) {
       .navbar-brand.abs {
         position: absolute;
@@ -46,44 +72,33 @@
       }
     }
 
-    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-      width: 88%;
-    }
-
-    .container{
-      width: 88%;
-      margin-top: 7em;
-    }
-
-    .mobile-input{
-      margin-top: -3em !important;
-      width: 50%;
-      margin-left: 4.5em !important;
-      position: fixed;
-    }
-
-    @media screen and (min-width: 1066px) {
+    @media screen and (min-width: 992px) {
       .mobile-input{ 
         display: none;
       }
     }
 
-    @media screen and (max-width: 1066px) {
+    @media screen and (max-width: 992px) {
       #sessionId{ 
         display: none;
       }
+
       .pc-screen {
         display: none;
       }
+
       .container{
         width: 88%;
         margin-top: 8em;
-      }
-      
+      }  
     }
 
+    @media screen and (max-width: 1066px){
+      .container {
+        width: 88%;
+        margin-top: 5em;
+      }
     
-
   </style>
 
 </head>
@@ -92,45 +107,41 @@
 
   <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md fixed-top  bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <div class="float-md-start fw-bold fs-5">KUDO Speech-to-Speech  
-        </div>
-        <div class="row g-2 align-items-center mx-3 pc-screen">
-          <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Session ID</label>
-          </div>
-          <div class="col-auto">
-            <input type="text" id="sessionId" class="form-control" aria-describedby="passwordHelpInline">
-          </div>
-        </div>
-  
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="bi bi-list"></i>
+        <a class="navbar-brand" href="#">KUDO Speech-to-Speech</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          </ul>    
-  
-          &nbsp;                    
-                  <select id="targetLanguage"  class="btn btn-light btn-lg mr-1">
-                      {% for language in languages %}
-                           <option value="{{ language }}">{{ language }}</option>                
-                      {% endfor %} 
-                  </select>   
-                       
-                  &nbsp;&nbsp;&nbsp; 
-                        
-          
-          &nbsp;&nbsp;
-          
-          <div class="btn-group" role="group" aria-label="Commands">
-            <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
-          </div>
-        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <div class="row g-2 align-items-center mx-3 pc-screen">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">Session ID</label>
+                </div>
+                <div class="col-auto">
+                  <input type="text" id="sessionId" class="form-control inner-form" aria-describedby="passwordHelpInline">
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <select id="targetLanguage"  class="btn btn-warning btn-lg">
+                {% for language in languages %}
+                     <option value="{{ language }}">{{language}}</option>                
+                {% endfor %} 
+              </select>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="btn-group" role="group" aria-label="Commands">
+                <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
+
   </header>
   <div class="row g-2 align-items-center mx-3 mobile-input">
     <div class="col-auto">
@@ -155,8 +166,6 @@
     </div>
  
   </main>
-
-
 
 </body>
 
@@ -214,6 +223,7 @@
   socket.on('connected', function () {
     console.log("connect");
   });
+
   socket.on("status", (status) => {
     console.log("received status: " + status.data);
   });
@@ -237,7 +247,7 @@
       }
       console.log("ask server to join room: " + sessionCode.value);
       socket.emit("join", { "user": Date.now(), "room": sessionCode.value, "targetLanguage": "" });
-      document.getElementById("recordButton").className = "btn btn-danger";
+      document.getElementById("recordButton").className = "btn btn-danger btn-lg";
       document.getElementById("recordButton").innerHTML = "Disconnect";
       initializeService('es-ES');//Language should be read by drop-down button
       connection_status = 'connected';
