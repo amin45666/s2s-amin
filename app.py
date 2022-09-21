@@ -49,19 +49,20 @@ def open_page_receiver():
 def info():
     changelog = [
         {'minor version': 0, 'details': 'initial POC commit', 'date': '2022-09-14'},
-        {'minor version': 1, 'details': 'adding version changelog', 'date': '2022-09-14'},
-        {'minor version': 2, 'details': 'adding multichannel', 'date': '2022-09-14'},
-        {'minor version': 3, 'details': 'improved UI for Sender/Receiver', 'date': '2022-09-15'},
-        {'minor version': 4, 'details': 'added automatic scrolling in Sender table', 'date': '2022-09-15'},
-        {'minor version': 5, 'details': 'added timestamp of segment processing', 'date': '2022-09-15'},
-        {'minor version': 6, 'details': 'added logfile', 'date': '2022-09-15'},
-        {'minor version': 7, 'details': 'added parameter to reduce calls of API', 'date': '2022-09-16'},
-        {'minor version': 8, 'details': 'added feature to improve accuracy with list of terms', 'date': '2022-09-17'},
-        {'minor version': 9, 'details': 'improved SENDER UI; fix sampling frequency logic', 'date': '2022-09-19'},
-        {'minor version': 10, 'details': 'improved Receiver UI;', 'date': '2022-09-19'},
-        {'minor version': 11, 'details': 'improved sampling frequency logic from APP', 'date': '2022-09-20'},
-        {'minor version': 12, 'details': 'improved UI Sender; make logging optional (hard coded switch)', 'date': '2022-09-21'},
-        {'minor version': 13, 'details': 'added optional AI rephrasing for longer sentences >20 tokens', 'date': '2022-09-21'},
+        {'minor version': 1, 'details': 'adds version changelog', 'date': '2022-09-14'},
+        {'minor version': 2, 'details': 'adds multichannel', 'date': '2022-09-14'},
+        {'minor version': 3, 'details': 'improves UI for Sender/Receiver', 'date': '2022-09-15'},
+        {'minor version': 4, 'details': 'adds automatic scrolling in Sender table', 'date': '2022-09-15'},
+        {'minor version': 5, 'details': 'adds timestamp of segment processing', 'date': '2022-09-15'},
+        {'minor version': 6, 'details': 'adds logfile', 'date': '2022-09-15'},
+        {'minor version': 7, 'details': 'adds parameter to reduce calls of API', 'date': '2022-09-16'},
+        {'minor version': 8, 'details': 'adds feature to improve accuracy with list of terms', 'date': '2022-09-17'},
+        {'minor version': 9, 'details': 'improves SENDER UI; fix sampling frequency logic', 'date': '2022-09-19'},
+        {'minor version': 10, 'details': 'improves Receiver UI;', 'date': '2022-09-19'},
+        {'minor version': 11, 'details': 'improves sampling frequency logic from APP', 'date': '2022-09-20'},
+        {'minor version': 12, 'details': 'improves UI Sender; make logging optional (hard coded switch)', 'date': '2022-09-21'},
+        {'minor version': 13, 'details': 'adds optional AI rephrasing for longer sentences >20 tokens', 'date': '2022-09-21'},
+        {'minor version': 14, 'details': 'adds sessionID to Segmenter API payload', 'date': '2022-09-21'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
@@ -93,7 +94,7 @@ def handleMessage(data):
     tl = 'es' # tl should be list containing more languages
 
     #send asr to segmenter and see if there is a response
-    segment_sl = segment(asr, final)
+    segment_sl = segment(asr, final, room)
     paraphrasedAPPLIED = ''
 
     if segment_sl:
@@ -151,7 +152,7 @@ def on_left(data):
 
     emit("caption", f"User {user} left event {room},", room=room)
 
-def segment(text, final):
+def segment(text, final, room):
     print("Calling Segmentation API")
 
     if logFeature: 
@@ -166,7 +167,7 @@ def segment(text, final):
     endpoint = 'https://asr-api.meetkudo.com/parse' #web version
 
     #constructing parameters for call. tl should contain more languages
-    pload = {'text': text, 'final': final}
+    pload = {'text': text, 'final': final, 'sessionID': room}
 
     response = requests.post(url=endpoint, json=pload)
     if response.ok:
