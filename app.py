@@ -15,6 +15,11 @@ socketio = SocketIO(app)
 logFeature = '' # Set to TRUE to start logging to file
 paraphraseFeature = '' # Set TRUE if you want to use LM to do paraphrasing of source segment
 
+#SEGMENTERAPI = 'http://127.0.0.1:8000/parse' # local version
+SEGMENTERAPI = 'https://asr-api.meetkudo.com/parse' #web version
+SEGMENTERAPI_start_session = 'https://asr-api.meetkudo.com/startSession'
+
+# logginf feature is very rudimentary and trows error at disconnection. It should be redone - is useful after initial experimenting - using proper Flask mechanisms.
 if logFeature: 
     logfile = open('log/logAPP.txt', 'a')
     logfile.write("logline\n")
@@ -34,6 +39,14 @@ def open_page_asr():
 
     sessionId = random.randint(1000,9999)
 
+    #initiate a new session of API
+    URI = 'https://asr-api.meetkudo.com/startSession?session_id=' + str(sessionId)
+    response = requests.post(url=URI)
+    if response.ok:
+        result = response.json()
+        print("Initializing API: " + str(result))
+    else:
+        print("Error initializing of API: " + str(response))
 
     return render_template('asr.html', sessionId=sessionId, asr='asr', client=client, languages=languages_list, url_client=url_client)
 
@@ -162,14 +175,10 @@ def segment(text, final, room):
         logfile.write(logline)
         logfile.write("\n")
 
-    #API endpoint
-    #endpoint = 'http://127.0.0.1:8000/parse' # local version
-    endpoint = 'https://asr-api.meetkudo.com/parse' #web version
-
     #constructing parameters for call. tl should contain more languages
     pload = {'text': text, 'final': final, 'sessionID': room}
 
-    response = requests.post(url=endpoint, json=pload)
+    response = requests.post(url=SEGMENTERAPI, json=pload)
     if response.ok:
         result = response.json()
 

@@ -254,6 +254,7 @@
         sessionCode = document.getElementById("sessionId").innerHTML;
         console.log("ask server to join room: " + sessionCode);
         socket.emit("join", { "user": Date.now(), "room": sessionCode });
+        socket.emit("startAPI", { "user": Date.now(), "room": sessionCode });
     }
     function leaveRoom() {
         sessionCode = document.getElementById("sessionId").innerHTML;
