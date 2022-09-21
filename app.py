@@ -11,8 +11,13 @@ app = flask.Flask(__name__)
 app.secret_key = 'jhgwjhdgwjhd3d'
 socketio = SocketIO(app)
 
-logfile = open('log/logAPP.txt', 'a')
-logfile.write("logline\n")
+# manual parameters
+logFeature = '' # Set to TRUE to start logging to file
+paraphraseFeature = '' # Set TRUE if you want to use LM to do paraphrasing of source segment
+
+if logFeature: 
+    logfile = open('log/logAPP.txt', 'a')
+    logfile.write("logline\n")
 
 ###############################################
 # WELCOME
@@ -22,7 +27,6 @@ logfile.write("logline\n")
 def open_page_asr():
     
     print('OPENING SESSION')
-    asr            = 'ok' #show toggle button to show real-time transcription     
     url_client     = '' 
     client         = 1
     langs_flat     = 'Spanish'
@@ -31,7 +35,7 @@ def open_page_asr():
     sessionId = random.randint(1000,9999)
 
 
-    return render_template('asr.html', sessionId=sessionId, asr=asr, client=client, languages=languages_list, url_client=url_client)
+    return render_template('asr.html', sessionId=sessionId, asr='asr', client=client, languages=languages_list, url_client=url_client)
 
 @app.route("/receiver", methods=["GET", "POST"])
 def open_page_receiver():
@@ -61,17 +65,6 @@ def info():
 
     return Response(json.dumps(changelog),  mimetype='application/json')
 
-#########################
-#  APIs 
-#########################
-@app.route('/api/log/<filename>')
-def doc_file(filename):
-
-    file = os.path.join('log', filename)
-    with open(file, 'r') as logfile:
-        log = logfile.read().replace('\n', '<br>')
-        return log
-
 ###############################################
 # LIVE
 ###############################################
@@ -83,40 +76,45 @@ def handleMessage(data):
     final = data['final']
     room = data['room']
 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S.%f")
-    logfile.write("\n")
-    logline = str(current_time) + '\t' + 'ASR received\t' + str(asr) + ' (with status: ' + final + ')'
-    logfile.write(logline)
-    logfile.write("\n")
+    if logFeature: 
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S.%f")
+        logfile.write("\n")
+        logline = str(current_time) + '\t' + 'ASR received\t' + str(asr) + ' (with status: ' + final + ')'
+        logfile.write(logline)
+        logfile.write("\n")
 
-    print(f"\nProcessing '{asr}' with state '{final}' for Session '{room}' and time '{current_time}'")
+    print(f"\nProcessing '{asr}' with state '{final}' for Session '{room}'")
 
     #languages should be dynamic, and tl more than one
     sl = 'en'
     tl = 'es' # tl should be list containing more languages
 
-    #reducing number of time the API is called
-    #number_of_words = len(asr.split())
-    #print(number_of_words)
-
     #send asr to segmenter and see if there is a response
     segment_sl = segment(asr, final)
 
     if segment_sl:
-        print("Segment returned: ")
-        print(segment_sl)
+        mysegment = segment_sl[0]
+        print("Segment returned: " + mysegment)
+
+        #paraphrase segment 
+        if paraphraseFeature:
+            countOfWords = len(mysegment.split())
+            if countOfWords > 20:
+                mysegment = paraphrase(mysegment, sl)
+                print("Paraphrase returned: ")
+                print(mysegment)
 
         #translate segment to targ languages (will be more than one tl)
-        translation = translate(segment_sl[0], tl)
-
+        mysegment = translate(mysegment, tl)
+        #translation = translate(segment_sl[0], tl)
         print("Translation returned: ")
-        print(translation)
+        print(mysegment)
 
         #creating payload. This will need to be dynamic
         segment_payload = {
             sl : segment_sl,
-            tl : translation
+            tl : mysegment
         }
         segment_payload_json = json.dumps(segment_payload)
 
@@ -143,19 +141,21 @@ def on_left(data):
     room = data["room"]
     print(f"client {user} wants to leave: {room}")
     leave_room(room)
-
-    logfile.close()
     
+    if logFeature: 
+        logfile.close()
+
     emit("caption", f"User {user} left event {room},", room=room)
 
 def segment(text, final):
     print("Calling Segmentation API")
 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S.%f")
-    logline = str(current_time) + '\t' + 'CALLING SEGMENTER\t' + text
-    logfile.write(logline)
-    logfile.write("\n")
+    if logFeature: 
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S.%f")
+        logline = str(current_time) + '\t' + 'CALLING SEGMENTER\t' + text
+        logfile.write(logline)
+        logfile.write("\n")
 
     #API endpoint
     #endpoint = 'http://127.0.0.1:8000/parse' # local version
@@ -168,25 +168,26 @@ def segment(text, final):
     if response.ok:
         result = response.json()
 
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S.%f")
-        logline = str(current_time) + '\t' + 'RESPONSE SEGMENTER\t' + str(result)
-        logfile.write(logline)
-        logfile.write("\n")
+        if logFeature: 
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S.%f")
+            logline = str(current_time) + '\t' + 'RESPONSE SEGMENTER\t' + str(result)
+            logfile.write(logline)
+            logfile.write("\n")
 
         return result
     else:
         result = {"error": response}
 
-
 def translate(text, tl):
     print("Calling Translation API")
 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S.%f")
-    logline = str(current_time) + '\t' + 'CALLING TRANSLATOR\t' + text
-    logfile.write(logline)
-    logfile.write("\n")
+    if logFeature: 
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S.%f")
+        logline = str(current_time) + '\t' + 'CALLING TRANSLATOR\t' + text
+        logfile.write(logline)
+        logfile.write("\n")
 
     #Azure endpoint
     endpoint = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0'
@@ -217,13 +218,33 @@ def translate(text, tl):
     for translation_language in translation_list:
         translation = translation_language['text']
 
+        if logFeature: 
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S.%f")
+            logline = str(current_time) + '\t' + 'RESULT TRANSLATOR\t' + str(translation)
+            logfile.write(logline)
+            logfile.write("\n")
+
+        return translation
+
+def paraphrase(text, sl):
+    print("Calling Paraphrasing API")
+    API_URL = "https://api-inference.huggingface.co/models/prithivida/parrot_paraphraser_on_T5"
+    headers = {"Authorization": "Bearer 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"}
+
+    payload = {'inputs': text}
+    response = requests.post(API_URL, headers=headers, json=payload)
+    paraphrased_dic = response.json()
+    paraphrased = paraphrased_dic[0]["generated_text"]
+
+    if logFeature: 
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S.%f")
-        logline = str(current_time) + '\t' + 'RESULT TRANSLATOR\t' + str(translation)
+        logline = str(current_time) + '\t' + 'RESULT PARAPHRASER\t' + str(paraphrased)
         logfile.write(logline)
         logfile.write("\n")
 
-        return translation
+    return paraphrased
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)
