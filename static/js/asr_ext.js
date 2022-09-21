@@ -68,12 +68,18 @@ function fromMic() {
 		//simple hack to reduce number of API calls 
 		let sampling_threasold = document.getElementById("delay").value;
 
+		//switch paraphrasing feature
+		let CBparaphraseFeature = document.querySelector('#paraphraseFeature');
+		if (CBparaphraseFeature.checked){
+			paraphraseFeature = 'TRUE'
+		}
+
 		//emitting only if new number of words is greater than latency in tokens compared to previous asr
 		number_of_callbacks=Number(number_of_callbacks)+1;
 
 		if (number_of_callbacks > sampling_threasold){
 			console.log('Sending ASR TEMPORARY FEED to APP');
-        	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId});
+        	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId, 'paraphraseFeature': paraphraseFeature});
 			number_of_callbacks=0;
 		}
 		
@@ -83,14 +89,22 @@ function fromMic() {
 		//if (e.result.reason == ResultReason.RecognizedSpeech) {
 			console.log(`ASR FINAL FEED FROM AZURE: Text=${e.result.text}`);
 			document.getElementById("ASR").innerHTML = e.result.text;
-	    	var sessionId = document.getElementById("sessionId").innerHTML; 
+	    	
+			var sessionId = document.getElementById("sessionId").innerHTML; 
+
+			//switch paraphrasing feature
+			let CBparaphraseFeature = document.querySelector('#paraphraseFeature');
+			if (CBparaphraseFeature.checked){
+				paraphraseFeature = 'TRUE'
+			}
+
 			let asr = e.result.text
 			//force socket to emit a value otherwise APP complains
 			if (!asr) {
 					asr = " "
 			}
 			console.log('Sending ASR FINAL FEED to APP');
-            socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId});
+            socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId, 'paraphraseFeature': paraphraseFeature});
 			
 			//resetting to 0 counter for callbacks
 			number_of_callbacks=0;

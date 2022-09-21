@@ -60,7 +60,8 @@ def info():
         {'minor version': 9, 'details': 'improved SENDER UI; fix sampling frequency logic', 'date': '2022-09-19'},
         {'minor version': 10, 'details': 'improved Receiver UI;', 'date': '2022-09-19'},
         {'minor version': 11, 'details': 'improved sampling frequency logic from APP', 'date': '2022-09-20'},
-
+        {'minor version': 12, 'details': 'improved UI Sender; make logging optional (hard coded switch)', 'date': '2022-09-21'},
+        {'minor version': 13, 'details': 'added optional AI rephrasing for longer sentences >20 tokens', 'date': '2022-09-21'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
@@ -75,6 +76,7 @@ def handleMessage(data):
     asr = data['asr']
     final = data['final']
     room = data['room']
+    paraphraseFeature = data['paraphraseFeature']
 
     if logFeature: 
         now = datetime.now()
@@ -84,7 +86,7 @@ def handleMessage(data):
         logfile.write(logline)
         logfile.write("\n")
 
-    print(f"\nProcessing '{asr}' with state '{final}' for Session '{room}'")
+    print(f"\nProcessing '{asr}' with final flag '{final}' for Session '{room}' set paraphrase to '{paraphraseFeature}'")
 
     #languages should be dynamic, and tl more than one
     sl = 'en'
@@ -92,6 +94,7 @@ def handleMessage(data):
 
     #send asr to segmenter and see if there is a response
     segment_sl = segment(asr, final)
+    paraphrasedAPPLIED = ''
 
     if segment_sl:
         mysegment = segment_sl[0]
@@ -104,6 +107,7 @@ def handleMessage(data):
                 mysegment = paraphrase(mysegment, sl)
                 print("Paraphrase returned: ")
                 print(mysegment)
+                paraphrasedAPPLIED = 'TRUE'
 
         #translate segment to targ languages (will be more than one tl)
         mysegment = translate(mysegment, tl)
@@ -120,7 +124,7 @@ def handleMessage(data):
 
         #emitting payload to client for TTS
         print("Emitting payload to receiver")
-        emit("caption", {'asr' : asr, 'segment': segment_payload_json }, broadcast=True, room = room)
+        emit("caption", {'asr' : asr, 'segment': segment_payload_json, 'paraphraseFeature': paraphrasedAPPLIED }, broadcast=True, room = room)
     else:
         print("Nothing to be emitted")
 

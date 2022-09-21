@@ -126,8 +126,10 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-
-          <br><br>
+            <br>
+            <input type="checkbox" id="paraphraseFeature" name="vehicle1" value="TRUE">
+            <label for="paraphraseFeature"> Use AI paraphrasing for long segments (danger!)</label><br>
+            <br>
 
           <p>Special words for improving accuracy, separated by ';' max. 500</p>
           <textarea id="phrases" type="text" rows="4"  cols="50"> 
@@ -193,13 +195,15 @@
         let asr = data.asr
         let segment = data.segment
         let current_time = data.current_time
+        let paraphraseFeature = data.paraphraseFeature
 
         //var e = document.getElementById("targetLanguage");
         //var targetLanguage = e.value;
             
         console.log("Received ASR: " + asr);
         console.log("Received SEGMENT: " + segment);
-
+        console.log("Flag PARHAPHRASE: " + paraphraseFeature);
+        
         if (typeof segment !== 'undefined') {
           let obj = JSON.parse(segment);
 
@@ -223,6 +227,11 @@
           // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
+
+          //adding visual signal that a segment has been strongly rephrased by AI
+          if (paraphraseFeature){
+            text_tl = text_tl + ' (rephrased!)';
+          }
 
           // Add some text to the new cells:
           cell1.innerHTML = text_sl;
