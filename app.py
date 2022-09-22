@@ -76,6 +76,7 @@ def info():
         {'minor version': 12, 'details': 'improves UI Sender; make logging optional (hard coded switch)', 'date': '2022-09-21'},
         {'minor version': 13, 'details': 'adds optional AI rephrasing for longer sentences >20 tokens', 'date': '2022-09-21'},
         {'minor version': 14, 'details': 'adds API initialisation call with sessionID', 'date': '2022-09-21'},
+        {'minor version': 14, 'details': 'improves Receiver UI', 'date': '2022-09-22'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
