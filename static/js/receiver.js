@@ -73,7 +73,7 @@ async function speak(inputText, targetLanguageAbb) {
   console.log("Inizialising config");
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
-  voiceType='en-US-JennyNeural';
+  voiceType='es-ES-AlvaroNeural';
   voiceSpeed=1;
   voiceStyle='sad';
   console.log("voice type: " + voiceType);
