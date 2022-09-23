@@ -73,11 +73,32 @@ async function speak(inputText, targetLanguageAbb) {
   console.log("Inizialising config");
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
+  voiceType='en-US-JennyNeural';
+  voiceSpeed=1;
+  voiceStyle='sad';
+  console.log("voice type: " + voiceType);
+  console.log("voice style: " + voiceStyle);
+  console.log("voice speed: " + voiceSpeed);
 
-  await synthesizer.speakTextAsync(
-    inputText,
-    function (result) {
-      window.console.log(result);
+  const ssml = `<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xmlns:emo="http://www.w3.org/2009/10/emotionml" version="1.0" xml:lang="${targetLanguageAbb}">
+  <voice name="${voiceType}">
+  <mstts:express-as style="${voiceStyle}">
+  <prosody rate="${voiceSpeed}%" pitch="0%">
+  ${inputText}
+  </prosody>
+  </mstts:express-as>
+  </voice>
+  </speak>`;
+
+
+  await synthesizer.speakSsmlAsync(
+    ssml,
+    result => {
+        if (result.errorDetails) {
+            console.error(result.errorDetails);
+        } else {
+            console.log(JSON.stringify(result));
+        }
     },
     function (err) {
       startSpeakTextAsyncButton.disabled = false;
