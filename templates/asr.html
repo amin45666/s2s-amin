@@ -130,6 +130,9 @@
             <input type="checkbox" id="paraphraseFeature" name="vehicle1" value="TRUE">
             <label for="paraphraseFeature"> Use AI paraphrasing for long segments (danger!)</label><br>
             <br>
+            <input type="checkbox" id="ck_lang" name="vehicle1" value="all">
+            <label for="ck_lang"> Translate into ES, IT, HE, FR, PT, AR (otherwise only ES)</label><br>
+            <br>
 
           <p>Special words for improving accuracy, separated by ';' max. 500</p>
           <textarea id="phrases" type="text" rows="4"  cols="50"> 
@@ -197,19 +200,19 @@
         let current_time = data.current_time
         let paraphraseFeature = data.paraphraseFeature
 
-        //var e = document.getElementById("targetLanguage");
-        //var targetLanguage = e.value;
-            
+        let e = document.getElementById("targetLanguage");
+        let targetLanguage = e.value; 
+
         console.log("Received ASR: " + asr);
         console.log("Received SEGMENT: " + segment);
         console.log("Flag PARHAPHRASE: " + paraphraseFeature);
-        
+        console.log("Show TRANSLATION IN: " + targetLanguage);
+
         if (typeof segment !== 'undefined') {
           let obj = JSON.parse(segment);
-
-          //languages should be dynamical
+          
           let text_sl = (obj.en)
-          let text_tl = (obj.es)
+          let text_tl = obj[targetLanguage]
 
           //adding log
           var table = document.getElementById("tableLog");

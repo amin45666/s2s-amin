@@ -179,20 +179,20 @@
         let asr = data.asr
         let segment = data.segment
 
-        //var e = document.getElementById("targetLanguage");
-        //var targetLanguage = e.value;
+        let e = document.getElementById("targetLanguage");
+        let targetLanguage = e.value; 
             
         console.log("Received ASR: " + asr);
         console.log("Received SEGMENT: " + segment);
+        console.log("TRANSLATION IN: " + targetLanguage);
 
         if (typeof segment !== 'undefined') {
           let obj = JSON.parse(segment);
 
-          //languages should be dynamical
           let text_sl = (obj.en)
-          let text_tl = (obj.es)
-          
-          speak(text_tl, 'es')
+          let text_tl = obj[targetLanguage]
+
+          speak(text_tl, targetLanguage)
 
           //adding log
           var table = document.getElementById("table");

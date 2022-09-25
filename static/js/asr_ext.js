@@ -56,7 +56,7 @@ function fromMic() {
 	recognizer.recognizing = (s, e) => {
 		console.log(`ASR TEMPORARY FEED FROM AZURE: ${e.result.text}`);
 		document.getElementById("ASR").innerHTML = e.result.text;
-		var sessionId = document.getElementById("sessionId").innerHTML; 
+		let sessionId = document.getElementById("sessionId").innerHTML; 
 		let asr = e.result.text
 
 		//force socket to emit a value otherwise APP complains
@@ -74,12 +74,18 @@ function fromMic() {
 			paraphraseFeature = 'TRUE'
 		}
 
+		//switch languages to default
+		let CBck_lang = document.querySelector('#ck_lang');
+		if (CBck_lang.checked){
+			ck_lang = 'all'
+		}
+
 		//emitting only if new number of words is greater than latency in tokens compared to previous asr
 		number_of_callbacks=Number(number_of_callbacks)+1;
 
 		if (number_of_callbacks > sampling_threasold){
 			console.log('Sending ASR TEMPORARY FEED to APP');
-        	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId, 'paraphraseFeature': paraphraseFeature});
+        	socket.emit('message', {'asr': asr, 'final': 'False', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang});
 			number_of_callbacks=0;
 		}
 		
@@ -104,7 +110,7 @@ function fromMic() {
 					asr = " "
 			}
 			console.log('Sending ASR FINAL FEED to APP');
-            socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId, 'paraphraseFeature': paraphraseFeature});
+            socket.emit('message', {'asr': asr, 'final': 'True', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang});
 			
 			//resetting to 0 counter for callbacks
 			number_of_callbacks=0;
