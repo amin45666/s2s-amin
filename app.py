@@ -154,6 +154,7 @@ def segment(text, final, room):
     pload = {'text': text, 'final': final, 'sessionID': room}
 
     response = requests.post(url=SEGMENTERAPI, json=pload)
+    print(response)
     if response.ok:
         result = response.json()
         return result

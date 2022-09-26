@@ -79,7 +79,7 @@ async function speak(inputText, targetLanguageAbb) {
     "it": 'it-IT-IsabellaNeural',
     "he": 'he-IL-AvriNeural',
     "ar": 'ar-EG-SalmaNeural',
-    "fr": 'ar-EG-SalmaNeural',
+    "fr": 'fr-FR-AlainNeural',
     "pt": 'pt-BR-FranciscaNeural'
   };
   
