@@ -1,0 +1,81 @@
+.subs {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: left;
+    height:200px;
+    overflow-y: scroll;
+}
+
+td{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#table {
+    width: 100%;
+    margin: auto;
+}
+
+.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+    width: 88%;
+}
+
+.container{
+    margin-top: 3em;
+}
+
+.inner-form{
+    width: 13em;
+}
+
+#targetLanguage{
+    padding-bottom: 8px;
+    margin-right: 1em;
+    padding-right: 10px;
+}
+
+.Code-id-style {
+    margin-bottom: 2em;
+}
+
+#sessionId {
+    padding-bottom: 8px;
+    margin-right: 1em;
+    padding-right: 10px;
+}
+
+.input-style {
+    width: 5rem;
+    padding: 0.6rem;
+}
+
+@media (min-width: 768px) {
+    .navbar-brand.abs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    }
+}
+
+@media screen and (max-width: 1014px) {
+    .container{
+    width: 88%;
+    margin-top: 8em;
+    } 
+
+    .sts{
+    display: none;
+    }
+}
+
+@media screen and (max-width: 1066px){
+    .container {
+    width: 88%;
+    margin-top: 5em;
+    }
+}

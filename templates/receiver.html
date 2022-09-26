@@ -9,88 +9,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/receiver.css') }}">
   <script
     src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
 
   <script type=text/javascript src="{{ url_for('static', filename='js/receiver.js') }}"></script>
 
-  <style>
-    .subs {
-      background-color: black;
-      color: white;
-      border: 2px solid black;
-      margin: 20px;
-      padding: 20px;
-      font-size: 20px;
-      text-align: left;
-      height:200px;
-      overflow-y: scroll;
-    }
-    td{
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-
-    #table {
-      width: 100%;
-      margin: auto;
-    }
-
-    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-      width: 88%;
-    }
-
-    .container{
-      margin-top: 3em;
-    }
-
-    .inner-form{
-      width: 13em;
-    }
-
-    #targetLanguage{
-      padding-bottom: 12px;
-      margin-right: 1em;
-      margin-bottom: 0.5em;
-      padding-right: 10px;
-    }
-
-    .Code-id-style {
-      margin-bottom: 2em;
-    }
-
-    #sessionId {
-      padding-bottom: 12px;
-      margin-right: 1em;
-      margin-bottom: 0.5em;
-      padding-right: 10px;
-    }
-
-    @media (min-width: 768px) {
-      .navbar-brand.abs {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        text-align: center;
-      }
-    }
-
-    @media screen and (max-width: 992px) {
-      .container{
-        width: 88%;
-        margin-top: 8em;
-      }  
-    }
-
-    @media screen and (max-width: 1066px){
-      .container {
-        width: 88%;
-        margin-top: 5em;
-      }
-    
-  </style>
-
+  
 </head>
 
 <body onload="intialize()">
@@ -99,20 +24,29 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">KUDO Speech-to-Speech</a>
-        <div class="btn-group" role="group" aria-label="Commands">
-          <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
+        <div>
+          <a class="navbar-brand" href="#">KUDO <span class="sts">Speech-to-Speech</span></a>
+          <div class="btn-group" role="group" aria-label="Commands">
+            <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
+          </div>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <button type="button" id="sessionId" class="btn btn-outline-info btn-lg" disabled>12345</button>
+            <li class="nav-item mx-lg-1 my-sm-2">
+              <label for="sessionId" class="form-label h6">Session ID: </label>
+              <button type="button" id="sessionId" class="btn btn-outline-info btn-lg mx-sm-1" disabled>N\A</button>
             </li>
-            <li class="nav-item">
-              <button type="button" id="targetLanguage" disabled class="btn btn-info btn-lg">English</button>
+            <li class="nav-item mx-lg-1 my-sm-2">
+              <label for="exampleInputEmail1" class="form-label h6">Language: </label>
+              <button type="button" id="targetLanguage" disabled class="btn btn-outline-info btn-lg mx-sm-1">N\A</button>
+            </li>
+            <li class="nav-item mx-lg-1 my-sm-2">
+              <button type="button" class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Configuration
+              </button>
             </li>
           </ul>
         </div>
@@ -244,8 +178,16 @@
       console.log("ask server to leave room: " + sessionCode);
       socket.emit("leave", { "user": Date.now(), "room": sessionCode });
       document.getElementById("recordButton").className = "btn btn-warning";
-      document.getElementById("recordButton").innerHTML = "Connect";
+      document.getElementById("recordButton").innerHTML = " Connect";
       connection_status = 'disconnected';
+      if (connection_status == 'disconnected') {
+        let connectButton = document.getElementById("recordButton")
+        connectButton.setAttribute("class", "btn btn-warning btn-lg")
+        let iTag = document.createElement("i");
+        iTag.setAttribute("class", "fa fa-dot-circle-o");
+        iTag.style = "font-size:24px"
+        connectButton.prepend(iTag)
+      }
     }
   }
 </script>
