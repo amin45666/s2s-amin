@@ -14,6 +14,8 @@ let spokenData = [];
 
 function intialize() {
   console.log("initialize");
+  var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+  myModal.show();
 
   //CHECKING BROWSER SINCE AZURE NOT WORKING ON ALL BROWSERS
   if (
@@ -38,7 +40,6 @@ function intialize() {
   if (!!window.SpeechSDK) {
     SpeechSDK = window.SpeechSDK;
     ttsButtonState = "starting";
-
   } else {
     ttsButtonState = "error";
     console.log("error with SpeechSDK", !!window.SpeechSDK);
@@ -73,20 +74,9 @@ async function speak(inputText, targetLanguageAbb) {
   console.log("Inizialising config");
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
-
-  var voices = {
-    "es": 'es-ES-AlvaroNeural',
-    "it": 'it-IT-IsabellaNeural',
-    "he": 'he-IL-AvriNeural',
-    "ar": 'ar-EG-SalmaNeural',
-    "fr": 'fr-FR-AlainNeural',
-    "pt": 'pt-BR-FranciscaNeural'
-  };
-  
-  var voiceType = voices[targetLanguageAbb];
-
-  voiceSpeed=1;
-  voiceStyle='general';
+  voiceType = "es-ES-AlvaroNeural";
+  voiceSpeed = 1;
+  voiceStyle = "sad";
   console.log("voice type: " + voiceType);
   console.log("voice style: " + voiceStyle);
   console.log("voice speed: " + voiceSpeed);
@@ -101,15 +91,14 @@ async function speak(inputText, targetLanguageAbb) {
   </voice>
   </speak>`;
 
-
   await synthesizer.speakSsmlAsync(
     ssml,
-    result => {
-        if (result.errorDetails) {
-            console.error(result.errorDetails);
-        } else {
-            console.log(JSON.stringify(result));
-        }
+    (result) => {
+      if (result.errorDetails) {
+        console.error(result.errorDetails);
+      } else {
+        console.log(JSON.stringify(result));
+      }
     },
     function (err) {
       startSpeakTextAsyncButton.disabled = false;
@@ -119,4 +108,15 @@ async function speak(inputText, targetLanguageAbb) {
       window.console.log(err);
     }
   );
+}
+
+function getConfig() {
+  let codeId = document.getElementById("code-id").value;
+  let selectedLanguage = document.getElementById("selected-lang").value;
+  document.getElementById("sessionId").setAttribute("value", codeId);
+  document.getElementById("sessionId").innerHTML = codeId;
+  document
+    .getElementById("targetLanguage")
+    .setAttribute("value", selectedLanguage);
+  document.getElementById("targetLanguage").innerHTML = selectedLanguage;
 }

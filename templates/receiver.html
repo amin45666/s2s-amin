@@ -9,98 +9,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/receiver.css') }}">
   <script
     src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js"></script>
 
   <script type=text/javascript src="{{ url_for('static', filename='js/receiver.js') }}"></script>
 
-  <style>
-    .subs {
-      background-color: black;
-      color: white;
-      border: 2px solid black;
-      margin: 20px;
-      padding: 20px;
-      font-size: 20px;
-      text-align: left;
-      height:200px;
-      overflow-y: scroll;
-    }
-    td{
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-
-    #table {
-      width: 100%;
-      margin: auto;
-    }
-
-    .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
-      width: 88%;
-    }
-
-    .container{
-      margin-top: 3em;
-    }
-
-    .mobile-input{
-      margin-top: 0em !important;
-      width: 50%;
-      margin-left: 4.5em !important;
-      position: fixed;
-    }
-
-    .inner-form{
-      width: 13em;
-    }
-
-    #targetLanguage{
-      padding-bottom: 12px;
-      margin-right: 1em;
-      margin-bottom: 0.5em;
-      padding-right: 10px;
-    }
-
-    @media (min-width: 768px) {
-      .navbar-brand.abs {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        text-align: center;
-      }
-    }
-
-    @media screen and (min-width: 992px) {
-      .mobile-input{ 
-        display: none;
-      }
-    }
-
-    @media screen and (max-width: 992px) {
-      #sessionId{ 
-        display: none;
-      }
-
-      .pc-screen {
-        display: none;
-      }
-
-      .container{
-        width: 88%;
-        margin-top: 8em;
-      }  
-    }
-
-    @media screen and (max-width: 1066px){
-      .container {
-        width: 88%;
-        margin-top: 5em;
-      }
-    
-  </style>
-
+  
 </head>
 
 <body onload="intialize()">
@@ -109,33 +24,29 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">KUDO Speech-to-Speech</a>
+        <div>
+          <a class="navbar-brand" href="#">KUDO <span class="sts">Speech-to-Speech</span></a>
+          <div class="btn-group" role="group" aria-label="Commands">
+            <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
+          </div>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item active">
-              <div class="row g-2 align-items-center mx-3 pc-screen">
-                <div class="col-auto">
-                  <label for="inputPassword6" class="col-form-label">Session ID</label>
-                </div>
-                <div class="col-auto">
-                  <input type="text" id="sessionId" class="form-control inner-form" aria-describedby="passwordHelpInline">
-                </div>
-              </div>
+            <li class="nav-item mx-lg-1 my-sm-2">
+              <label for="sessionId" class="form-label h6">Session ID: </label>
+              <button type="button" id="sessionId" class="btn btn-outline-info btn-lg mx-sm-1" disabled>N\A</button>
             </li>
-            <li class="nav-item">
-              <select id="targetLanguage"  class="btn btn-warning btn-lg">
-                {% for language in languages %}
-                     <option value="{{ language }}">{{language}}</option>                
-                {% endfor %} 
-              </select>
+            <li class="nav-item mx-lg-1 my-sm-2">
+              <label for="exampleInputEmail1" class="form-label h6">Language: </label>
+              <button type="button" id="targetLanguage" disabled class="btn btn-outline-info btn-lg mx-sm-1">N\A</button>
             </li>
-            <li class="nav-item dropdown">
-              <div class="btn-group" role="group" aria-label="Commands">
-                <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
-              </div>
+            <li class="nav-item mx-lg-1 my-sm-2">
+              <button type="button" class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Configuration
+              </button>
             </li>
           </ul>
         </div>
@@ -143,14 +54,6 @@
     </nav>
 
   </header>
-  <div class="row g-2 align-items-center mx-3 mobile-input">
-    <div class="col-auto">
-      <label for="inputPassword6" class="col-form-label">Session ID</label>
-    </div>
-    <div class="col-auto">
-      <input type="text" id="outside-sessionId" class="form-control" aria-describedby="passwordHelpInline">
-    </div>
-  </div>
 
   <main class="flex-shrink-0">
     
@@ -166,6 +69,30 @@
     </div>
  
   </main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Configuration</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control form-control-lg Code-id-style" id="code-id" type="text" placeholder="Enter CODE ID">
+        <select class="form-control form-control-lg" id="selected-lang">
+          {% for language in languages %}
+              <option value="{{ language }}">{{language}}</option>                
+          {% endfor %}
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="getConfig()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 
@@ -232,37 +159,34 @@
 
   function connnect() {
     if (connection_status === 'disconnected') {
-      var x = document.getElementById("sessionId");
-      if (window.getComputedStyle(x).display === "none") {
-        sessionCode = document.getElementById("outside-sessionId");
-      }
-      else {
-        sessionCode = x;
-      }
+      var sessionCode = document.getElementById("sessionId").value;
+      console.log(sessionCode);
 
-      if ( sessionCode.value === '' ){
+      if ( sessionCode === '' ){
         alert("Please, first insert the Session ID to connect to your session!");
         return;
       }
-      console.log("ask server to join room: " + sessionCode.value);
-      socket.emit("join", { "user": Date.now(), "room": sessionCode.value, "targetLanguage": "" });
+      console.log("ask server to join room: " + sessionCode);
+      socket.emit("join", { "user": Date.now(), "room": sessionCode, "targetLanguage": "" });
       document.getElementById("recordButton").className = "btn btn-danger btn-lg";
       document.getElementById("recordButton").innerHTML = "Disconnect";
       initializeService('es-ES');//Language should be read by drop-down button
       connection_status = 'connected';
-      if (connection_status === 'connected') {
-        sessionCode.parentElement.parentElement.classList.add("d-none");
-      }
 
     }
     else {
       console.log("ask server to leave room: " + sessionCode);
       socket.emit("leave", { "user": Date.now(), "room": sessionCode });
       document.getElementById("recordButton").className = "btn btn-warning";
-      document.getElementById("recordButton").innerHTML = "Connect";
+      document.getElementById("recordButton").innerHTML = " Connect";
       connection_status = 'disconnected';
-      if (connection_status === 'disconnected') {
-        sessionCode.parentElement.parentElement.classList.remove("d-none");
+      if (connection_status == 'disconnected') {
+        let connectButton = document.getElementById("recordButton")
+        connectButton.setAttribute("class", "btn btn-warning btn-lg")
+        let iTag = document.createElement("i");
+        iTag.setAttribute("class", "fa fa-dot-circle-o");
+        iTag.style = "font-size:24px"
+        connectButton.prepend(iTag)
       }
     }
   }
