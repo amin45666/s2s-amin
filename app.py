@@ -72,6 +72,8 @@ def info():
         {'minor version': 14, 'details': 'adds API initialisation call with sessionID', 'date': '2022-09-21'},
         {'minor version': 15, 'details': 'minor improvements to Receiver UI', 'date': '2022-09-22'},
         {'minor version': 16, 'details': 'adds multilingual support', 'date': '2025-09-22'},
+        {'minor version': 17, 'details': 'adding new timer logic', 'date': '2025-09-29'},
+
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
@@ -84,15 +86,15 @@ def info():
 def handleMessage(data):
 
     asr = data['asr']
-    final = data['final']
+    status = data['status']
     room = data['room']
     ck_lang = data['ck_lang']
     paraphraseFeature = data['paraphraseFeature']
 
-    print(f"\nProcessing '{asr}' with final flag '{final}' for Session '{room}' set paraphrase to '{paraphraseFeature}'")
+    print(f"\nProcessing '{asr}' with status flag '{status}' for Session '{room}' set paraphrase to '{paraphraseFeature}'")
 
     #send asr to segmenter and see if there is a response
-    segment_sl = segment(asr, final, room)
+    segment_sl = segment(asr, status, room)
     paraphrasedAPPLIED = ''
 
     if segment_sl:
@@ -147,11 +149,11 @@ def on_left(data):
 
     emit("caption", f"User {user} left event {room},", room=room)
 
-def segment(text, final, room):
+def segment(text, status, room):
     print("Calling Segmentation API")
 
     #constructing parameters for call. tl should contain more languages
-    pload = {'text': text, 'final': final, 'sessionID': room}
+    pload = {'text': text, 'status': status, 'sessionID': room}
 
     response = requests.post(url=SEGMENTERAPI, json=pload)
     if response.ok:
