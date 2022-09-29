@@ -53,6 +53,8 @@ function fromMic() {
 	
     console.log('Speak into your microphone.');    
 	
+	let myTimerSending;
+
 	recognizer.recognizing = (s, e) => {
 		console.log(`ASR TEMPORARY FEED FROM AZURE: ${e.result.text}`);
 		document.getElementById("ASR").innerHTML = e.result.text;
@@ -79,6 +81,8 @@ function fromMic() {
 		if (CBck_lang.checked){
 			ck_lang = 'all'
 		}
+
+		clearTimeout(myTimerSending);
 
 		//emitting only if new number of words is greater than latency in tokens compared to previous asr
 		number_of_callbacks=Number(number_of_callbacks)+1;
@@ -114,6 +118,9 @@ function fromMic() {
 			
 			//resetting to 0 counter for callbacks
 			number_of_callbacks=0;
+
+			myTimerSending = setTimeout(sendFlagSilence, 4000);
+			
 		//}
 		//else if (e.result.reason == ResultReason.NoMatch) {
 		//	console.log("NOMATCH: Speech could not be recognized.");
@@ -134,6 +141,12 @@ function fromMic() {
 	};
 
 	recognizer.startContinuousRecognitionAsync();
+}
+
+function sendFlagSilence(){
+	console.log('Sending ASR SILENCE to APP');
+	console.log('####SILENCE');
+	socket.emit('message', {'asr': '', 'final': 'Silence', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang});
 }
 
 function WordCount(str) { 
