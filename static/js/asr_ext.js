@@ -70,6 +70,9 @@ function fromMic() {
 		//simple hack to reduce number of API calls 
 		let sampling_threasold = document.getElementById("delay").value;
 
+		//set voice speed
+		let voiceSpeed = document.getElementById("voiceSpeed").value;
+
 		//switch paraphrasing feature
 		let CBparaphraseFeature = document.querySelector('#paraphraseFeature');
 		if (CBparaphraseFeature.checked){
@@ -89,7 +92,7 @@ function fromMic() {
 
 		if (number_of_callbacks > sampling_threasold){
 			console.log('Sending ASR TEMPORARY FEED to APP');
-        	socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang});
+        	socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang, 'voiceSpeed': voiceSpeed});
 			number_of_callbacks=0;
 		}
 		
@@ -100,7 +103,10 @@ function fromMic() {
 			console.log(`ASR FINAL FEED FROM AZURE: Text=${e.result.text}`);
 			document.getElementById("ASR").innerHTML = e.result.text;
 	    	
-			var sessionId = document.getElementById("sessionId").innerHTML; 
+			let sessionId = document.getElementById("sessionId").innerHTML; 
+
+			//set voice speed
+			let voiceSpeed = document.getElementById("voiceSpeed").value;
 
 			//switch paraphrasing feature
 			let CBparaphraseFeature = document.querySelector('#paraphraseFeature');
@@ -110,17 +116,14 @@ function fromMic() {
 
 			let asr = e.result.text
 			//force socket to emit a value otherwise APP complains
-			if (!asr) {
-					asr = " "
+			if (asr) {
+				console.log('Sending ASR FINAL FEED to APP');
+				socket.emit('message', {'asr': asr, 'status': 'final', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang, 'voiceSpeed': voiceSpeed});
+				//resetting to 0 counter for callbacks
+				number_of_callbacks=0;
+				myTimerSending = setTimeout(sendFlagSilence, 4000);
 			}
-			console.log('Sending ASR FINAL FEED to APP');
-            socket.emit('message', {'asr': asr, 'status': 'final', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang});
-			
-			//resetting to 0 counter for callbacks
-			number_of_callbacks=0;
-
-			myTimerSending = setTimeout(sendFlagSilence, 4000);
-			
+				
 		//}
 		//else if (e.result.reason == ResultReason.NoMatch) {
 		//	console.log("NOMATCH: Speech could not be recognized.");
@@ -146,7 +149,8 @@ function fromMic() {
 function sendFlagSilence(){
 	console.log('Sending ASR SILENCE to APP');
 	console.log('####SILENCE');
-	socket.emit('message', {'asr': '', 'status': 'silence', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang});
+	let sessionId = document.getElementById("sessionId").innerHTML; 
+	socket.emit('message', {'asr': 'undefined', 'status': 'silence', 'room': sessionId, 'paraphraseFeature': 'undefined', 'ck_lang': 'undefined', 'voiceSpeed': voiceSpeed});
 }
 
 function WordCount(str) { 

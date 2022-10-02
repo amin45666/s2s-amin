@@ -90,16 +90,17 @@ def handleMessage(data):
     room = data['room']
     ck_lang = data['ck_lang']
     paraphraseFeature = data['paraphraseFeature']
+    voiceSpeed = data['voiceSpeed']
 
-    print(f"\nProcessing '{asr}' with status flag '{status}' for Session '{room}' set paraphrase to '{paraphraseFeature}'")
-
+    print(f"\nI received from SENDER: '{asr}' with status '{status}' for Session '{room}'")
+    
     #send asr to segmenter and see if there is a response
     segment_sl = segment(asr, status, room)
     paraphrasedAPPLIED = ''
 
     if segment_sl:
         mysegment = segment_sl[0]
-        print("Segment returned: " + mysegment)
+        print("API returnes segment: " + mysegment)
 
         #paraphrase segment 
         if paraphraseFeature:
@@ -125,9 +126,9 @@ def handleMessage(data):
 
         #emitting payload to client for TTS
         print("Emitting payload to receiver")
-        emit("caption", {'asr' : asr, 'segment': mytranslations_json, 'paraphraseFeature': paraphrasedAPPLIED }, broadcast=True, room = room)
+        emit("caption", {'asr' : asr, 'segment': mytranslations_json, 'paraphraseFeature': paraphrasedAPPLIED, 'voiceSpeed': voiceSpeed}, broadcast=True, room = room)
     else:
-        print("Nothing to be emitted")
+        print("API did not return any segment")
 
 ###############################################
 # JOINING/LEAVING SESSIONS

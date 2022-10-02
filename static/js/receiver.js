@@ -70,7 +70,7 @@ function initializeService(TL) {
   synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
 }
 
-async function speak(inputText, targetLanguageAbb) {
+async function speak(inputText, targetLanguageAbb, voiceSpeed) {
   console.log("Inizialising config");
   console.log("Speaking: " + inputText);
   console.log("in lang: " + targetLanguageAbb);
@@ -86,7 +86,6 @@ async function speak(inputText, targetLanguageAbb) {
   
   var voiceType = voices[targetLanguageAbb];
 
-  var voiceSpeed=1;
   var voiceStyle='general';
   console.log("voice type: " + voiceType);
   console.log("voice style: " + voiceStyle);

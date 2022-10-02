@@ -105,6 +105,7 @@
   socket.on("caption",(data)=>{
         let asr = data.asr
         let segment = data.segment
+        let voiceSpeed = data.voiceSpeed
 
         let e = document.getElementById("targetLanguage");
         let targetLanguage = e.value; 
@@ -119,7 +120,7 @@
           let text_sl = (obj.en)
           let text_tl = obj[targetLanguage]
 
-          speak(text_tl, targetLanguage)
+          speak(text_tl, targetLanguage, voiceSpeed)
 
           //adding log
           var table = document.getElementById("table");
