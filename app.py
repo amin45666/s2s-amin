@@ -71,8 +71,10 @@ def info():
         {'minor version': 13, 'details': 'adds optional AI rephrasing for longer sentences >20 tokens', 'date': '2022-09-21'},
         {'minor version': 14, 'details': 'adds API initialisation call with sessionID', 'date': '2022-09-21'},
         {'minor version': 15, 'details': 'minor improvements to Receiver UI', 'date': '2022-09-22'},
-        {'minor version': 16, 'details': 'adds multilingual support', 'date': '2025-09-22'},
-        {'minor version': 17, 'details': 'adding new timer logic', 'date': '2025-09-29'},
+        {'minor version': 16, 'details': 'adds multilingual support', 'date': '2022-09-22'},
+        {'minor version': 17, 'details': 'adding new timer logic', 'date': '2022-09-29'},
+        {'minor version': 18, 'details': 'adding controller of voice speed in SENDER', 'date': '2022-10-02'},
+
 
     ]
 
@@ -93,7 +95,7 @@ def handleMessage(data):
     voiceSpeed = data['voiceSpeed']
 
     print(f"\nI received from SENDER: '{asr}' with status '{status}' for Session '{room}'")
-    
+
     #send asr to segmenter and see if there is a response
     segment_sl = segment(asr, status, room)
     paraphrasedAPPLIED = ''
