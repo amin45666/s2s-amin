@@ -14,8 +14,8 @@ socketio = SocketIO(app)
 # manual parameters
 paraphraseFeature = '' # Set TRUE if you want to use LM to do paraphrasing of source segment
 
-SEGMENTERAPI = 'http://127.0.0.1:8000' # local version
-#SEGMENTERAPI = 'https://asr-api.meetkudo.com' #web version
+#SEGMENTERAPI = 'http://127.0.0.1:8000' # local version
+SEGMENTERAPI = 'https://asr-api.meetkudo.com' #web version
 
 sl = 'en'
 tls_list = ['es', 'it', 'he', 'ar', 'fr', 'pt']
