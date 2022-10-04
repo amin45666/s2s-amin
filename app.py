@@ -14,9 +14,8 @@ socketio = SocketIO(app)
 # manual parameters
 paraphraseFeature = '' # Set TRUE if you want to use LM to do paraphrasing of source segment
 
-#SEGMENTERAPI = 'http://127.0.0.1:8000/parse' # local version
-SEGMENTERAPI = 'https://asr-api.meetkudo.com/parse' #web version
-SEGMENTERAPI_start_session = 'https://asr-api.meetkudo.com/startSession'
+SEGMENTERAPI = 'http://127.0.0.1:8000' # local version
+#SEGMENTERAPI = 'https://asr-api.meetkudo.com' #web version
 
 sl = 'en'
 tls_list = ['es', 'it', 'he', 'ar', 'fr', 'pt']
@@ -36,7 +35,7 @@ def open_page_asr():
     sessionId = random.randint(1000,9999)
 
     #initiate a new session of API
-    URI = 'https://asr-api.meetkudo.com/startSession?session_id=' + str(sessionId)
+    URI = SEGMENTERAPI + '/startSession?session_id=' + str(sessionId)
     response = requests.post(url=URI)
     if response.ok:
         result = response.json()
@@ -157,8 +156,9 @@ def segment(text, status, room):
 
     #constructing parameters for call. tl should contain more languages
     pload = {'text': text, 'status': status, 'sessionID': room}
+    endpoint = SEGMENTERAPI + '/parse'
 
-    response = requests.post(url=SEGMENTERAPI, json=pload)
+    response = requests.post(url=endpoint, json=pload)
     if response.ok:
         result = response.json()
         return result
