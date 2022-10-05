@@ -23,11 +23,11 @@
   <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <div>
+      <div class="container-fluid container-fluid-style">
+        <div class="d-flex flex-row">
           <a class="navbar-brand" href="#">KUDO <span class="sts">Speech-to-Speech</span></a>
           <div class="btn-group" role="group" aria-label="Commands">
-            <button class="btn btn-warning btn-lg" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o" style="font-size:24px"></i> Connect</button>
+            <button class="btn btn-warning btn-lg btn-lg-style" type="button" id="recordButton" onclick="connnect()"><i class="fa fa-dot-circle-o"></i> Connect</button>
           </div>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,16 +35,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item mx-lg-1 my-sm-2">
-              <label for="sessionId" class="form-label h6">Session ID: </label>
-              <button type="button" id="sessionId" class="btn btn-outline-info btn-lg mx-sm-1" disabled>N\A</button>
+            <li class="nav-item mx-lg-1 my-sm-3">
+              <label for="sessionId" class="form-label h6 label-style">Session ID: </label>
+              <button type="button" id="sessionId" class="btn btn-outline-info btn-lg btn-lg-style mx-sm-1" disabled>N\A</button>
             </li>
-            <li class="nav-item mx-lg-1 my-sm-2">
-              <label for="exampleInputEmail1" class="form-label h6">Language: </label>
-              <button type="button" id="targetLanguage" disabled class="btn btn-outline-info btn-lg mx-sm-1">N\A</button>
+            <li class="nav-item mx-lg-1 my-sm-3">
+              <label for="exampleInputEmail1" class="form-label h6 label-style">Language: </label>
+              <button type="button" id="targetLanguage" disabled class="btn btn-outline-info btn-lg btn-lg-style mx-sm-1">N\A</button>
             </li>
-            <li class="nav-item mx-lg-1 my-sm-2">
-              <button type="button" class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <li class="nav-item mx-lg-1 my-sm-3">
+              <button type="button" class="btn btn-info btn-lg btn-lg-style" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Configuration
               </button>
             </li>
@@ -61,7 +61,7 @@
         <table id="table">
           <thead>
           <tr>
-            <th scope="col" class="fs-3 text-center">Translation</th>
+            <th scope="col" class="fs-3 text-center header-text-style">Translation</th>
           </tr>
         </thead>
         </table> 
@@ -75,8 +75,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Configuration</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title label-style" id="exampleModalLabel">Configuration</h5>
+        <button type="button" class="btn-close btn-lg-style" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <input class="form-control form-control-lg Code-id-style" id="code-id" type="text" placeholder="Enter CODE ID">
@@ -87,8 +87,8 @@
         </select>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="getConfig()">OK</button>
+        <button type="button" class="btn btn-secondary btn-lg-style" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-lg-style" data-bs-dismiss="modal" onclick="getConfig()">OK</button>
       </div>
     </div>
   </div>
@@ -169,7 +169,7 @@
       }
       console.log("ask server to join room: " + sessionCode);
       socket.emit("join", { "user": Date.now(), "room": sessionCode, "targetLanguage": "" });
-      document.getElementById("recordButton").className = "btn btn-danger btn-lg";
+      document.getElementById("recordButton").className = "btn btn-danger btn-lg btn-lg-style";
       document.getElementById("recordButton").innerHTML = "Disconnect";
       initializeService('es-ES');//Language should be read by drop-down button
       connection_status = 'connected';
@@ -183,10 +183,9 @@
       connection_status = 'disconnected';
       if (connection_status == 'disconnected') {
         let connectButton = document.getElementById("recordButton")
-        connectButton.setAttribute("class", "btn btn-warning btn-lg")
+        connectButton.setAttribute("class", "btn btn-warning btn-lg btn-lg-style")
         let iTag = document.createElement("i");
         iTag.setAttribute("class", "fa fa-dot-circle-o");
-        iTag.style = "font-size:24px"
         connectButton.prepend(iTag)
       }
     }
