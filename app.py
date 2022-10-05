@@ -35,13 +35,7 @@ def open_page_asr():
     sessionId = random.randint(1000,9999)
 
     #initiate a new session of API
-    URI = SEGMENTERAPI + '/startSession?session_id=' + str(sessionId)
-    response = requests.post(url=URI)
-    if response.ok:
-        result = response.json()
-        print("Initializing API: " + str(result))
-    else:
-        print("Error initializing of API: " + str(response))
+    initialize_segmenterAPI(sessionId)
 
     return render_template('asr.html', sessionId=sessionId, asr='asr', client=client, languages=tls_list, url_client=url_client)
 
@@ -73,8 +67,7 @@ def info():
         {'minor version': 16, 'details': 'adds multilingual support', 'date': '2022-09-22'},
         {'minor version': 17, 'details': 'adding new timer logic', 'date': '2022-09-29'},
         {'minor version': 18, 'details': 'adding controller of voice speed in SENDER', 'date': '2022-10-02'},
-
-
+        {'minor version': 19, 'details': 'new control of session initialisation for segmentation API', 'date': '2022-10-05'},
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
@@ -96,11 +89,10 @@ def handleMessage(data):
     print(f"\nI received from SENDER: '{asr}' with status '{status}' for Session '{room}'")
 
     #send asr to segmenter and see if there is a response
-    segment_sl = segment(asr, status, room)
+    mysegment = segment(asr, status, room)
     paraphrasedAPPLIED = ''
 
-    if segment_sl:
-        mysegment = segment_sl[0]
+    if mysegment:
         print("API returnes segment: " + mysegment)
 
         #paraphrase segment 
@@ -151,6 +143,21 @@ def on_left(data):
 
     emit("caption", f"User {user} left event {room},", room=room)
 
+def initialize_segmenterAPI(sessionID):
+
+    #constructing parameters for call. tl should contain more languages
+    pload = {'lang': 'en', 'min_one_noun': True, 'remove_adv': False, 'delay': 3, 'sessionID': sessionID}
+    endpoint = SEGMENTERAPI + '/startSession'
+
+    response = requests.post(url=endpoint, json=pload)
+    if response.ok:
+        result = response.json()
+        print("Initializing API: " + str(result))
+        return result
+    else:
+        print("Error initializing of API: " + str(response))
+        result = 'API initialisation error'
+
 def segment(text, status, room):
     print("Calling Segmentation API")
 
@@ -161,9 +168,15 @@ def segment(text, status, room):
     response = requests.post(url=endpoint, json=pload)
     if response.ok:
         result = response.json()
-        return result
+        mysegment=''
+        try:
+            mysegment = result[0]
+        except:
+            print("EMPTY RESPONSE FROM API!")
+        return mysegment
     else:
         result = {"error": response}
+        return result
 
 def translate(text, tl_list):
     print("Calling Translation API")
