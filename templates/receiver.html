@@ -61,7 +61,7 @@
         <table id="table">
           <thead>
           <tr>
-            <th scope="col" class="fs-3 text-center header-text-style">Translation</th>
+            <th scope="col" class="fs-3 text-center header-text-style mx-2">Translation</th>
           </tr>
         </thead>
         </table> 
@@ -127,8 +127,7 @@
 
           // Create an empty <tr> element and add it to the 1st position of the table:
           var row = table.insertRow(-1);
-          row.style.backgroundColor = row_color; 
-          row.style.fontSize = "1.5em";
+          row.className = "segment-style"
           
           // alternating row colors
           if (row_color === '#F7CAC9') {

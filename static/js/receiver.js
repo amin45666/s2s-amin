@@ -76,17 +76,17 @@ async function speak(inputText, targetLanguageAbb, voiceSpeed) {
   console.log("in lang: " + targetLanguageAbb);
 
   var voices = {
-    "es": 'es-ES-AlvaroNeural',
-    "it": 'it-IT-IsabellaNeural',
-    "he": 'he-IL-AvriNeural',
-    "ar": 'ar-EG-SalmaNeural',
-    "fr": 'fr-FR-AlainNeural',
-    "pt": 'pt-BR-FranciscaNeural'
+    es: "es-ES-AlvaroNeural",
+    it: "it-IT-IsabellaNeural",
+    he: "he-IL-AvriNeural",
+    ar: "ar-EG-SalmaNeural",
+    fr: "fr-FR-AlainNeural",
+    pt: "pt-BR-FranciscaNeural",
   };
-  
+
   var voiceType = voices[targetLanguageAbb];
 
-  var voiceStyle='general';
+  var voiceStyle = "general";
   console.log("voice type: " + voiceType);
   console.log("voice style: " + voiceStyle);
   console.log("voice speed: " + voiceSpeed);

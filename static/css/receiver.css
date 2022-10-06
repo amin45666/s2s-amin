@@ -63,6 +63,11 @@ td {
   font-size: 24px;
 }
 
+.segment-style {
+  background-color: rgb(247, 202, 201);
+  font-size: 1.5em;
+}
+
 @media (min-width: 768px) {
   .navbar-brand.abs {
     position: absolute;
@@ -72,10 +77,11 @@ td {
   }
 }
 
-@media screen and (max-width: 1014px) {
+@media screen and (max-width: 1010px) {
   .container {
     width: 88%;
-    margin-top: 8em;
+    max-width: 800px;
+    margin-top: 5em;
   }
 
   .sts {
@@ -83,7 +89,66 @@ td {
   }
 }
 
-@media screen and (max-width: 1066px) {
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .container {
+    width: 88%;
+    margin-top: 5em;
+  }
+  .navbar-brand {
+    font-size: 4em;
+  }
+  .btn-lg-style {
+    margin: auto;
+    padding: 0.5rem 1.5rem;
+    font-size: 2.5rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+  }
+  .fa {
+    font-size: 36px;
+  }
+  .navbar-toggler {
+    padding: 0.75rem 1.5rem;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+  }
+  .container-fluid-style {
+    height: 9rem;
+  }
+  .header-text-style {
+    font-size: 3rem !important;
+  }
+  .label-style {
+    font-size: 2.5rem;
+  }
+  .modal-dialog {
+    max-width: 800px;
+    margin: 6.75rem auto;
+  }
+  .form-control-lg {
+    min-height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem rem 1rem;
+    font-size: 3rem;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    -o-border-radius: 0.3rem;
+  }
+  .segment-style {
+    background-color: rgb(247, 202, 201);
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .container {
     width: 88%;
     margin-top: 5em;
@@ -130,5 +195,9 @@ td {
     -moz-border-radius: 0.3rem;
     -ms-border-radius: 0.3rem;
     -o-border-radius: 0.3rem;
+  }
+  .segment-style {
+    background-color: rgb(247, 202, 201);
+    font-size: 2.5em;
   }
 }
