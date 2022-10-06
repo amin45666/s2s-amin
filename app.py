@@ -68,6 +68,8 @@ def info():
         {'minor version': 17, 'details': 'adding new timer logic', 'date': '2022-09-29'},
         {'minor version': 18, 'details': 'adding controller of voice speed in SENDER', 'date': '2022-10-02'},
         {'minor version': 19, 'details': 'new control of session initialisation for segmentation API', 'date': '2022-10-05'},
+        {'minor version': 20, 'details': 'improved responsivness of RECEIVER', 'date': '2022-10-06'},
+
     ]
 
     return Response(json.dumps(changelog),  mimetype='application/json')
