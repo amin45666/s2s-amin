@@ -15,10 +15,20 @@
 
   <script type=text/javascript src="{{ url_for('static', filename='js/receiver.js') }}"></script>
 
-  
+  <style>
+    table { display: block; }
+    table {
+        height: 200px;       /* Just for the demo          */
+        overflow-y: auto;    /* Trigger vertical scroll    */
+        overflow-x: hidden;  /* Hide the horizontal scroll */
+    }
+    th, td {
+      padding: 5px;
+    }
+    </style> 
 </head>
 
-<body onload="intialize()">
+<body onload="intialize()"  class="d-flex flex-column h-100">
 
   <header>
     <!-- Fixed navbar -->
@@ -57,18 +67,33 @@
 
   <main class="flex-shrink-0">
     
-    <div class="container">
-        <table id="table">
-          <thead>
-          <tr>
-            <th scope="col" class="fs-3 text-center header-text-style mx-2">Translation</th>
-          </tr>
-        </thead>
+    <div class="container-sm">
+
+      <div class="card">
+        <div class="card-body">
+
+      <div class="row">
+        <table id="tableLog" style="width:100%">
         </table> 
+      </div>
+
+      </div>
       </div>
     </div>
  
   </main>
+
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="d-flex">
+      
+      <div class="ms-auto">
+        
+      KUDO&nbsp;&nbsp;&nbsp; 
+  
+      </div>
+  
+    </div>
+  </footer>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -120,14 +145,13 @@
           let text_sl = (obj.en)
           let text_tl = obj[targetLanguage]
 
-          speak(text_tl, targetLanguage, voiceSpeed)
-
           //adding log
-          var table = document.getElementById("table");
+          var table = document.getElementById("tableLog");
 
           // Create an empty <tr> element and add it to the 1st position of the table:
           var row = table.insertRow(-1);
-          row.className = "segment-style"
+          //row.className = "segment-style";
+          row.style.backgroundColor = row_color; 
           
           // alternating row colors
           if (row_color === '#F7CAC9') {
@@ -141,8 +165,10 @@
           // Add some text to the new cells:
           cell1.innerHTML = text_tl;
 
-          let elem = document.getElementById("table");
+          let elem = document.getElementById("tableLog");
           elem.scrollTop = elem.scrollHeight;
+
+          speak(text_tl, targetLanguage, voiceSpeed)
         }
     })
 
@@ -163,7 +189,7 @@
       console.log(sessionCode);
 
       if ( sessionCode === '' ){
-        alert("Please, first insert the Session ID to connect to your session!");
+        alert("You forgot to insert the Session ID. Please request the Session ID and insert it in menu Settings.");
         return;
       }
       console.log("ask server to join room: " + sessionCode);
