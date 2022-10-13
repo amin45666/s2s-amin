@@ -1,6 +1,7 @@
 import flask
 from flask import Flask, flash, Response, redirect, send_file, url_for, request, session, abort, render_template, make_response, jsonify
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from decorators import roles_required
 import os
 import json
 import requests, uuid
@@ -24,9 +25,30 @@ tls_list = ['es', 'it', 'he', 'ar', 'fr', 'pt']
 ###############################################
 # WELCOME
 ###############################################
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        form_data = request.form.to_dict()
+        email = form_data.get("email", None)
+        password = form_data.get("password", None)
+        if email and password:
+            app.logger.info(f"User email: {email}")
+            response = login_authentication(email, password)
+            if response['status'] in ['user unkown', 'not allowed']:
+                flash('Invalid username or password')
+                return redirect(url_for('login'))
+            else:
+                session.clear()
+                session["role"] = response['role']
+                return redirect(url_for(session["role"]))
+        else:
+            flash('Empty username or password')
+            return redirect(url_for('login'))
+    return render_template('login.html', title='Login')
 
-@app.route("/", methods=["GET", "POST"])
-def open_page_asr():
+@app.route("/sender", methods=["GET", "POST"])
+@roles_required("sender")
+def sender():
     
     print('OPENING SESSION')
     url_client     = '' 
@@ -37,11 +59,25 @@ def open_page_asr():
     #initiate a new session of API
     initialize_segmenterAPI(sessionId)
 
-    return render_template('asr.html', sessionId=sessionId, asr='asr', client=client, languages=tls_list, url_client=url_client)
+    return render_template('sender.html', sessionId=sessionId, asr='asr', client=client, languages=tls_list, url_client=url_client)
 
+@app.route("/consolle", methods=["GET", "POST"])
+@roles_required(["sender"])
+def consolle():
+    
+    print('OPENING SESSION')
+    url_client     = '' 
+    client         = 1
+
+    sessionId = random.randint(1000,9999)
+
+    #initiate a new session of API
+    initialize_segmenterAPI(sessionId)
+
+    return render_template('consolle.html', sessionId=sessionId, asr='asr', client=client, languages=tls_list, url_client=url_client)
 
 @app.route("/receiver", methods=["GET", "POST"])
-def open_page_receiver():
+def receiver():
 
     return render_template("receiver.html", languages=tls_list)
 
@@ -69,6 +105,8 @@ def info():
         {'minor version': 18, 'details': 'adding controller of voice speed in SENDER', 'date': '2022-10-02'},
         {'minor version': 19, 'details': 'new control of session initialisation for segmentation API', 'date': '2022-10-05'},
         {'minor version': 20, 'details': 'improved responsivness of RECEIVER', 'date': '2022-10-06'},
+        {'minor version': 21, 'details': 'adding simple SENDER page with standard settings', 'date': '2022-10-12'},
+        {'minor version': 22, 'details': 'adding simple loggin page', 'date': '2022-10-13'},
 
     ]
 
@@ -231,6 +269,22 @@ def paraphrase(text, sl):
     paraphrased = paraphrased_dic[0]["generated_text"]
 
     return paraphrased
+
+def login_authentication(email, password):
+
+    #hardcoded login for quick check
+    if email == 'admin@gmail.com' and password == 'kudoadmin2022#':
+        response = {
+            "status": "allowed",
+            "role": "sender",
+            }
+        return response
+    else:
+        response = {
+            "status": "user unkown",
+            "role": "sender",
+            }
+        return response
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

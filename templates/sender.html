@@ -55,7 +55,7 @@
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md fixed-top  bg-light">
         <div class="container-fluid">
-          <div class="float-md-start fw-bold fs-5">KUDO S2S Console  
+          <div class="float-md-start fw-bold fs-5">KUDO S2S - Session ID: <span id="sessionId">{{sessionId}}</span>  
           </div>
     
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
@@ -71,16 +71,6 @@
               <option value="en-NZ">English - NZ</option>
               <option value="en-US" selected="selected">English - US</option>
             </select>
-                    
-            &nbsp;
-            <i class="bi bi-arrow-right-circle"></i>
-            &nbsp;                    
-            
-            <select id="targetLanguage"  class="btn btn-light btn-sm mr-1">
-                        {% for language in languages %}
-                             <option value="{{ language }}">{{ language }}</option>                
-                        {% endfor %} 
-            </select>   
                          
             &nbsp;&nbsp;&nbsp; 
 
@@ -96,6 +86,7 @@
 <main class="flex-shrink-0">
 
     <div class="container" style="padding-top: 5em;">
+      
       <div class="row">
         <div class="col-sm">
           <div class="card">
@@ -105,86 +96,15 @@
             </div>
           </div>
         </div>
-        <div class="col-sm">
-
-          <div class="card">
-            <div class="card-body">
-
-          <p>SESSION SETTINGS</p>
-
-          <span  style="font-size: 12px">Session ID for RECEIVER:  <strong> <span id="sessionId">{{sessionId}}</span>  </strong> 
-          
-            &nbsp;&nbsp;&nbsp; 
-            
-            Sampling frequency:
-
-            <select id="delay" class="btn btn-light btn-sm mr-1">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3" selected="selected">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <br>
-
-            Force different voice speed:
-            <select id="voiceSpeed" class="btn btn-light btn-sm mr-1">
-              <option value="10" selected="selected">1</option>
-              <option value="20">2</option>
-              <option value="30">3</option>
-              <option value="40">4</option>
-              <option value="50">5</option>
-            </select>
-            <br>
-
-            <input type="checkbox" id="paraphraseFeature" name="vehicle1" value="TRUE">
-            <label for="paraphraseFeature"> Use AI paraphrasing for long segments (danger!)</label><br>
-            <br>
-            <input type="checkbox" id="ck_lang" name="vehicle1" value="all">
-            <label for="ck_lang"> Translate into ES, IT, HE, FR, PT, AR (otherwise only ES)</label><br>
-            <br>
-
-          <p>Special words for improving accuracy, separated by ';' max. 500</p>
-          <textarea id="phrases" type="text" rows="4"  cols="50"> 
-          </textarea>
-          <button type="button" class="btn btn-light btn-sm mr-2" onclick="autoGeneratewordlist()"><i class="bi bi-list">Automatically generate list of words about an event</i></button>
-        </span>
-
-      </div></div>
-
-
-        </div>
       </div>
+    
     </div>
 
     <!-- MESSAGES -->
     <div class="alert alert-warning" role="alert" id="infoField"  style="display:none">
         <strong>Error:</strong> The free version does not support this Browser! Please use Google Chrome instead!
     </div>
-               
-    <!-- MAIN RESULTS -->
-    <br>
-    <div class="container-sm">
-
-      <div class="card">
-        <div class="card-body">
-
-      <div class="row"><p>SEGMENTATION AND TRANSLATION LOG</p></div>
-      <div class="row">
-        <table id="tableLog" style="width:100%">
-            <tr>
-              <td WIDTH="50%">Original</td>
-              <td WIDTH="50%">Translation</td>
-            </tr>
-        </table> 
-      </div>
-
-      </div>
-      </div>
-    </div>
- 
-  
+                
 </main>
 
 <footer class="footer mt-auto py-3 bg-light">
@@ -198,6 +118,77 @@
 
   </div>
 </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <span style="color:black;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="card">
+
+            <div class="card-body">
+  
+          <p>SESSION SETTINGS</p>
+  
+          <span  style="font-size: 12px">Session ID for RECEIVER:  <strong> <span id="sessionId">{{sessionId}}</span>  </strong> 
+          
+            &nbsp;&nbsp;&nbsp; 
+            
+            Sampling frequency:
+  
+            <select id="delay" class="btn btn-light btn-sm mr-1">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected="selected">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <br>
+  
+            Force different voice speed:
+            <select id="voiceSpeed" class="btn btn-light btn-sm mr-1">
+              <option value="10">1</option>
+              <option value="20" selected="selected">2</option>
+              <option value="30">3</option>
+              <option value="40">4</option>
+              <option value="50">5</option>
+            </select>
+            <br>
+  
+            <input type="checkbox" id="paraphraseFeature" name="vehicle1" value="TRUE">
+            <label for="paraphraseFeature"> Use AI paraphrasing for long segments (danger!)</label><br>
+            <br>
+            <input type="checkbox" id="ck_lang" name="vehicle1" value="all" checked>
+            <label for="ck_lang"> Translate into ES, IT, HE, FR, PT, AR (otherwise only ES)</label><br>
+            <br>
+  
+          <p>Special words for improving accuracy, separated by ';' max. 500</p>
+          <textarea id="phrases" type="text" rows="4"  cols="50"> 
+          </textarea>
+          <button type="button" class="btn btn-light btn-sm mr-2" onclick="autoGeneratewordlist()"><i class="bi bi-list">Automatically generate list of words about an event</i></button></span>
+  
+            </div>
+  
+          </div>          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+
+      </span>
+      </div>
+    </div>
+  </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
 <script>
@@ -288,10 +279,7 @@
         var element = document.getElementById("ASR");
         element.scrollTop = element.scrollHeight;
     }
- 
-    function autoGeneratewordlist(){
-      alert("This feature is still not available. You will be able to enter event documents or a Webpage or a description of a topic to get the most relevant proper names in order to improve accuracy of the application");
-    }
+
     
 
 </script>
