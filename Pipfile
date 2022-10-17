@@ -12,6 +12,9 @@ flask = "*"
 flask-socketio = "*"
 aioflask = "*"
 spacy = "*"
+datamatrix = "*"
+prettytable = "*"
+flask-caching = "*"
 
 [dev-packages]
 
