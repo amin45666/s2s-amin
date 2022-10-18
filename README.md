@@ -1,6 +1,14 @@
 # KUDO STS - APPLICATION
 
-This is the S2S APP for speech-to-speech translation. The FE is made of two main parts:
+This is the S2S APP for speech-to-speech translation. 
+
+This APP contains two main parts:
+
+- everything is eeded to run the POC, i.e. front-end, session generation, etc.
+- the ORCHESTRATOR as described in the S2S documentation.
+
+
+The FE is made of two main parts:
 
 - Sender: uses AZURE ASR to transcribe the audio input (mic or other input audio), then it sends the transcription stream to the S2S-API (former called Segmenter) and displays the results in the UI and to connected receivers. Websockets are provided. 
 - Receiver: it receives the translation from the the S2S-App backend, requests text-to-speech from Azure
