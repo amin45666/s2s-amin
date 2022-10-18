@@ -150,7 +150,7 @@ function sendFlagSilence(){
 	console.log('Sending ASR SILENCE to APP');
 	console.log('####SILENCE');
 	let sessionId = document.getElementById("sessionId").innerHTML; 
-	socket.emit('message', {'asr': '', 'status': 'silence', 'room': sessionId, 'paraphraseFeature': 'undefined', 'ck_lang': 'undefined', 'voiceSpeed': voiceSpeed});
+	socket.emit('message', {'asr': '', 'status': 'silence', 'room': sessionId, 'paraphraseFeature': '', 'ck_lang': '', 'voiceSpeed': ''});
 }
 
 function WordCount(str) { 

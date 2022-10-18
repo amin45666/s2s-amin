@@ -15,6 +15,9 @@ app = flask.Flask(__name__)
 app.secret_key = 'jhgwjhdgwjhd3d'
 socketio = SocketIO(app)
 
+#switch to make log of session for the moment temporary until this is not finalized
+CK_log_session = False
+
 #change this if you want to run the local Segmenter API instead of the deployed version
 #SEGMENTERAPI = 'http://127.0.0.1:8000' # local version
 SEGMENTERAPI = 'https://asr-api.meetkudo.com' #web version
@@ -32,7 +35,8 @@ cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT":
 
 # Initializate DataMatrix for logging time of segments in a session
 # TO DO: This needs to become Session dependent
-dm = DataMatrix(length=10)
+# TO DO: Probably move it to simple dictionary and save it in cache
+dm = DataMatrix(length=10) # row number is 10 just for testing
 dm.timestamp_end_SL = 'undef'
 dm.duration_seg_SL  = 'undef'
 dm.duration_seg_TL  = 'undef' # TO DO: this should be for each target language
@@ -144,25 +148,30 @@ def orchestrator(data):
     asr_status        = data['status']              #this is the status of ASR (temporary/final/silence)
     sessionID         = data['room']                #session ID
     paraphraseFeature = data['paraphraseFeature']   #enable paraphrasing feature
-    voiceSpeed         = data['voiceSpeed']          #force a voice speed (default = 1, otherwise changed by orchestrator)
+    voiceSpeed        = data['voiceSpeed']          #force a voice speed (default = 1, otherwise changed by orchestrator)
     ck_lang           = data['ck_lang']             #use only 1 target language or many - should be changed with a list of required languages
 
-    #setting defaults if parameters are not passed
-    #if voiceSpeed is '':
-    #    voiceSpeed = 50
+    #getting the progressive callback number for this session
     counterCALLBACK = cache.get(sessionID)
+    print("\nOrchestrator has been called for session: " + str(sessionID) + " and callback number: " + str(counterCALLBACK))
+    print(f"Data received from SENDER:\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tsession: '{sessionID}'\n\tspeed: '{voiceSpeed}'")
 
-    print(f"\nOrchestrator received from SENDER: '{asr_text}' with status '{asr_status}' for Session '{sessionID}'")
-
+    #SETTING DEFAULTS IF NO WALUES ARE PASSED
+    # TO DO: there must be a better way to set defaults
+    if voiceSpeed == '':
+        voiceSpeed = 10 #default value
+        print("No voice speed was passed, setting to default: " + str(voiceSpeed))
+    
     # send asr to segmenter and see if there is a response
     mysegment = segment(asr_text, asr_status, sessionID)
     
     # recording timestamp when SL has been received
-    #log_timestamp_SL(counterCALLBACK)
+    if CK_log_session:
+        log_timestamp_SL(counterCALLBACK)
 
     # proceed only if the Segmentator has returned a segment
     if mysegment:
-        print("API returnes segment: " + mysegment)
+        print("DATA received from SEGMENTER:\n\ttext: " + mysegment)
 
         paraphrasedAPPLIED = ''# this variable keeps track if the paraphrasing has been applied or not
 
@@ -193,7 +202,8 @@ def orchestrator(data):
         print("Translations returned: ")
         print(mytranslations)
 
-        #log_duration_TL(counterCALLBACK, mytranslations, voiceSpeed)
+        if CK_log_session:
+            log_duration_TL(counterCALLBACK, mytranslations, voiceSpeed)
 
         #updating number of callback for this session
         counterCALLBACK=counterCALLBACK+1
@@ -204,8 +214,6 @@ def orchestrator(data):
         #emitting payload to client for TTS
         print("Emitting payload to receiver")
         emit("caption", {'asr' : asr_text, 'segment': mytranslations_json, 'paraphraseFeature': paraphrasedAPPLIED, 'voiceSpeed': voiceSpeed}, broadcast=True, room = sessionID)
-    else:
-        print("API did not return any segment")
 
 ###############################################
 # JOINING/LEAVING SESSIONS
@@ -258,7 +266,7 @@ def segment(text, asr_status, sessionID):
         try:
             mysegment = result[0]
         except:
-            print("EMPTY RESPONSE FROM API!")
+            print("SEGMENTER did not return any segment")
         return mysegment
     else:
         result = {"error": response}
@@ -353,7 +361,9 @@ def log_timestamp_SL(counterCALLBACK):
 
 def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
     #recording estimated duration of TL based on number of words
-    translation = mytranslations["en"] # this needs to be done for each TL that has been processed
+    TTS_speed=1 #TO DO: harmonize this value passed here to our formula
+    languageTL = "es"
+    translation = mytranslations[languageTL] # this needs to be done for each TL that has been processed
     word_list = translation.split()
     number_of_words = len(word_list)
     dm.nr_word_TL[counterCALLBACK] = number_of_words
@@ -368,7 +378,7 @@ def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
         'pt' : 1
     }
 
-    duration_seg_TL = number_of_words * language_dependend_duration_coefficient['en'] * TTS_speed * 1000 # expressed in milliseconds
+    duration_seg_TL = number_of_words * language_dependend_duration_coefficient[languageTL] * TTS_speed * 1000 # expressed in milliseconds
     dm.duration_seg_TL[counterCALLBACK] = duration_seg_TL
     print(dm)
 
