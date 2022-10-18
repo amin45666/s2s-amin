@@ -21,16 +21,17 @@ pipenv install
 Note: Requires python 3.9 for compatibility reasons with eventlet 
 
 # How to run locally
-- Run separately the API segmenter locally as indicated in its respective repo
 - cd into app
-- adapt Endpoint in app.py (search for #API endpoint) to local
 - python app.py
 - app is available in Browser http://127.0.0.1:5000
 - click on Connect and start speaking in the mic (allow permissions)
 
+Note: as default, the APP will use the Segment Segmenter deployed on the Web. If you want to use a local version of the Sentence Segmenter, run it in a new Terminal following the instructions indicated in its respective repo. Adapt Endpoint in app.py (search for #API endpoint) to local. 
+
 # How to run on Web
-- open Sender https://kudo-s2s-app.herokuapp.com/
-- open Receiver https://kudo-s2s-app.herokuapp.com/receiver in a Chrome browser, wear headset or use a different computer to receive the interpretation
+- open Simple Sender https://www.s2s.meetkudo.com/
+- open Advanced Sender (with testing options): https://www.s2s.meetkudo.com/consolle
+- open Receiver https://www.s2s.meetkudo.com/receiver in a Chrome browser, wear headset or use a different computer to receive the interpretation
 
 # Deployment on Heroku with git
 
