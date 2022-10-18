@@ -15,28 +15,30 @@ app = flask.Flask(__name__)
 app.secret_key = 'jhgwjhdgwjhd3d'
 socketio = SocketIO(app)
 
-# manual parameters
-paraphraseFeature = '' # Set TRUE if you want to use LM to do paraphrasing of source segment
-
+#change this if you want to run the local Segmenter API instead of the deployed version
 #SEGMENTERAPI = 'http://127.0.0.1:8000' # local version
 SEGMENTERAPI = 'https://asr-api.meetkudo.com' #web version
 
+# the real APP should send an initialisation payload with sl and list of tl
+# TO DO: mimic here a json payload
 sl = 'en'
 tls_list = ['es', 'it', 'he', 'ar', 'fr', 'pt']
 
-#This should become Session dependent
-dm = DataMatrix(length=10)
-dm.timeSL = 'undef'
-dm.durationSL = 'undef'
-dm.durationTL = 'undef'
-dm.wordsTL = 'undef'
-dm.delay = 'undef'
-print(dm)
 
-# Instantiate the cache
+# Instantiate the cache. This is the place to store Session dependent information
+# We save now the progressive number of ASR callback to log data
 cache = Cache()
 cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 36000})
 
+# Initializate DataMatrix for logging time of segments in a session
+# TO DO: This needs to become Session dependent
+dm = DataMatrix(length=10)
+dm.timestamp_end_SL = 'undef'
+dm.duration_seg_SL  = 'undef'
+dm.duration_seg_TL  = 'undef' # TO DO: this should be for each target language
+dm.nr_word_TL       = 'undef'
+dm.delay_TL         = 'undef'
+print(dm)
 
 ###############################################
 # WELCOME
@@ -124,6 +126,7 @@ def info():
         {'minor version': 21, 'details': 'adding simple SENDER page with standard settings', 'date': '2022-10-12'},
         {'minor version': 22, 'details': 'adding simple login page', 'date': '2022-10-13'},
         {'minor version': 23, 'details': 'cleaning code', 'date': '2022-10-17'},
+        {'minor version': 24, 'details': 'fix stop translation after 10 segments', 'date': '2022-10-18'},
 
     ]
 
@@ -136,31 +139,26 @@ def info():
 #this is the orchestrator which is continuously called with the transcription and metadata
 @socketio.on("message")
 def orchestrator(data):
-
     #the orchestrator is receiving the transcription stream and a series of metadata associated to a session
-    asr               = data['asr']                 #transcription
-    status            = data['status']              #this is the status of ASR (temporary/final/silence)
-    room              = data['room']                #session ID
+    asr_text          = data['asr']                 #transcription
+    asr_status        = data['status']              #this is the status of ASR (temporary/final/silence)
+    sessionID         = data['room']                #session ID
+    paraphraseFeature = data['paraphraseFeature']   #enable paraphrasing feature
+    voiceSpeed         = data['voiceSpeed']          #force a voice speed (default = 1, otherwise changed by orchestrator)
     ck_lang           = data['ck_lang']             #use only 1 target language or many - should be changed with a list of required languages
-    paraphraseFeature = data['paraphraseFeature']   #use paraphrasing feature
-    voiceSpeed        = data['voiceSpeed']          #this will be later calculated by Orchestrator
 
-    print(f"\nOrchestrator received from SENDER: '{asr}' with status '{status}' for Session '{room}'")
+    #setting defaults if parameters are not passed
+    #if voiceSpeed is '':
+    #    voiceSpeed = 50
+    counterCALLBACK = cache.get(sessionID)
+
+    print(f"\nOrchestrator received from SENDER: '{asr_text}' with status '{asr_status}' for Session '{sessionID}'")
 
     # send asr to segmenter and see if there is a response
-    mysegment = segment(asr, status, room)
+    mysegment = segment(asr_text, asr_status, sessionID)
     
     # recording timestamp when SL has been received
-    counterCALLBACK = cache.get(room)
-    dt = datetime.now()
-    ts = datetime.timestamp(dt)
-    dm.timeSL[counterCALLBACK] = ts
-
-    # recording duration SL as difference between this timestamp and previous one
-    if counterCALLBACK > 0:
-        SL_previous_timestamp = dm.timeSL[counterCALLBACK-1]
-        durationSL = (ts - SL_previous_timestamp) * 1000
-        dm.durationSL[counterCALLBACK] = durationSL
+    #log_timestamp_SL(counterCALLBACK)
 
     # proceed only if the Segmentator has returned a segment
     if mysegment:
@@ -195,34 +193,17 @@ def orchestrator(data):
         print("Translations returned: ")
         print(mytranslations)
 
-        #recording estimated duration of TL based on number of words
-        translation = mytranslations["en"] # this needs to be done for each TL that has been processed
-        word_list = translation.split()
-        number_of_words = len(word_list)
-        dm.wordsTL[counterCALLBACK] = number_of_words
-        #calculating duration
-        TTS_speed = 1 # set speed of TTS engine
-        language_dependend_duration_coefficient = {
-            'en' : 1,
-            'fr' : 1,
-            'it' : 1,
-            'de' : 1,
-            'es' : 1,
-            'pt' : 1
-        }
+        #log_duration_TL(counterCALLBACK, mytranslations, voiceSpeed)
 
-        durationTL = number_of_words * language_dependend_duration_coefficient['en'] * TTS_speed * 1000 # expressed in milliseconds
-        dm.durationTL[counterCALLBACK] = durationTL
-        print(dm)
         #updating number of callback for this session
         counterCALLBACK=counterCALLBACK+1
-        cache.set(room, counterCALLBACK)
+        cache.set(sessionID, counterCALLBACK)
 
         mytranslations_json = json.dumps(mytranslations)
 
         #emitting payload to client for TTS
         print("Emitting payload to receiver")
-        emit("caption", {'asr' : asr, 'segment': mytranslations_json, 'paraphraseFeature': paraphrasedAPPLIED, 'voiceSpeed': voiceSpeed}, broadcast=True, room = room)
+        emit("caption", {'asr' : asr_text, 'segment': mytranslations_json, 'paraphraseFeature': paraphrasedAPPLIED, 'voiceSpeed': voiceSpeed}, broadcast=True, room = sessionID)
     else:
         print("API did not return any segment")
 
@@ -231,22 +212,22 @@ def orchestrator(data):
 ###############################################
 @socketio.on("join")
 def on_join(data):
-    user = data["user"]
-    room = data["room"]
-    print(f"client {user} wants to join: {room}")
-    join_room(room)
-    emit("caption", f"User {user} joint event {room},", room=room)
+    user      = data["user"]
+    sessionID = data["room"]
+    print(f"client {user} wants to join: {sessionID}")
+    join_room(sessionID)
+    emit("caption", f"User {user} joint event {sessionID},", room=sessionID)
 
 @socketio.on('leave')
 def on_left(data):
-    user = data["user"]
-    room = data["room"]
-    print(f"client {user} wants to leave: {room}")
-    leave_room(room)
+    user      = data["user"]
+    sessionID = data["room"]
+    print(f"client {user} wants to leave: {sessionID}")
+    leave_room(sessionID)
 
-    emit("caption", f"User {user} left event {room},", room=room)
+    emit("caption", f"User {user} left event {sessionID},", room=sessionID)
 
-#this inizialize a session of the Segmenter for this specific Session ID
+# this inizializes a session of the Segmenter for this specific Session ID
 def initialize_segmenterAPI(sessionID):
 
     #we initialize the session with some parameters. The most important is the Session ID
@@ -263,11 +244,11 @@ def initialize_segmenterAPI(sessionID):
         result = 'API initialisation error'
 
 # this calls the Segmenter
-def segment(text, status, sessionID):
+def segment(text, asr_status, sessionID):
     print("Calling Segmentation API")
 
     #constructing parameters for call. tl should contain more languages
-    pload = {'text': text, 'status': status, 'sessionID': sessionID}
+    pload = {'text': text, 'status': asr_status, 'sessionID': sessionID}
     endpoint = SEGMENTERAPI + '/parse'
 
     response = requests.post(url=endpoint, json=pload)
@@ -354,6 +335,42 @@ def login_authentication(email, password):
             "role": "sender",
             }
         return response
+
+#################
+# SESSION LOGGING
+#################
+def log_timestamp_SL(counterCALLBACK):
+    
+    dt = datetime.now()
+    ts = datetime.timestamp(dt)
+    dm.timestamp_end_SL[counterCALLBACK] = ts
+
+    # recording duration SL as difference between this timestamp and previous one
+    if counterCALLBACK > 0:
+        SL_previous_timestamp = dm.timestamp_end_SL[counterCALLBACK-1]
+        duration_seg_SL = (ts - SL_previous_timestamp) * 1000
+        dm.duration_seg_SL[counterCALLBACK] = duration_seg_SL
+
+def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
+    #recording estimated duration of TL based on number of words
+    translation = mytranslations["en"] # this needs to be done for each TL that has been processed
+    word_list = translation.split()
+    number_of_words = len(word_list)
+    dm.nr_word_TL[counterCALLBACK] = number_of_words
+
+    #calculating duration        
+    language_dependend_duration_coefficient = {
+        'en' : 1,
+        'fr' : 1,
+        'it' : 1,
+        'de' : 1,
+        'es' : 1,
+        'pt' : 1
+    }
+
+    duration_seg_TL = number_of_words * language_dependend_duration_coefficient['en'] * TTS_speed * 1000 # expressed in milliseconds
+    dm.duration_seg_TL[counterCALLBACK] = duration_seg_TL
+    print(dm)
 
 # this generates our session ID
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
