@@ -15,6 +15,7 @@ spacy = "*"
 datamatrix = "*"
 prettytable = "*"
 flask-caching = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

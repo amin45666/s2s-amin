@@ -31,7 +31,7 @@ app.secret_key = SECRET_KEY
 socketio = SocketIO(app)
 
 # switch to make log of session for the moment temporary until this is not finalized
-CK_log_session = False
+CK_log_session = True
 
 # the real APP should send an initialisation payload with sl and list of tl
 # TO DO: mimic here a json payload
@@ -42,9 +42,9 @@ CK_log_session = False
 cache = Cache()
 cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 36000})
 
-
+# AMIN move everything until END UI to poc.py
 ###############################################
-# WELCOME
+# UI
 ###############################################
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -78,7 +78,11 @@ def sender():
 
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
-    cache.set(sessionId, 0)
+    session_settings = {
+        "asr_callbacks" : 0,
+        "asr_segments" : 0,
+    }
+    cache.set(sessionId, session_settings)
 
     return render_template("sender.html", sessionId=sessionId, languages=TLS_LIST)
 
@@ -93,7 +97,11 @@ def consolle():
 
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
-    cache.set(sessionId, 0)
+    session_settings = {
+        "asr_callbacks" : 0,
+        "asr_segments" : 0,
+    }
+    cache.set(sessionId, session_settings)
 
     return render_template("consolle.html", sessionId=sessionId, languages=TLS_LIST)
 
@@ -214,13 +222,94 @@ def info():
 
     return Response(json.dumps(changelog), mimetype="application/json")
 
-
-###############################################
-# LIVE
-###############################################
-
 # this is the orchestrator which is continuously called with the transcription and metadata
 @socketio.on("message")
+def receive_socket(data):
+    sessionID = data["room"]  
+
+    response = orchestrator(data)
+    
+    # emitting payload to client for TTS
+    print("Emitting payload to receiver")
+    emit(
+        "caption",
+        response,
+        broadcast=True,
+        room=sessionID,
+    )
+
+@socketio.on("join")
+def on_join(data):
+    user = data["user"]
+    sessionID = data["room"]
+    print(f"client {user} wants to join: {sessionID}")
+    join_room(sessionID)
+    emit("caption", f"User {user} joint event {sessionID},", room=sessionID)
+
+
+@socketio.on("leave")
+def on_left(data):
+    user = data["user"]
+    sessionID = data["room"]
+    print(f"client {user} wants to leave: {sessionID}")
+    leave_room(sessionID)
+
+    emit("caption", f"User {user} left event {sessionID},", room=sessionID)
+
+###############################################
+# END UI
+###############################################
+
+# AMIN please move until END SERVICE to service.py
+###############################################
+# SERVICE
+###############################################
+@app.route('/api/startSession/<sessionId>')
+def startSession(sessionId):
+
+    # move to -> , methods=['POST']
+    #data = request.get_json()  
+    #languages = data['languages'] # to be done
+    #print("Session for languages: " + languages)
+
+    # initiate a new session of API
+    initialize_segmenterAPI(sessionId)
+    session_settings = {
+        "asr_callbacks" : 0,
+        "asr_segments" : 0,
+    }
+    cache.set(sessionId, session_settings)
+
+    return "Session initiated"
+
+@app.route('/api/stopSession/<sessionId>')
+def stopSession(sessionId):
+
+    #to be done
+    print("Terminating session: " + str(sessionId))
+
+    return "Session terminated"
+
+#the following method to call the API will be changed according to Engineering team (some sockets)
+@app.route('/api/parse', methods=['POST'])
+def parse():
+
+    data = request.get_json()
+
+    #setting some defaults
+    data["paraphraseFeature"] = True
+    data["voiceSpeed"] = 10
+
+    response = orchestrator(data)
+    json_object = json.dumps(response, indent = 4) 
+    return json_object
+
+###############################################
+# END SERVICE
+###############################################
+
+
+# AMIN please move the following def to orchestrator.py (if namespace is not okay, change what is needed)
 def orchestrator(data):
     # the orchestrator is receiving the transcription stream and a series of metadata associated to a session
     asr_text = data["asr"]  # transcription
@@ -235,12 +324,15 @@ def orchestrator(data):
     ]  # use only 1 target language or many - should be changed with a list of required languages
 
     # getting the progressive callback number for this session
-    counterCALLBACK = cache.get(sessionID)
+    session_settings = cache.get(sessionID)
+    asr_callbacks = session_settings["asr_callbacks"]
+    asr_segments = session_settings["asr_segments"]
+
     print(
         "\nOrchestrator has been called for session: "
         + str(sessionID)
         + " and callback number: "
-        + str(counterCALLBACK)
+        + str(asr_callbacks)
     )
     print(
         f"Data received from SENDER:\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tsession: '{sessionID}'\n\tspeed: '{voiceSpeed}'"
@@ -257,7 +349,7 @@ def orchestrator(data):
 
     # recording timestamp when SL has been received
     if CK_log_session:
-        log_timestamp_SL(counterCALLBACK)
+        log_timestamp_SL(asr_callbacks)
 
     # proceed only if the Segmentator has returned a segment
     if mysegment:
@@ -295,49 +387,37 @@ def orchestrator(data):
         print(mytranslations)
 
         if CK_log_session:
-            log_duration_TL(counterCALLBACK, mytranslations, voiceSpeed)
+            log_duration_TL(asr_callbacks, mytranslations, voiceSpeed)
 
         # updating number of callback for this session
-        counterCALLBACK = counterCALLBACK + 1
-        cache.set(sessionID, counterCALLBACK)
+        asr_callbacks = asr_callbacks + 1
+        asr_segments = asr_segments + 1
+        session_settings = {
+            "asr_callbacks" : asr_callbacks,
+            "asr_segments" : asr_segments,
+        }
+        cache.set(sessionID, session_settings)
 
         mytranslations_json = json.dumps(mytranslations)
 
-        # emitting payload to client for TTS
-        print("Emitting payload to receiver")
-        emit(
-            "caption",
-            {
+        payload =   {
                 "asr": asr_text,
                 "segment": mytranslations_json,
                 "paraphraseFeature": paraphrasedAPPLIED,
                 "voiceSpeed": voiceSpeed,
-            },
-            broadcast=True,
-            room=sessionID,
-        )
+            }
 
+        return payload
 
-###############################################
-# JOINING/LEAVING SESSIONS
-###############################################
-@socketio.on("join")
-def on_join(data):
-    user = data["user"]
-    sessionID = data["room"]
-    print(f"client {user} wants to join: {sessionID}")
-    join_room(sessionID)
-    emit("caption", f"User {user} joint event {sessionID},", room=sessionID)
+    else:
 
+        asr_callbacks = asr_callbacks + 1
+        session_settings = {
+            "asr_callbacks" : asr_callbacks,
+            "asr_segments" : asr_segments,
+        }
 
-@socketio.on("leave")
-def on_left(data):
-    user = data["user"]
-    sessionID = data["room"]
-    print(f"client {user} wants to leave: {sessionID}")
-    leave_room(sessionID)
-
-    emit("caption", f"User {user} left event {sessionID},", room=sessionID)
+        
 
 
 if __name__ == "__main__":
