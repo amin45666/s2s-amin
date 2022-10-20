@@ -19,7 +19,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room
 from api import *
 from constants import TLS_LIST
 from decorators import roles_required
-from helpers import id_generator, login_authentication
+from helpers import id_generator, login_authentication, print_changelog
 from orchestrator import data_orchestrator
 
 load_dotenv()
@@ -29,22 +29,86 @@ app = flask.Flask(__name__)
 app.secret_key = SECRET_KEY
 socketio = SocketIO(app)
 
+# this R&D switch is to be deleted
 # switch to make log of session for the moment temporary until this is not finalized
 CK_log_session = True
 
-# the real APP should send an initialisation payload with sl and list of tl
-# TO DO: mimic here a json payload
 
+""" 
+Instantiate the cache
+This is the volatile place whre we store Session dependent informations updated at any callback from ASR
+"""
 
-# Instantiate the cache. This is the place to store Session dependent information
-# We save now the progressive number of ASR callback to log data
 cache = Cache()
 cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 36000})
 
-# AMIN move everything until END UI to poc.py
+
 ###############################################
-# UI
+# SERVICE API TO CALL FOR real-time S2S
 ###############################################
+@app.route("/api/startSession/<sessionId>")
+def startSession(sessionId):
+
+    # this initiate a session of S2S
+    # consumer needs to pass a unique ID, source language and target language(s)
+
+    # changin this to a POST call to accept parameters 
+    # move to -> , methods=['POST']
+    # data = request.get_json()
+    # languages = data['languages'] # to be done
+    # print("Session for languages: " + languages)
+
+    # initiate a new session of API
+    initialize_segmenterAPI(sessionId)
+    session_settings = {
+        "asr_callbacks": 0,
+        "asr_segments": 0,
+    }
+    cache.set(sessionId, session_settings)
+
+    return "Session initiated"
+
+
+@app.route("/api/stopSession/<sessionId>")
+def stopSession(sessionId):
+
+    # this is still to be done
+    # this should flash the cash for this session
+    print("Terminating session: " + str(sessionId))
+
+    return "Session terminated"
+
+
+# the following method to call the API will be changed according to Engineering team (some sockets)
+@app.route("/api/parse", methods=["POST"])
+def parse():
+    """
+    this is the main call coming from the client
+    the communication method will be changed according to the engineering team (probably sockets)
+    """
+    data = request.get_json()
+
+    # adding some defaults value to the parameters send by the client
+    # these parameters are still object of R&D
+    data["paraphraseFeature"] = True
+    data["voiceSpeed"] = 10
+
+    response = data_orchestrator(data, cache, CK_log_session)
+    json_object = json.dumps(response, indent=4)
+
+    # the service responds with a JSON package containing the translation(s) and parameters for the text-to-speech
+    return json_object
+
+###############################################
+# END SERVICE API
+###############################################
+
+
+
+##############################################################################################
+# THIS ARE THE ROUTS FOR THE USER FACING POC - TO BE DISCARDED FOR THE SERVICE API
+# we should probably move it in a separate .py since this is used only temporary to run APP
+##############################################################################################
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -115,109 +179,8 @@ def receiver():
 # this route returns info on the version log
 @app.route("/info")
 def info():
-    changelog = [
-        {"minor version": 0, "details": "initial POC commit", "date": "2022-09-14"},
-        {"minor version": 1, "details": "adds version changelog", "date": "2022-09-14"},
-        {"minor version": 2, "details": "adds multichannel", "date": "2022-09-14"},
-        {
-            "minor version": 3,
-            "details": "improves UI for Sender/Receiver",
-            "date": "2022-09-15",
-        },
-        {
-            "minor version": 4,
-            "details": "adds automatic scrolling in Sender table",
-            "date": "2022-09-15",
-        },
-        {
-            "minor version": 5,
-            "details": "adds timestamp of segment processing",
-            "date": "2022-09-15",
-        },
-        {"minor version": 6, "details": "adds logfile", "date": "2022-09-15"},
-        {
-            "minor version": 7,
-            "details": "adds parameter to reduce calls of API",
-            "date": "2022-09-16",
-        },
-        {
-            "minor version": 8,
-            "details": "adds feature to improve accuracy with list of terms",
-            "date": "2022-09-17",
-        },
-        {
-            "minor version": 9,
-            "details": "improves SENDER UI; fix sampling frequency logic",
-            "date": "2022-09-19",
-        },
-        {"minor version": 10, "details": "improves Receiver UI;", "date": "2022-09-19"},
-        {
-            "minor version": 11,
-            "details": "improves sampling frequency logic from APP",
-            "date": "2022-09-20",
-        },
-        {
-            "minor version": 12,
-            "details": "improves UI Sender; make logging optional (hard coded switch)",
-            "date": "2022-09-21",
-        },
-        {
-            "minor version": 13,
-            "details": "adds optional AI rephrasing for longer sentences >20 tokens",
-            "date": "2022-09-21",
-        },
-        {
-            "minor version": 14,
-            "details": "adds API initialisation call with sessionID",
-            "date": "2022-09-21",
-        },
-        {
-            "minor version": 15,
-            "details": "minor improvements to Receiver UI",
-            "date": "2022-09-22",
-        },
-        {
-            "minor version": 16,
-            "details": "adds multilingual support",
-            "date": "2022-09-22",
-        },
-        {
-            "minor version": 17,
-            "details": "adding new timer logic",
-            "date": "2022-09-29",
-        },
-        {
-            "minor version": 18,
-            "details": "adding controller of voice speed in SENDER",
-            "date": "2022-10-02",
-        },
-        {
-            "minor version": 19,
-            "details": "new control of session initialisation for segmentation API",
-            "date": "2022-10-05",
-        },
-        {
-            "minor version": 20,
-            "details": "improved responsivness of RECEIVER",
-            "date": "2022-10-06",
-        },
-        {
-            "minor version": 21,
-            "details": "adding simple SENDER page with standard settings",
-            "date": "2022-10-12",
-        },
-        {
-            "minor version": 22,
-            "details": "adding simple login page",
-            "date": "2022-10-13",
-        },
-        {"minor version": 23, "details": "cleaning code", "date": "2022-10-17"},
-        {
-            "minor version": 24,
-            "details": "fix stop translation after 10 segments",
-            "date": "2022-10-18",
-        },
-    ]
+
+    changelog = print_changelog()
 
     return Response(json.dumps(changelog), mimetype="application/json")
 
@@ -259,60 +222,8 @@ def on_left(data):
 
 
 ###############################################
-# END UI
+# END OF USER FACING POC
 ###############################################
-
-# AMIN please move until END SERVICE to service.py
-###############################################
-# SERVICE
-###############################################
-@app.route("/api/startSession/<sessionId>")
-def startSession(sessionId):
-
-    # move to -> , methods=['POST']
-    # data = request.get_json()
-    # languages = data['languages'] # to be done
-    # print("Session for languages: " + languages)
-
-    # initiate a new session of API
-    initialize_segmenterAPI(sessionId)
-    session_settings = {
-        "asr_callbacks": 0,
-        "asr_segments": 0,
-    }
-    cache.set(sessionId, session_settings)
-
-    return "Session initiated"
-
-
-@app.route("/api/stopSession/<sessionId>")
-def stopSession(sessionId):
-
-    # to be done
-    print("Terminating session: " + str(sessionId))
-
-    return "Session terminated"
-
-
-# the following method to call the API will be changed according to Engineering team (some sockets)
-@app.route("/api/parse", methods=["POST"])
-def parse():
-
-    data = request.get_json()
-
-    # setting some defaults
-    data["paraphraseFeature"] = True
-    data["voiceSpeed"] = 10
-
-    response = data_orchestrator(data, cache, CK_log_session)
-    json_object = json.dumps(response, indent=4)
-    return json_object
-
-
-###############################################
-# END SERVICE
-###############################################
-
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)
