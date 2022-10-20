@@ -7,8 +7,8 @@ from api import paraphrase, segment, translate
 from constants import SL, TLS_LIST, VOICE_SPEED_DEFAULT
 
 # Initializate DataMatrix for logging time of segments in a session
-# TO DO: This needs to become Session dependent
-# TO DO: Probably move it to simple dictionary and save it in cache
+# TO DO: 'dm' needs to be inititated in /api/startSession and insert it in session_settings
+
 dm = DataMatrix(length=10)  # row number is 10 just for testing
 dm.timestamp_end_SL = "undef"
 dm.duration_seg_SL = "undef"
@@ -64,62 +64,55 @@ def log_timestamp_SL(counterCALLBACK):
 # AMIN please move the following def to orchestrator.py (if namespace is not okay, change what is needed)
 def data_orchestrator(data, cache, CK_log_session):
     # the orchestrator is receiving the transcription stream and a series of metadata associated to a session
-    asr_text = data["asr"]  # transcription
-    asr_status = data["status"]  # this is the status of ASR (temporary/final/silence)
-    sessionID = data["room"]  # session ID
-    paraphraseFeature = data["paraphraseFeature"]  # enable paraphrasing feature
-    voiceSpeed = data[
-        "voiceSpeed"
-    ]  # force a voice speed (default = 1, otherwise changed by orchestrator)
-    ck_lang = data[
-        "ck_lang"
-    ]  # use only 1 target language or many - should be changed with a list of required languages
+    asr_text          = data["asr"]  # transcription
+    asr_status        = data["status"]  # this is the status of ASR (temporary/final/silence)
+    sessionID         = data["room"]  # session ID
+    use_rewriting     = data["paraphraseFeature"]  # enable paraphrasing feature
+    voiceSpeed = data["voiceSpeed"]  # force a voice speed (default = 1, otherwise changed by orchestrator)
+    ck_lang = data["ck_lang"]  # use only 1 target language or many - should be changed with a list of required languages
 
     # getting the progressive callback number for this session
     session_settings = cache.get(sessionID)
     asr_callbacks = session_settings["asr_callbacks"]
     asr_segments = session_settings["asr_segments"]
 
-    print(
-        "\nOrchestrator has been called for session: "
-        + str(sessionID)
-        + " and callback number: "
-        + str(asr_callbacks)
-    )
-    print(
-        f"Data received from SENDER:\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tsession: '{sessionID}'\n\tspeed: '{voiceSpeed}'"
-    )
-
     # SETTING DEFAULTS IF NO WALUES ARE PASSED
-    # TO DO: there must be a better way to set defaults
     if voiceSpeed == "":
-        voiceSpeed = VOICE_SPEED_DEFAULT  # default value
-        print("No voice speed was passed, setting to default: " + str(voiceSpeed))
+        voiceSpeed = VOICE_SPEED_DEFAULT
+    if use_rewriting == "":
+        use_rewriting = False
+
+    print(
+        f"Data received from CLIENT:\n\tsession ID: '{sessionID}'\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tasr_callbacks: '{asr_callbacks}'\n\tvoiceSpeed: '{voiceSpeed}'"
+    )
 
     # send asr to segmenter and see if there is a response
     mysegment = segment(asr_text, asr_status, sessionID)
 
-    # recording timestamp when SL has been received
-    if CK_log_session:
-        log_timestamp_SL(asr_callbacks)
-
     # proceed only if the Segmentator has returned a segment
     if mysegment:
-        print("DATA received from SEGMENTER:\n\ttext: " + mysegment)
+        print("Data received from SEGMENTER:\n\ttext: " + mysegment)
 
-        paraphrasedAPPLIED = (
-            ""  # this variable keeps track if the paraphrasing has been applied or not
+        # recording timestamp when SL has been received
+        if CK_log_session:
+            log_timestamp_SL(asr_segments)
+            
+        flag_rewritten = (
+            ""  # this is a flag for ML rewriting to show in R&D UI
         )
 
-        # deciding if a segment needs to be paraphrased (typically to improve readibility and make it shorter)
-        if paraphraseFeature:
+        '''
+        deciding if a segment needs to be rewritten, now off as default
+        this is in focus of R&D work
+        '''
+        if use_rewriting:
             countOfWords = len(mysegment.split())
             # we paraphrase only long segments for now. This parameter should be moved to Orchestrator default settings
             if countOfWords > 20:
                 mysegment = paraphrase(mysegment, SL)
-                print("Paraphrase returned: ")
+                print("Rewritten sentence returned: ")
                 print(mysegment)
-                paraphrasedAPPLIED = "TRUE"
+                flag_rewritten = "TRUE"
 
         # deciding in which languages to translate. For semplicity reasons, it is now either ES or ALL supported languages
         # rewrite passing a list of languages
@@ -129,19 +122,17 @@ def data_orchestrator(data, cache, CK_log_session):
         else:
             tls_list_send = TLS_LIST
 
-        # translating the segment in target languages
+        '''
+        translating the segment in target languages
+        '''
         mytranslations = translate(mysegment, tls_list_send)
-
-        # estimate time of TTS based on language and speed of voice
-        # create session matrix with segment Nr + Duration SL + estimation in TL
-
-        print("Translations returned: ")
+        print("Data returned from translator: ")
         print(mytranslations)
 
         if CK_log_session:
-            log_duration_TL(asr_callbacks, mytranslations, voiceSpeed)
+            log_duration_TL(asr_segments, mytranslations, voiceSpeed)
 
-        # updating number of callback for this session
+        # updating number of session data in cache
         asr_callbacks = asr_callbacks + 1
         asr_segments = asr_segments + 1
         session_settings = {
@@ -155,7 +146,7 @@ def data_orchestrator(data, cache, CK_log_session):
         payload = {
             "asr": asr_text,
             "segment": mytranslations_json,
-            "paraphraseFeature": paraphrasedAPPLIED,
+            "paraphraseFeature": flag_rewritten,
             "voiceSpeed": voiceSpeed,
         }
 
@@ -168,3 +159,4 @@ def data_orchestrator(data, cache, CK_log_session):
             "asr_callbacks": asr_callbacks,
             "asr_segments": asr_segments,
         }
+        cache.set(sessionID, session_settings)
