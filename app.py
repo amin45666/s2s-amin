@@ -46,26 +46,6 @@ cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT":
 ###############################################
 # SERVICE API TO CALL FOR real-time S2S
 ###############################################
-
-@app.route("/api/parse", methods=["POST"])
-def parse():
-    """
-    this is the main call coming from the client
-    the communication method will be changed according to the engineering team (probably sockets)
-    """
-    data = request.get_json()
-
-    # adding some defaults value to the parameters send by the client
-    # these parameters are still object of R&D
-    data["paraphraseFeature"] = True
-    data["voiceSpeed"] = 10
-
-    response = data_orchestrator(data, cache, CK_log_session)
-    json_object = json.dumps(response, indent=4)
-
-    # the service responds with a JSON package containing the translation(s) and parameters for the text-to-speech
-    return json_object
-
 @app.route("/api/startSession/<sessionId>")
 def startSession(sessionId):
 
@@ -97,6 +77,27 @@ def stopSession(sessionId):
     print("Terminating session: " + str(sessionId))
 
     return "Session terminated"
+
+
+# the following method to call the API will be changed according to Engineering team (some sockets)
+@app.route("/api/parse", methods=["POST"])
+def parse():
+    """
+    this is the main call coming from the client
+    the communication method will be changed according to the engineering team (probably sockets)
+    """
+    data = request.get_json()
+
+    # adding some defaults value to the parameters send by the client
+    # these parameters are still object of R&D
+    data["paraphraseFeature"] = True
+    data["voiceSpeed"] = 10
+
+    response = data_orchestrator(data, cache, CK_log_session)
+    json_object = json.dumps(response, indent=4)
+
+    # the service responds with a JSON package containing the translation(s) and parameters for the text-to-speech
+    return json_object
 
 ###############################################
 # END SERVICE API

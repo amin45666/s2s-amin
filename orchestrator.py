@@ -66,31 +66,19 @@ def log_timestamp_SL(counterCALLBACK):
 
 # AMIN please move the following def to orchestrator.py (if namespace is not okay, change what is needed)
 def data_orchestrator(data, cache, CK_log_session):
-    """
-    the orchestrator receives a JSON payload with the transcription stream and a series of metadata associated with a session
-    """
-
-    asr_text        = data["asr"]              # transcription
-    asr_status      = data["status"]           # this is the status of ASR (temporary/final/silence)
-    sessionID       = data["room"]             # session ID
-    #sourceLanguage  = data["source_language"]  # source language
-    #targetLanguages = data["target_languages"] # target language
-
-    # TEMPORARY TRICK FOR TARGET LANGUAGES
-    # TO DO: rewrite this passing a list of languages
-    tls_list_send = [""]
-    if ck_lang != "all":
-        tls_list_send = ["es"]
-    else:
-        tls_list_send = TLS_LIST
-
-    #the following are R&D parameters from the POC Concolle and are NOT needed for production
+    # the orchestrator is receiving the transcription stream and a series of metadata associated to a session
+    asr_text = data["asr"]  # transcription
+    asr_status = data["status"]  # this is the status of ASR (temporary/final/silence)
+    sessionID = data["room"]  # session ID
     paraphraseFeature = data["paraphraseFeature"]  # enable paraphrasing feature
-    voiceSpeed        = data["voiceSpeed"]  # force a voice speed (default = 1, otherwise changed by orchestrator)
-    ck_lang           = data["ck_lang"]  # use only 1 target language or many - should be changed with a list of required languages
+    voiceSpeed = data[
+        "voiceSpeed"
+    ]  # force a voice speed (default = 1, otherwise changed by orchestrator)
+    ck_lang = data[
+        "ck_lang"
+    ]  # use only 1 target language or many - should be changed with a list of required languages
 
-
-    # getting historical information about this session
+    # getting the progressive callback number for this session
     session_settings = cache.get(sessionID)
     asr_callbacks = session_settings["asr_callbacks"]
     asr_segments = session_settings["asr_segments"]
@@ -102,10 +90,11 @@ def data_orchestrator(data, cache, CK_log_session):
         + str(asr_callbacks)
     )
     print(
-        f"Data received:\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tsession: '{sessionID}'\n\tspeed: '{voiceSpeed}'"
+        f"Data received from SENDER:\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tsession: '{sessionID}'\n\tspeed: '{voiceSpeed}'"
     )
 
-    # SETTING DEFAULTS IF NO VALUES IS PASSED TO THIS DEFINITION
+    # SETTING DEFAULTS IF NO WALUES ARE PASSED
+    # TO DO: there must be a better way to set defaults
     if voiceSpeed == "":
         voiceSpeed = VOICE_SPEED_DEFAULT  # default value
         print("No voice speed was passed, setting to default: " + str(voiceSpeed))
@@ -134,6 +123,14 @@ def data_orchestrator(data, cache, CK_log_session):
                 print("Paraphrase returned: ")
                 print(mysegment)
                 paraphrasedAPPLIED = "TRUE"
+
+        # deciding in which languages to translate. For semplicity reasons, it is now either ES or ALL supported languages
+        # rewrite passing a list of languages
+        tls_list_send = [""]
+        if ck_lang != "all":
+            tls_list_send = ["es"]
+        else:
+            tls_list_send = TLS_LIST
 
         # translating the segment in target languages
         mytranslations = translate(mysegment, tls_list_send)
