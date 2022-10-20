@@ -16,12 +16,11 @@ from flask import (
 from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, leave_room
 
-# from api import initialize_segmenterAPI, paraphrase, segment, translate
 from api import *
-from constants import SL, TLS_LIST, VOICE_SPEED_DEFAULT
+from constants import TLS_LIST
 from decorators import roles_required
 from helpers import id_generator, login_authentication
-from orchestrator import data_orchestrator, log_duration_TL, log_timestamp_SL
+from orchestrator import data_orchestrator
 
 load_dotenv()
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -79,8 +78,8 @@ def sender():
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
     session_settings = {
-        "asr_callbacks" : 0,
-        "asr_segments" : 0,
+        "asr_callbacks": 0,
+        "asr_segments": 0,
     }
     cache.set(sessionId, session_settings)
 
@@ -98,8 +97,8 @@ def consolle():
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
     session_settings = {
-        "asr_callbacks" : 0,
-        "asr_segments" : 0,
+        "asr_callbacks": 0,
+        "asr_segments": 0,
     }
     cache.set(sessionId, session_settings)
 
@@ -222,13 +221,14 @@ def info():
 
     return Response(json.dumps(changelog), mimetype="application/json")
 
+
 # this is the orchestrator which is continuously called with the transcription and metadata
 @socketio.on("message")
 def receive_socket(data):
-    sessionID = data["room"]  
+    sessionID = data["room"]
 
     response = data_orchestrator(data, cache, CK_log_session)
-    
+
     # emitting payload to client for TTS
     print("Emitting payload to receiver")
     emit(
@@ -237,6 +237,7 @@ def receive_socket(data):
         broadcast=True,
         room=sessionID,
     )
+
 
 @socketio.on("join")
 def on_join(data):
@@ -256,6 +257,7 @@ def on_left(data):
 
     emit("caption", f"User {user} left event {sessionID},", room=sessionID)
 
+
 ###############################################
 # END UI
 ###############################################
@@ -264,45 +266,48 @@ def on_left(data):
 ###############################################
 # SERVICE
 ###############################################
-@app.route('/api/startSession/<sessionId>')
+@app.route("/api/startSession/<sessionId>")
 def startSession(sessionId):
 
     # move to -> , methods=['POST']
-    #data = request.get_json()  
-    #languages = data['languages'] # to be done
-    #print("Session for languages: " + languages)
+    # data = request.get_json()
+    # languages = data['languages'] # to be done
+    # print("Session for languages: " + languages)
 
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
     session_settings = {
-        "asr_callbacks" : 0,
-        "asr_segments" : 0,
+        "asr_callbacks": 0,
+        "asr_segments": 0,
     }
     cache.set(sessionId, session_settings)
 
     return "Session initiated"
 
-@app.route('/api/stopSession/<sessionId>')
+
+@app.route("/api/stopSession/<sessionId>")
 def stopSession(sessionId):
 
-    #to be done
+    # to be done
     print("Terminating session: " + str(sessionId))
 
     return "Session terminated"
 
-#the following method to call the API will be changed according to Engineering team (some sockets)
-@app.route('/api/parse', methods=['POST'])
+
+# the following method to call the API will be changed according to Engineering team (some sockets)
+@app.route("/api/parse", methods=["POST"])
 def parse():
 
     data = request.get_json()
 
-    #setting some defaults
+    # setting some defaults
     data["paraphraseFeature"] = True
     data["voiceSpeed"] = 10
 
     response = data_orchestrator(data, cache, CK_log_session)
-    json_object = json.dumps(response, indent = 4) 
+    json_object = json.dumps(response, indent=4)
     return json_object
+
 
 ###############################################
 # END SERVICE
