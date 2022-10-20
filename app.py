@@ -29,16 +29,14 @@ app = flask.Flask(__name__)
 app.secret_key = SECRET_KEY
 socketio = SocketIO(app)
 
-# this R&D switch is to be deleted
-# switch to make log of session for the moment temporary until this is not finalized
-CK_log_session = True
+# this is a temporary R&D switch to make timing log
+TIME_TABLE = True
 
 
 """ 
 Instantiate the cache
 This is the volatile place whre we store Session dependent informations updated at any callback from ASR
 """
-
 cache = Cache()
 cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 36000})
 
@@ -48,38 +46,29 @@ cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT":
 ###############################################
 @app.route("/api/startSession/<sessionId>")
 def startSession(sessionId):
-
-    # this initiate a session of S2S
-    # consumer needs to pass a unique ID, source language and target language(s)
-
-    # changin this to a POST call to accept parameters 
-    # move to -> , methods=['POST']
-    # data = request.get_json()
-    # languages = data['languages'] # to be done
-    # print("Session for languages: " + languages)
+    '''
+    this initializes a session. Only session id is needed
+    parameters such as languages can be passed here (instead of with transcription), but would require some storage
+    '''
 
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
-    session_settings = {
-        "asr_callbacks": 0,
-        "asr_segments": 0,
-    }
-    cache.set(sessionId, session_settings)
+    # initialize cache
+    initialize_cache_session(sessionId)
 
     return "Session initiated"
 
 
 @app.route("/api/stopSession/<sessionId>")
 def stopSession(sessionId):
-
-    # this is still to be done
-    # this should flash the cash for this session
+    '''
+    this should flush the cash and finish the session
+    '''
     print("Terminating session: " + str(sessionId))
 
     return "Session terminated"
 
 
-# the following method to call the API will be changed according to Engineering team (some sockets)
 @app.route("/api/parse", methods=["POST"])
 def parse():
     """
@@ -88,15 +77,9 @@ def parse():
     """
     data = request.get_json()
 
-    # adding some defaults value to the parameters send by the client
-    # these parameters are still object of R&D
-    data["paraphraseFeature"] = True
-    data["voiceSpeed"] = 10
-
-    response = data_orchestrator(data, cache, CK_log_session)
+    response = data_orchestrator(data, cache, TIME_TABLE)
     json_object = json.dumps(response, indent=4)
 
-    # the service responds with a JSON package containing the translation(s) and parameters for the text-to-speech
     return json_object
 
 ###############################################
@@ -105,9 +88,14 @@ def parse():
 
 
 
+
+
+
+
+
 ##############################################################################################
 # THIS ARE THE ROUTS FOR THE USER FACING POC - TO BE DISCARDED FOR THE SERVICE API
-# we should probably move it in a separate .py since this is used only temporary to run APP
+# !!! All this is not needed for the s2s service
 ##############################################################################################
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -138,14 +126,10 @@ def sender():
 
     # create a random session ID
     sessionId = id_generator()
-
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
-    session_settings = {
-        "asr_callbacks": 0,
-        "asr_segments": 0,
-    }
-    cache.set(sessionId, session_settings)
+    # initialize cache
+    initialize_cache_session(sessionId)
 
     return render_template("sender.html", sessionId=sessionId, languages=TLS_LIST)
 
@@ -157,14 +141,10 @@ def consolle():
 
     # create a random session ID
     sessionId = id_generator()
-
     # initiate a new session of API
     initialize_segmenterAPI(sessionId)
-    session_settings = {
-        "asr_callbacks": 0,
-        "asr_segments": 0,
-    }
-    cache.set(sessionId, session_settings)
+    # initialize cache
+    initialize_cache_session(sessionId)
 
     return render_template("consolle.html", sessionId=sessionId, languages=TLS_LIST)
 
@@ -190,7 +170,7 @@ def info():
 def receive_socket(data):
     sessionID = data["room"]
 
-    response = data_orchestrator(data, cache, CK_log_session)
+    response = data_orchestrator(data, cache, TIME_TABLE)
 
     # emitting payload to client for TTS
     print("Emitting payload to receiver")
@@ -224,6 +204,19 @@ def on_left(data):
 ###############################################
 # END OF USER FACING POC
 ###############################################
+
+
+###############################################
+# SERVICE to be moved
+###############################################
+
+def initialize_cache_session(sessionId):
+    session_settings = {
+        "asr_callbacks": 0,
+        "asr_segments": 0,
+    }
+    cache.set(sessionId, session_settings)
+
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

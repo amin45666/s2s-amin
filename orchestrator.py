@@ -17,9 +17,6 @@ dm.nr_word_TL = "undef"
 dm.delay_TL = "undef"
 print(dm)
 
-#################
-# SESSION LOGGING
-#################
 def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
     # recording estimated duration of TL based on number of words
     TTS_speed = 1  # TO DO: harmonize this value passed here to our formula
