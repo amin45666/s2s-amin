@@ -2,15 +2,14 @@
 
 This is the S2S APP for speech-to-speech translation. 
 
-This APP contains two main parts:
+This APP is made of - so to say - two main parts:
 
-- everything is eeded to run the POC, i.e. front-end, session generation, etc.
-- the ORCHESTRATOR as described in the S2S documentation.
+- the ORCHESTRATOR API as described in the S2S documentation for integration in KUDO
+- everything is eeded to run a complete PC, i.e. front-end, session generation, etc.
 
+The FE of the POC is made of 3 views:
 
-The FE is made of two main parts:
-
-- Sender: uses AZURE ASR to transcribe the audio input (mic or other input audio), then it sends the transcription stream to the S2S-API (former called Segmenter) and displays the results in the UI and to connected receivers. Websockets are provided. 
+- Sender or Consolle: uses AZURE ASR to transcribe the audio input (mic or other input audio), then it sends the transcription stream to the S2S-API (former called Segmenter) and displays the results in the UI and to connected receivers. Websockets are provided. The Sender has only basic settings, the Consolle is for R&D
 - Receiver: it receives the translation from the the S2S-App backend, requests text-to-speech from Azure
 
 # Local installation
@@ -33,9 +32,20 @@ Note: as default, the APP will use the Segment Segmenter deployed on the Web. If
 - open Advanced Sender (with testing options): https://www.s2s.meetkudo.com/consolle
 - open Receiver https://www.s2s.meetkudo.com/receiver in a Chrome browser, wear headset or use a different computer to receive the interpretation
 
-# Deployment on Heroku with git
+# R&D Deployment on Heroku with git
 
 heroku login
 git push heroku main
+
+# DATA I/O
+
+As input it accepts a JSON payload:
+
+```{'asr': 'transcription text', 'status': 'azure_flag temporary/final/silence', 'room': 'session_id', 'sourceLanguage': 'the source language', 'target languages': 'the target languages' }```
+
+It repsponds with a JSON payload:
+
+```{'asr': 'original transcription text', 'segment': '{'en' : 'translation in english', 'fr': 'translation in french'}', 'voiceSpeed' : '{'en' : '10', 'fr': '20'}}```
+
 
  
