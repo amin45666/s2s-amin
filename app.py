@@ -21,7 +21,7 @@ from api import *
 from constants import SL, TLS_LIST, VOICE_SPEED_DEFAULT
 from decorators import roles_required
 from helpers import id_generator, login_authentication
-from orchestrator import log_duration_TL, log_timestamp_SL
+from orchestrator import data_orchestrator, log_duration_TL, log_timestamp_SL
 
 load_dotenv()
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -227,7 +227,7 @@ def info():
 def receive_socket(data):
     sessionID = data["room"]  
 
-    response = orchestrator(data)
+    response = data_orchestrator(data, cache, CK_log_session)
     
     # emitting payload to client for TTS
     print("Emitting payload to receiver")
@@ -300,124 +300,13 @@ def parse():
     data["paraphraseFeature"] = True
     data["voiceSpeed"] = 10
 
-    response = orchestrator(data)
+    response = data_orchestrator(data, cache, CK_log_session)
     json_object = json.dumps(response, indent = 4) 
     return json_object
 
 ###############################################
 # END SERVICE
 ###############################################
-
-
-# AMIN please move the following def to orchestrator.py (if namespace is not okay, change what is needed)
-def orchestrator(data):
-    # the orchestrator is receiving the transcription stream and a series of metadata associated to a session
-    asr_text = data["asr"]  # transcription
-    asr_status = data["status"]  # this is the status of ASR (temporary/final/silence)
-    sessionID = data["room"]  # session ID
-    paraphraseFeature = data["paraphraseFeature"]  # enable paraphrasing feature
-    voiceSpeed = data[
-        "voiceSpeed"
-    ]  # force a voice speed (default = 1, otherwise changed by orchestrator)
-    ck_lang = data[
-        "ck_lang"
-    ]  # use only 1 target language or many - should be changed with a list of required languages
-
-    # getting the progressive callback number for this session
-    session_settings = cache.get(sessionID)
-    asr_callbacks = session_settings["asr_callbacks"]
-    asr_segments = session_settings["asr_segments"]
-
-    print(
-        "\nOrchestrator has been called for session: "
-        + str(sessionID)
-        + " and callback number: "
-        + str(asr_callbacks)
-    )
-    print(
-        f"Data received from SENDER:\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tsession: '{sessionID}'\n\tspeed: '{voiceSpeed}'"
-    )
-
-    # SETTING DEFAULTS IF NO WALUES ARE PASSED
-    # TO DO: there must be a better way to set defaults
-    if voiceSpeed == "":
-        voiceSpeed = VOICE_SPEED_DEFAULT  # default value
-        print("No voice speed was passed, setting to default: " + str(voiceSpeed))
-
-    # send asr to segmenter and see if there is a response
-    mysegment = segment(asr_text, asr_status, sessionID)
-
-    # recording timestamp when SL has been received
-    if CK_log_session:
-        log_timestamp_SL(asr_callbacks)
-
-    # proceed only if the Segmentator has returned a segment
-    if mysegment:
-        print("DATA received from SEGMENTER:\n\ttext: " + mysegment)
-
-        paraphrasedAPPLIED = (
-            ""  # this variable keeps track if the paraphrasing has been applied or not
-        )
-
-        # deciding if a segment needs to be paraphrased (typically to improve readibility and make it shorter)
-        if paraphraseFeature:
-            countOfWords = len(mysegment.split())
-            # we paraphrase only long segments for now. This parameter should be moved to Orchestrator default settings
-            if countOfWords > 20:
-                mysegment = paraphrase(mysegment, SL)
-                print("Paraphrase returned: ")
-                print(mysegment)
-                paraphrasedAPPLIED = "TRUE"
-
-        # deciding in which languages to translate. For semplicity reasons, it is now either ES or ALL supported languages
-        # rewrite passing a list of languages
-        tls_list_send = [""]
-        if ck_lang != "all":
-            tls_list_send = ["es"]
-        else:
-            tls_list_send = TLS_LIST
-
-        # translating the segment in target languages
-        mytranslations = translate(mysegment, tls_list_send)
-
-        # estimate time of TTS based on language and speed of voice
-        # create session matrix with segment Nr + Duration SL + estimation in TL
-
-        print("Translations returned: ")
-        print(mytranslations)
-
-        if CK_log_session:
-            log_duration_TL(asr_callbacks, mytranslations, voiceSpeed)
-
-        # updating number of callback for this session
-        asr_callbacks = asr_callbacks + 1
-        asr_segments = asr_segments + 1
-        session_settings = {
-            "asr_callbacks" : asr_callbacks,
-            "asr_segments" : asr_segments,
-        }
-        cache.set(sessionID, session_settings)
-
-        mytranslations_json = json.dumps(mytranslations)
-
-        payload =   {
-                "asr": asr_text,
-                "segment": mytranslations_json,
-                "paraphraseFeature": paraphrasedAPPLIED,
-                "voiceSpeed": voiceSpeed,
-            }
-
-        return payload
-
-    else:
-
-        asr_callbacks = asr_callbacks + 1
-        session_settings = {
-            "asr_callbacks" : asr_callbacks,
-            "asr_segments" : asr_segments,
-        }
-
-        
 
 
 if __name__ == "__main__":
