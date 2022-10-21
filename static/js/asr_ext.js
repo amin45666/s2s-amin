@@ -87,7 +87,7 @@ function fromMic() {
 		clearTimeout(myTimerSending);
 
 		console.log('Sending ASR TEMPORARY FEED to APP');
-    	socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang, 'voiceSpeed': voiceSpeed});
+    	socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'rewriting': paraphraseFeature, 'voiceSpeed': voiceSpeed});
 		number_of_callbacks=0;
 
 	};
@@ -112,7 +112,7 @@ function fromMic() {
 			//force socket to emit a value otherwise APP complains
 			if (asr) {
 				console.log('Sending ASR FINAL FEED to APP');
-				socket.emit('message', {'asr': asr, 'status': 'final', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang, 'voiceSpeed': voiceSpeed});
+				socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'rewriting': paraphraseFeature, 'voiceSpeed': voiceSpeed});
 				//resetting to 0 counter for callbacks
 				number_of_callbacks=0;
 				myTimerSending = setTimeout(sendFlagSilence, 4000);
@@ -144,7 +144,7 @@ function sendFlagSilence(){
 	console.log('Sending ASR SILENCE to APP');
 	console.log('####SILENCE');
 	let sessionId = document.getElementById("sessionId").innerHTML; 
-	socket.emit('message', {'asr': '', 'status': 'silence', 'room': sessionId, 'paraphraseFeature': '', 'ck_lang': '', 'voiceSpeed': ''});
+	socket.emit('message', {'asr': '', 'status': 'silence', 'room': sessionId, 'rewriting': '', 'ck_lang': '', 'voiceSpeed': ''});
 }
 
 function WordCount(str) { 

@@ -61,14 +61,12 @@ def log_timestamp_SL(segment_nr):
         dm.duration_seg_SL[segment_nr] = duration_seg_SL
 
 
-# AMIN please move the following def to orchestrator.py (if namespace is not okay, change what is needed)
 def data_orchestrator(data, cache, sourceLanguage, targetLanguages):
-    # the orchestrator is receiving the transcription stream and a series of metadata associated to a session
-    asr_text          = data["asr"]  # transcription
-    asr_status        = data["status"]  # this is the status of ASR (temporary/final/silence)
-    sessionID         = data["room"]  # session ID
-    use_rewriting     = data["paraphraseFeature"]  # enable paraphrasing feature
-    voiceSpeed        = data["voiceSpeed"]  # force a voice speed (default = 1, otherwise set by orchestrator)
+    asr_text          = data["asr"]        # transcription
+    asr_status        = data["status"]     # this is the status of ASR (temporary/final/silence)
+    sessionID         = data["room"]       # session ID
+    use_rewriting     = data["rewriting"]  # enable rewriting feature
+    voiceSpeed        = data["voiceSpeed"] # force a voice speed (default = 1, otherwise set by orchestrator)
 
     # getting the progressive callback number for this session
     session_settings = cache.get(sessionID)
@@ -96,7 +94,7 @@ def data_orchestrator(data, cache, sourceLanguage, targetLanguages):
     if asr_callbacks % SAMPLING_RATE == 0:
         mysegment = segment(asr_text, asr_status, sessionID, sourceLanguage)
     else:
-        print("skipping this call back to save computational power")
+        print("skipping this callback to save computational power. 1 is not supported by live deployment")
 
     '''
     continue with the NLP pipeline only if a segment has been returned
@@ -135,7 +133,7 @@ def data_orchestrator(data, cache, sourceLanguage, targetLanguages):
         if USE_TIMING_MATRIX:
             log_duration_TL(segment_nr, mytranslations, voiceSpeed)
 
-        # updating number of session data in cache
+        # updating session info in cache
         asr_callbacks = asr_callbacks + 1
         segment_nr = segment_nr + 1
         session_settings = {
@@ -152,15 +150,21 @@ def data_orchestrator(data, cache, sourceLanguage, targetLanguages):
             "paraphraseFeature": flag_rewritten,
             "voiceSpeed": voiceSpeed,
             "voiceStyle": VOICE_STYLE,
+            "status": "ok",
         }
 
-        return payload
-
     else:
-
+        # updating session info in cache
         asr_callbacks = asr_callbacks + 1
         session_settings = {
             "asr_callbacks": asr_callbacks,
             "segment_nr": segment_nr,
         }
         cache.set(sessionID, session_settings)
+
+        #responding with an empty status
+        payload =	{
+        "status": "empty",
+        }
+
+    return payload

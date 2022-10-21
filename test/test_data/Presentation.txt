@@ -1,0 +1,201 @@
+i feel like this	False
+i feel like this is	False
+i feel like this is very	False
+i feel like this is very hollow	False
+i feel like this is very hallowed	False
+i feel like this is very hallowed ground	False
+i feel like this is very hollowed ground here	False
+i feel like this is very hollowed ground here so	False
+i feel like this is very hollowed ground here so	True
+watch your	False
+what's your	False
+watch your passing	False
+watch your passing	True
+umm	False
+umm	True
+and i think	False
+and i think the	False
+and i think the RSA for inviting	False
+and i think the RSA for inviting me to be here	False
+and i think the RSA for inviting me to be here because i do think this	False
+and i think the RSA for inviting me to be here because i do think this is a very	False
+and i think the RSA for inviting me to be here because i do think this is a very special place and	False
+and i think the RSA for inviting me to be here because i do think this is a very special place and	True
+here	False
+here	True
+for so many	False
+for so many great thinkers	False
+for so many great thinkers have	False
+for so many great thinkers have come and shared	False
+for so many great thinkers have come and share ideas and	False
+for so many great thinkers have come and share ideas and i really	False
+for so many great thinkers have come and share ideas and i really appreciate	False
+for so many great thinkers have come and share ideas and i really appreciate tim and your	False
+for so many great thinkers have come and share ideas and i really appreciate tim and you're very	False
+for so many great thinkers have come and share ideas and i really appreciate tim and you're very generous	False
+for so many great thinkers have come and share ideas and i really appreciate tim and your very generous introduction	False
+for so many great thinkers have come and share ideas and i really appreciate tim and your very generous introduction	True
+i'm	False
+and then talk about	False
+and then talk about some	False
+and then talk about something	False
+and then talk about something i'm going to	False
+and then talk about something i'm going to talk	False
+and then talk about something i'm going to talk about	False
+and then talk about something i'm going to talk about vulnerability today but	False
+and then talk about something i'm going to talk about vulnerability today but i'm	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about it	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about this	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about but i've spent a lot of	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about but i've spent a lot of time thinking	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about but i've spent a lot of time thinking about	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about but i've spent a lot of time thinking about and	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about but i've spent a lot of time thinking about and researching	False
+and then talk about something i'm going to talk about vulnerability today but i'm going to talk about an aspect of it that i have i have not spent a lot of time talking about but i've spent a lot of time thinking about and researching	True
+and i wanted	False
+and i want to start	False
+and i want to start with	False
+and i want to start with two	False
+and i want to start with two questions	False
+and i want to start with two questions that i really	False
+and i want to start with two questions that i really want	False
+and i want to start with two questions that i really want you	False
+and i want to start with two questions that i really want you to	False
+and i want to start with two questions that i really want you to think about	False
+and i want to start with two questions that i really want you to think about	True
+and a two	False
+and the two questions are	False
+and the two questions are	True
+what	False
+what should	False
+what should i be	False
+what should i be afraid of	False
+what should i be afraid of today	False
+what should i be afraid of today	True
+and	False
+and who's to	False
+and who's to blame	False
+and who's to blame	True
+what should i	False
+what should i be	False
+what should i be	True
+what should	False
+what should scare me	False
+what should scare me and his fault	False
+what should scare me and whose fault is it	False
+what should scare me and whose fault is it	True
+to me	False
+to me	True
+these are the	False
+these are the most	False
+these are the most	True
+for	False
+profoundly	False
+profoundly dangerous	False
+profoundly dangerous	True
+question	False
+questions that	False
+questions that we	False
+questions that we sent our	False
+questions that we sent our lives	False
+questions that we sent our lives around	False
+questions that we sent our lives around	True
+umm	False
+and	False
+and what they are	False
+and what they are indicators	False
+and what they are indicators	True
+to me	False
+to me with their	False
+to me with their indicators	False
+to me with their indicators on	False
+to me with their indicators on is a	False
+to me with their indicators on is a culture of	False
+to me with their indicators on is a culture of scarcity	False
+to me with their indicators on is a culture of scarcity	True
+our	False
+a culture of not	False
+a culture of not enough	False
+a culture of not enough	True
+and when you	False
+and when you think	False
+and when you think about	False
+and when you think about think about	False
+and when you think about think about any	False
+and when you think about think about any mail you in your life	False
+and when you think about think about any mail you in your life think about	False
+and when you think about think about any mail you in your life think about education	False
+and when you think about think about any mail you in your life think about education	True
+what are we	False
+what are we supposed to	False
+what are we supposed to be	False
+what are we supposed to be afraid of	False
+what are we supposed to be afraid of	True
+and his	False
+and he's the one	False
+and he's the one	True
+politics	False
+politics the	False
+politics the economy	False
+politics the economy social	False
+politics the economy social issues	False
+politics the economy social issues	True
+i guarantee	False
+i guarantee you if you turn	False
+i guarantee you if you turn on the	False
+i guarantee you if you turn on the news	False
+i guarantee you if you turn on the news or	False
+i guarantee you if you turn on the news or open to	False
+i guarantee you if you turn on the news or open the paper	False
+i guarantee you if you turn on the news or open the paper today	False
+i guarantee you if you turn on the news or open the paper today the focus would	False
+i guarantee you if you turn on the news or open the paper today the focus would be	False
+i guarantee you if you turn on the news or open the paper today the focus would be	True
+here's why you	False
+here's why you should be	False
+here's why you should be afraid	False
+here's why you should be afraid here's his	False
+here's why you should be afraid here's his fault	False
+here's why you should be afraid here's who's fault it is	False
+here's why you should be afraid here's who's fault it is	True
+and it	False
+and it	True
+and what's	False
+it was interesting to me	False
+and what's interesting to me about	False
+and what's interesting to me about that	False
+and what's interesting to me about that is it's	False
+and what's interesting to me about that is it's not just	False
+and what's interesting to me about that is it's not just at	False
+and what's interesting to me about that is it's not just a	False
+and what's interesting to me about that is it's not just at a cultural level	False
+and what's interesting to me about that is it's not just at a cultural level or	False
+and what's interesting to me about that is it's not just at a cultural level or community level	False
+and what's interesting to me about that is it's not just at a cultural level or community level that	False
+and what's interesting to me about that is it's not just at a cultural level or community level that stuff happens	False
+and what's interesting to me about that is it's not just at a cultural level or community level that stuff happens in my	False
+and what's interesting to me about that is it's not just at a cultural level or community level that stuff happens in my	True
+every week	False
+every week	True
+every	False
+every week	False
+every week with my husband	False
+every week with my husband it	False
+every week with my husband i talked to him about	False
+every week with my husband i talked to him about what we should	False
+every week with my husband i talked to him about what we should what should be	False
+every week with my husband i talked to him about what we should what should be you know why	False
+every week with my husband i talked to him about what we should what should be you know why we should be	False
+every week with my husband i talked to him about what we should what should be you know why we should be fearful and who's	False
+every week with my husband i talked to him about what we should what should be you know why we should be fearful and who's fault it is	False
+every week with my husband i talked to him about what we should what should be you know why we should be fearful and whose fault it is mostly it	False
+every week with my husband i talked to him about what we should what should be you know why we should be fearful and whose fault it is mostly it says	False
+every week with my husband i talked to him about what we should what should be you know why we should be fearful and whose fault it is mostly it says	True

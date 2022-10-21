@@ -1,0 +1,216 @@
+this	False
+this morning	False
+this morning i wanted	False
+this morning i want to	False
+this morning i want to talk	False
+this morning i want to talk about the	False
+this morning i want to talk about the future	False
+this morning i want to talk about the future of europe	False
+this morning i want to talk about the future of europe but	False
+this morning i want to talk about the future of europe but first	False
+this morning i want to talk about the future of europe but first let us	False
+this morning i want to talk about the future of europe but first let us remember the	False
+this morning i want to talk about the future of europe but first let us remember the past	False
+this morning i want to talk about the future of europe but first let us remember the past	True
+70	False
+70 years	False
+70 years ago	False
+70 years ago europe was	False
+70 years ago europe was being	False
+70 years ago europe was being torn apart	False
+70 years ago europe was being torn apart by	False
+70 years ago europe was being torn apart by its	False
+70 years ago europe was being torn apart by its second	False
+70 years ago europe was being torn apart by its second catastrophic	False
+70 years ago europe was being torn apart by its second catastrophic conflict	False
+70 years ago europe was being torn apart by its second catastrophic conflict in a	False
+70 years ago europe was being torn apart by its second catastrophic conflict in a generation	False
+70 years ago europe was being torn apart by its second catastrophic conflict in a generation	True
+a	False
+a war which saw	False
+a war which saw the	False
+a war which saw the streets of	False
+a war which saw the streets of european	False
+a war which saw the streets of european city	False
+a war which saw the streets of european cities	False
+a war which saw the streets of european cities strewn with	False
+a war which saw the streets of european cities strewn with rubble	False
+a war which saw the streets of european cities strewn with rubble	True
+the sky	False
+the skies of london	False
+the skies of london lit by	False
+the skies of london lit by flames	False
+the skies of london lit by flames night after	False
+the skies of london lit by flames night after night	False
+the skies of london lit by flames night after night and	False
+the skies of london lit by flames night after night and millions	False
+the skies of london lit by flames night after night and millions dead	False
+the skies of london lit by flames night after night and millions dead across	False
+the skies of london lit by flames night after night and millions dead across the world	False
+the skies of london lit by flames night after night and millions dead across the world in the battle	False
+the skies of london lit by flames night after night and millions dead across the world in the battle for	False
+the skies of london lit by flames night after night and millions dead across the world in the battle for peace and	False
+the skies of london lit by flames night after night and millions dead across the world in the battle for peace and liberty	False
+the skies of london lit by flames night after night and millions dead across the world in the battle for peace and liberty	True
+as	False
+as we	False
+as we remember	False
+as we remember the	False
+as we remember the sacrifice	False
+as we remember the sacrifice so we should	False
+as we remember the sacrifice so we should also	False
+as we remember the sacrifice so we should also remember	False
+as we remember the sacrifice so we should also remember how the shift	False
+as we remember the sacrifice so we should also remember how the shift in	False
+as we remember the sacrifice so we should also remember how the shift in europe	False
+as we remember the sacrifice so we should also remember how the shift in europe from	False
+as we remember the sacrifice so we should also remember how the shift in europe from war	False
+as we remember the sacrifice so we should also remember how the shift in europe from war to	False
+as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace	False
+as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about	False
+as we remember the sacrifice so we should also remember how the shift in europe from war to sustained peace came about	True
+it didn't	False
+it didn't happen	False
+it didn't happen like it	False
+it didn't happen like a change	False
+it didn't happen like a change in the weather	False
+it didn't happen like a change in the weather	True
+it	False
+it happened	False
+it happened because	False
+it happened because of	False
+it happened because of determined	False
+it happened because of determined work over	False
+it happened because of determined work over generations	False
+it happened because of determined work over generations a	False
+it happened because of determined work over generations a commitment to	False
+it happened because of determined work over generations a commitment to friendship	False
+it happened because of determined work over generations a commitment to friendship and a	False
+it happened because of determined work over generations a commitment to friendship and a resolve	False
+it happened because of determined work over generations a commitment to friendship and a resolve never	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark path	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50 years ago	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50 years ago this week	False
+it happened because of determined work over generations a commitment to friendship and a resolve never to revisit that dark past a commitment epitomised by the elysee treaty signed 50 years ago this week	True
+after	False
+after the	False
+after the berlin wall	False
+after the berlin wall came down	False
+after the berlin wall came down	True
+i	False
+i visited	False
+i visited that city	False
+i visited that city and i will	False
+i visited that city and i will never forget	False
+i visited that city and i will never forget it	False
+i visited that city and i will never forget it	True
+the	False
+the abandoned	False
+the abandoned checkpoints	False
+the abandoned checkpoints the sense of	False
+the abandoned checkpoints the sense of excitement	False
+the abandoned checkpoints the sense of excitement about the	False
+the abandoned checkpoints the sense of excitement about the future	False
+the abandoned checkpoints the sense of excitement about the future the	False
+the abandoned checkpoints the sense of excitement about the future the knowledge that	False
+the abandoned checkpoints the sense of excitement about the future the knowledge that a great	False
+the abandoned checkpoints the sense of excitement about the future the knowledge that a great continent	False
+the abandoned checkpoints the sense of excitement about the future the knowledge that a great continent was coming	False
+the abandoned checkpoints the sense of excitement about the future the knowledge that a great continent was coming together	False
+the abandoned checkpoints the sense of excitement about the future the knowledge that a great continent was coming together	True
+healing	False
+healing those	False
+healing those wounds	False
+healing those wounds of	False
+healing those wounds of our	False
+healing those wounds of our history	False
+healing those wounds of our history is	False
+healing those wounds of our history is the central	False
+healing those wounds of our history is the central story	False
+healing those wounds of our history is the central story of the	False
+healing those wounds of our history is the central story of the european	False
+healing those wounds of our history is the central story of the european union	False
+healing those wounds of our history is the central story of the european union	True
+what	False
+what churchill	False
+what churchill described as	False
+what churchill described as the	False
+what churchill described as the twin	False
+what churchill described as the twin marauders	False
+what churchill described as the twin marauders of	False
+what churchill described as the twin marauders of war and	False
+what churchill described as the twin marauders of war and tyranny	False
+what churchill described as the twin marauders of war and tyranny have almost	False
+what churchill described as the twin marauders of war and tyranny have almost entirely	False
+what churchill described as the twin marauders of war and tyranny have almost entirely been	False
+what churchill described as the twin marauders of war and tyranny have almost entirely been banished from	False
+what churchill described as the twin marauders of war and tyranny have almost entirely been banished from our	False
+what churchill described as the twin marauders of war and tyranny have almost entirely been banished from our continent	False
+what churchill described as the twin marauders of war and tyranny have almost entirely been banished from our continent	True
+today	False
+today hundreds	False
+today hundreds of 1,000,000	False
+today hundreds of 1,000,000 dwell in	False
+today hundreds of 1,000,000 dwell in freedom	False
+today hundreds of 1,000,000 dwell in freedom from	False
+today hundreds of 1,000,000 dwell in freedom from the baltic	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the atrium	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the adriatic	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the adriatic from	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the adriatic from the western	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the adriatic from the western approaches to the	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the adriatic from the western approaches to the aegean	False
+today hundreds of 1,000,000 dwell in freedom from the baltic to the adriatic from the western approaches to the aegean	True
+and while	False
+and while we	False
+and while we must	False
+and while we must never take	False
+and while we must never take this for granted	False
+and while we must never take this for granted the	False
+and while we must never take this for granted the 1st	False
+and while we must never take this for granted the first purpose of the	False
+and while we must never take this for granted the first purpose of the european	False
+and while we must never take this for granted the first purpose of the european union	False
+and while we must never take this for granted the first purpose of the european union to	False
+and while we must never take this for granted the first purpose of the european union to secure	False
+and while we must never take this for granted the first purpose of the european union to secure peace	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european union	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european union alongside	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european union alongside NATO	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european union alongside NATO who made that	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european union alongside NATO who made that happen	False
+and while we must never take this for granted the first purpose of the european union to secure peace has been achieved and we should pay tribute to all those in the european union alongside NATO who made that happen	True
+but today	False
+but today the	False
+but today the overriding	False
+but today the overriding the main	False
+but today the overriding the main purpose	False
+but today the overriding the main purpose of the	False
+but today the overriding the main purpose of the european union	False
+but today the overriding the main purpose of the european union is different	False
+but today the overriding the main purpose of the european union is different	True
+not too	False
+not to win	False
+not to win peace	False
+not to win peace but to see	False
+not to win peace but to	False
+not to win peace but to secure	False
+not to win peace but to secure prosperity	False
+not to win peace but to secure prosperity	True

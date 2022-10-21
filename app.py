@@ -17,7 +17,7 @@ from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, leave_room
 
 from api import *
-from constants import TLS_LIST, SL
+from constants import TLS_LIST, SL, USE_REWRITING, VOICE_SPEED_DEFAULT
 from decorators import roles_required
 from helpers import id_generator, login_authentication, print_changelog
 from orchestrator import data_orchestrator
@@ -77,11 +77,17 @@ def parse():
     the communication method will be changed according to the engineering team (probably sockets)
     """
     data = request.get_json()
-
     sourceLanguage  = data["sourceLanguage"]
     targetLanguages = data["targetLanguages"]
 
+    #adding default parameters
+    data["rewriting"] = USE_REWRITING
+    data["voiceSpeed"] = VOICE_SPEED_DEFAULT
+
+    # TO DO: add a check that the session corresponding to this call exists
+
     response = data_orchestrator(data, cache, sourceLanguage, targetLanguages)
+
     json_object = json.dumps(response, indent=4)
 
     return json_object

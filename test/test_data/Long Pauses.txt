@@ -1,0 +1,164 @@
+thank you everybody	False
+thank you everybody thank you	False
+thank you everybody thank you	True
+everybody else	False
+everybody else thank you	False
+everybody else thank you	True
+thank you	False
+thank you so	False
+thank you so much	False
+thank you so much	True
+hello	False
+hello stanford	False
+hello stanford	True
+it is	False
+it is great	False
+it is great to	False
+it is great to be	False
+it is great to be in	False
+it is great to be in california and	False
+it is great to be in california and back in	False
+it is great to be in california and back	False
+it is great to be in california and back in beautiful	False
+it is great to be in california and back in beautiful palo	False
+it is great to be in california and back in beautiful palo alto	False
+it is great to be in california and back in beautiful palo alto	True
+you know coming	False
+you know coming here	False
+you know coming here	True
+always makes	False
+always basically wanna	False
+always makes me wanna go	False
+always makes me wanna go back to	False
+always makes me wanna go back to college	False
+always makes me wanna go back to college	True
+although	False
+although an 18 year	False
+although an 18 year old barack	False
+although an 18 year old barack obama	False
+although an 18 year old barack obama	True
+we're not	False
+not again	False
+not again	True
+i got a lot	False
+i got a little	False
+i got a little i got more	False
+i got a little i got more serious	False
+i got a little i got more serious later	False
+i got a little i got more serious later	True
+i want to thank	False
+i want to thank the	False
+i want to thank the second policy	False
+i want to thank the second policy center	False
+i want to thank the second policy center here at	False
+i want to thank the second policy center here at stanford for	False
+i want to thank the second policy center here at stanford for hosting this	False
+i want to thank the second policy center here at stanford for hosting this event	False
+i want to thank the second policy center here at stanford for hosting this event	True
+right	False
+right	True
+piano	False
+piano for that	False
+for that	False
+piano for that outstanding	False
+piano for that outstanding introduction	False
+piano for that outstanding introduction	True
+and here	False
+and for all the work	False
+and for all the work that you	False
+and for all the work that you are doing	False
+and for all the work that you are doing	True
+i want to	False
+i want to thank	False
+i want to thank a great friend	False
+i want to thank a great friend and	False
+i want to thank a great friend and remarkable	False
+i want to thank a great friend and remarkable public	False
+i want to thank a great friend and remarkable public servant	False
+i want to thank a great friend and remarkable public servants and and	False
+i want to thank a great friend and remarkable public servants and	False
+i want to thank a great friend and remarkable public servants and ambassadors	False
+i want to thank a great friend and remarkable public servants and ambassador to	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult times	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult times over my topic	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult times over my top advisors	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult times over my top advisers michael	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult times over my top advisers michael mcfaul	False
+i want to thank a great friend and remarkable public servants and ambassador to russia during very difficult times over my top advisers michael mcfaul	True
+for being here	False
+for being here	True
+you know	False
+michelle	False
+michelle and i	False
+michelle and i set up the obama	False
+michelle and i set up the obama foundation of	False
+michelle and i set up the obama foundation	False
+michelle and i set up the obama foundation of train the next	False
+michelle and i set up the obama foundation of train the next generation	False
+michelle and i set up the obama foundation of train the next generation of leaders	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in tiana	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in the	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in the example	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in the example of	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in the example of the kind	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in the example of the kind of	False
+michelle and i set up the obama foundation of train the next generation of leaders and i think you saw in the example of the kind of	True
+the more	False
+remarkable leaders	False
+remarkable leadership	False
+remarkable leadership is out	False
+remarkable leadership was out there	False
+remarkable leadership is out there	False
+remarkable leadership is out there	True
+vision	False
+vision to lead us forward	False
+vision to lead us forward as	False
+vision to lead us forward as long as	False
+vision to lead us forward as long as	True
+other people	False
+other people get	False
+other people get out of the way	False
+other people get out of the way	True
+umm	False
+umm	True
+during	False
+during some of the	False
+during some of the darkest	False
+during some of the darkest days	False
+during some of the darkest days of world war	False
+during some of the darkest days of world war two	False
+during some of the darkest days of world war two	True
+american	False
+american flag	False
+american philosopher	False
+american philosopher i don't	False
+american philosopher i don't beaver	False
+american philosopher i don't beaver rd	False
+american philosopher i don't bieber wrote the poem	False
+american philosopher i don't bieber wrote the poem	True
+man's	False
+man's capacity	False
+man's capacity for	False
+man's capacity for justice	False
+man's capacity for justice	True
+makes	False
+makes democracy	False
+makes democracy possible	False
+makes democracy possible	True
+the	False
+but	False
+the mansion	False
+man's	False
+the man's inclination	False
+the man's inclination to	False
+the man's inclination to injustice	False
+the man's inclination to injustice	True
+next to	False
+makes democracy	False
+makes democracy necessary	False
+makes democracy necessary	True
