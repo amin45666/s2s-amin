@@ -13,7 +13,7 @@ PARAPHRASE_API_URL = os.environ.get("PARAPHRASE_API_URL")
 PARAPHRASE_API_AUTHORIZATION = os.environ.get("PARAPHRASE_API_AUTHORIZATION")
 
 
-def translate(text, tl_list):
+def translate(text, sourceLanguage, targetLanguages):
     """
     this calls the translation API (now AZURE)
     """
@@ -25,9 +25,9 @@ def translate(text, tl_list):
     region = TRANSLATE_API_REGION
 
     # constructing language parameters for call
-    sl = "en"
-    params = "&from=" + sl
-    for tl in tl_list:
+    sourceLanguage = "en"
+    params = "&from=" + sourceLanguage
+    for tl in targetLanguages:
         params = params + "&to=" + tl
     constructed_url = endpoint + params
 
@@ -46,7 +46,7 @@ def translate(text, tl_list):
     translations_list = response[0]["translations"]
 
     # create response data structure
-    translations = {sl: text}
+    translations = {sourceLanguage: text}
     for translation_language in translations_list:
         translation = translation_language["text"]
         language = translation_language["to"]
@@ -55,14 +55,14 @@ def translate(text, tl_list):
     return translations
 
 
-def segment(text, asr_status, sessionID):
+def segment(text, asr_status, sessionID, sourceLanguage):
     """
     this calls the Segmenter
     """
     print("Calling Segmentation API")
 
     # constructing parameters for call. tl should contain more languages
-    pload = {"text": text, "status": asr_status, "sessionID": sessionID}
+    pload = {"text": text, "status": asr_status, "sessionID": sessionID, "sourceLanguage": sourceLanguage}
     endpoint = SEGMENTERAPI + "/parse"
 
     response = requests.post(url=endpoint, json=pload)

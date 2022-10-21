@@ -17,7 +17,7 @@ from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, leave_room
 
 from api import *
-from constants import TLS_LIST
+from constants import TLS_LIST, SL
 from decorators import roles_required
 from helpers import id_generator, login_authentication, print_changelog
 from orchestrator import data_orchestrator
@@ -30,13 +30,13 @@ app.secret_key = SECRET_KEY
 socketio = SocketIO(app)
 
 # this is a temporary R&D switch to make timing log
-TIME_TABLE = True
+USE_TIMING_MATRIX = True
 
 
 """ 
-Instantiate the cache
 This is the volatile place whre we store Session dependent informations updated at any callback from ASR
 """
+# AMIN: cache is passed through as an argument, this seems to complicate things. Can cache be made available everywhere by default?
 cache = Cache()
 cache.init_app(app=app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 36000})
 
@@ -49,6 +49,7 @@ def startSession(sessionId):
     '''
     this initializes a session. Only session id is needed
     parameters such as languages can be passed here (instead of with transcription), but would require some storage
+    a new session may spin a new Segmenter API -> Chandra
     '''
 
     # initiate a new session of API
@@ -77,7 +78,10 @@ def parse():
     """
     data = request.get_json()
 
-    response = data_orchestrator(data, cache, TIME_TABLE)
+    sourceLanguage  = data["sourceLanguage"]
+    targetLanguages = data["targetLanguages"]
+
+    response = data_orchestrator(data, cache, sourceLanguage, targetLanguages)
     json_object = json.dumps(response, indent=4)
 
     return json_object
@@ -85,6 +89,22 @@ def parse():
 ###############################################
 # END SERVICE API
 ###############################################
+
+###############################################
+# SERVICE to be moved into helpers.py
+###############################################
+
+def initialize_cache_session(sessionId):
+
+    #TO DO : add here the Timing_Matrix
+
+    session_settings = {
+        "asr_callbacks": 0,
+        "segment_nr": 0,
+    }
+    cache.set(sessionId, session_settings)
+
+
 
 
 
@@ -170,7 +190,7 @@ def info():
 def receive_socket(data):
     sessionID = data["room"]
 
-    response = data_orchestrator(data, cache, TIME_TABLE)
+    response = data_orchestrator(data, cache, SL, TLS_LIST)
 
     # emitting payload to client for TTS
     print("Emitting payload to receiver")
@@ -205,17 +225,6 @@ def on_left(data):
 # END OF USER FACING POC
 ###############################################
 
-
-###############################################
-# SERVICE to be moved
-###############################################
-
-def initialize_cache_session(sessionId):
-    session_settings = {
-        "asr_callbacks": 0,
-        "asr_segments": 0,
-    }
-    cache.set(sessionId, session_settings)
 
 
 if __name__ == "__main__":

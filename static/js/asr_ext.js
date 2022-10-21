@@ -23,7 +23,6 @@ function intialize() {
 function fromMic() {
 	let speechConfig;
 	let languageOptions;
-	let number_of_callbacks = 0;
 
 	if (ttsToken) {
 	  speechConfig = SpeechSDK.SpeechTranslationConfig.fromAuthorizationToken(
@@ -87,15 +86,10 @@ function fromMic() {
 
 		clearTimeout(myTimerSending);
 
-		//emitting only if new number of words is greater than latency in tokens compared to previous asr
-		number_of_callbacks=Number(number_of_callbacks)+1;
+		console.log('Sending ASR TEMPORARY FEED to APP');
+    	socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang, 'voiceSpeed': voiceSpeed});
+		number_of_callbacks=0;
 
-		if (number_of_callbacks > sampling_threasold){
-			console.log('Sending ASR TEMPORARY FEED to APP');
-        	socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'paraphraseFeature': paraphraseFeature, 'ck_lang': ck_lang, 'voiceSpeed': voiceSpeed});
-			number_of_callbacks=0;
-		}
-		
 	};
 	
 	recognizer.recognized = (s, e) => {

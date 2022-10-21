@@ -4,10 +4,10 @@ from datetime import datetime
 from datamatrix import DataMatrix
 
 from api import paraphrase, segment, translate
-from constants import SL, TLS_LIST, VOICE_SPEED_DEFAULT
+from constants import SL, TLS_LIST, VOICE_SPEED_DEFAULT, VOICE_STYLE, USE_TIMING_MATRIX, SAMPLING_RATE
 
-# Initializate DataMatrix for logging time of segments in a session
-# TO DO: 'dm' needs to be inititated in /api/startSession and insert it in session_settings
+# TO DO: we need to use a datamatrix that can increase rows over time (np ?)
+# TO DO: 'dm' needs to be inititated in /api/startSession and and be session dependent (session_settings)
 
 dm = DataMatrix(length=10)  # row number is 10 just for testing
 dm.timestamp_end_SL = "undef"
@@ -17,7 +17,7 @@ dm.nr_word_TL = "undef"
 dm.delay_TL = "undef"
 print(dm)
 
-def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
+def log_duration_TL(segment_nr, mytranslations, TTS_speed):
     # recording estimated duration of TL based on number of words
     TTS_speed = 1  # TO DO: harmonize this value passed here to our formula
     languageTL = "es"
@@ -26,7 +26,7 @@ def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
     ]  # this needs to be done for each TL that has been processed
     word_list = translation.split()
     number_of_words = len(word_list)
-    dm.nr_word_TL[counterCALLBACK] = number_of_words
+    dm.nr_word_TL[segment_nr] = number_of_words
 
     # calculating duration
     language_dependend_duration_coefficient = {
@@ -44,58 +44,69 @@ def log_duration_TL(counterCALLBACK, mytranslations, TTS_speed):
         * TTS_speed
         * 1000
     )  # expressed in milliseconds
-    dm.duration_seg_TL[counterCALLBACK] = duration_seg_TL
+    dm.duration_seg_TL[segment_nr] = duration_seg_TL
     print(dm)
 
 
-def log_timestamp_SL(counterCALLBACK):
+def log_timestamp_SL(segment_nr):
 
     dt = datetime.now()
     ts = datetime.timestamp(dt)
-    dm.timestamp_end_SL[counterCALLBACK] = ts
+    dm.timestamp_end_SL[segment_nr] = ts
 
     # recording duration SL as difference between this timestamp and previous one
-    if counterCALLBACK > 0:
-        SL_previous_timestamp = dm.timestamp_end_SL[counterCALLBACK - 1]
+    if segment_nr > 0:
+        SL_previous_timestamp = dm.timestamp_end_SL[segment_nr - 1]
         duration_seg_SL = (ts - SL_previous_timestamp) * 1000
-        dm.duration_seg_SL[counterCALLBACK] = duration_seg_SL
+        dm.duration_seg_SL[segment_nr] = duration_seg_SL
 
 
 # AMIN please move the following def to orchestrator.py (if namespace is not okay, change what is needed)
-def data_orchestrator(data, cache, CK_log_session):
+def data_orchestrator(data, cache, sourceLanguage, targetLanguages):
     # the orchestrator is receiving the transcription stream and a series of metadata associated to a session
     asr_text          = data["asr"]  # transcription
     asr_status        = data["status"]  # this is the status of ASR (temporary/final/silence)
     sessionID         = data["room"]  # session ID
     use_rewriting     = data["paraphraseFeature"]  # enable paraphrasing feature
-    voiceSpeed = data["voiceSpeed"]  # force a voice speed (default = 1, otherwise changed by orchestrator)
-    ck_lang = data["ck_lang"]  # use only 1 target language or many - should be changed with a list of required languages
+    voiceSpeed        = data["voiceSpeed"]  # force a voice speed (default = 1, otherwise set by orchestrator)
 
     # getting the progressive callback number for this session
     session_settings = cache.get(sessionID)
     asr_callbacks = session_settings["asr_callbacks"]
-    asr_segments = session_settings["asr_segments"]
+    segment_nr = session_settings["segment_nr"]
 
-    # SETTING DEFAULTS IF NO WALUES ARE PASSED
+    # SETTING DEFAULTS IF NO VALUES ARE PASSED
     if voiceSpeed == "":
         voiceSpeed = VOICE_SPEED_DEFAULT
     if use_rewriting == "":
         use_rewriting = False
+    if targetLanguages == "":
+        targetLanguages = TLS_LIST
+    if sourceLanguage == "":
+        sourceLanguage = SL
 
     print(
         f"Data received from CLIENT:\n\tsession ID: '{sessionID}'\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tasr_callbacks: '{asr_callbacks}'\n\tvoiceSpeed: '{voiceSpeed}'"
     )
 
-    # send asr to segmenter and see if there is a response
-    mysegment = segment(asr_text, asr_status, sessionID)
+    '''
+    call the Segmenter API with a given sampling rate. 1 is better
+    '''
+    mysegment = ''
+    if asr_callbacks % SAMPLING_RATE == 0:
+        mysegment = segment(asr_text, asr_status, sessionID, sourceLanguage)
+    else:
+        print("skipping this call back to save computational power")
 
-    # proceed only if the Segmentator has returned a segment
+    '''
+    continue with the NLP pipeline only if a segment has been returned
+    '''
     if mysegment:
         print("Data received from SEGMENTER:\n\ttext: " + mysegment)
 
         # recording timestamp when SL has been received
-        if CK_log_session:
-            log_timestamp_SL(asr_segments)
+        if USE_TIMING_MATRIX:
+            log_timestamp_SL(segment_nr)
             
         flag_rewritten = (
             ""  # this is a flag for ML rewriting to show in R&D UI
@@ -114,30 +125,22 @@ def data_orchestrator(data, cache, CK_log_session):
                 print(mysegment)
                 flag_rewritten = "TRUE"
 
-        # deciding in which languages to translate. For semplicity reasons, it is now either ES or ALL supported languages
-        # rewrite passing a list of languages
-        tls_list_send = [""]
-        if ck_lang != "all":
-            tls_list_send = ["es"]
-        else:
-            tls_list_send = TLS_LIST
-
         '''
         translating the segment in target languages
         '''
-        mytranslations = translate(mysegment, tls_list_send)
+        mytranslations = translate(mysegment, sourceLanguage, targetLanguages)
         print("Data returned from translator: ")
         print(mytranslations)
 
-        if CK_log_session:
-            log_duration_TL(asr_segments, mytranslations, voiceSpeed)
+        if USE_TIMING_MATRIX:
+            log_duration_TL(segment_nr, mytranslations, voiceSpeed)
 
         # updating number of session data in cache
         asr_callbacks = asr_callbacks + 1
-        asr_segments = asr_segments + 1
+        segment_nr = segment_nr + 1
         session_settings = {
             "asr_callbacks": asr_callbacks,
-            "asr_segments": asr_segments,
+            "segment_nr": segment_nr,
         }
         cache.set(sessionID, session_settings)
 
@@ -148,6 +151,7 @@ def data_orchestrator(data, cache, CK_log_session):
             "segment": mytranslations_json,
             "paraphraseFeature": flag_rewritten,
             "voiceSpeed": voiceSpeed,
+            "voiceStyle": VOICE_STYLE,
         }
 
         return payload
@@ -157,6 +161,6 @@ def data_orchestrator(data, cache, CK_log_session):
         asr_callbacks = asr_callbacks + 1
         session_settings = {
             "asr_callbacks": asr_callbacks,
-            "asr_segments": asr_segments,
+            "segment_nr": segment_nr,
         }
         cache.set(sessionID, session_settings)

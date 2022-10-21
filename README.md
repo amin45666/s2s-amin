@@ -47,7 +47,7 @@ As input it accepts a JSON payload:
 ```
 {'asr': 'transcription text', 'status': 'azure_flag 
 temporary/final/silence', 'room': 'session_id', 'sourceLanguage': 'the 
-source language', 'target languages': 'the target languages' }
+source language', 'targetTanguages': 'the target languages' }
 ```
 
 It responds with a JSON payload:
