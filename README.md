@@ -57,4 +57,14 @@ It responds with a JSON payload:
 'voiceSpeed' : '{'en' : '10', 'fr': '20'}, 'voiceStyle': 'this is the style of the voice for TTS'}
 ```
 
+# Session initialisation
+
+To initialize a session, call 
+
+```
+/api/startSession/<sessionId>
+```
+
+where <sessionId> is your unique session ID
+
  
