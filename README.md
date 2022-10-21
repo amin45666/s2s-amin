@@ -67,4 +67,11 @@ To initialize a session, call
 
 where <sessionId> is your unique session ID
 
+# API Info
+
+- initialize a session with ```/startSession<sessionId>```  This is a GET request 
+- send payload to ```/parse``` This is POST request. Note that the ID needs to be sent in any call, see dedicated parameter in payload. This allws the API to be stateless
+
+Note: ```test/parseAPItest.pl``` tests the API simulating a new session and sending continuously AZURE transcripts to the API.
+
  
