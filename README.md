@@ -50,8 +50,8 @@ temporary/final/silence', 'room': 'session_id', 'sourceLanguage': 'the
 source language', 'target languages': 'the target languages' }
 ```
 
-```
 It responds with a JSON payload:
+```
 {'asr': 'original transcription text', 'segment': 
 '{'en' : 'translation in english', 'fr': 'translation in french'}', 
 'voiceSpeed' : '{'en' : '10', 'fr': '20'}, 'voiceStyle': 'this is the style of the voice for TTS'}
