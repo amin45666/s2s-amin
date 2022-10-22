@@ -112,7 +112,7 @@ function fromMic() {
 			//force socket to emit a value otherwise APP complains
 			if (asr) {
 				console.log('Sending ASR FINAL FEED to APP');
-				socket.emit('message', {'asr': asr, 'status': 'temporary', 'room': sessionId, 'rewriting': paraphraseFeature, 'voiceSpeed': voiceSpeed});
+				socket.emit('message', {'asr': asr, 'status': 'final', 'room': sessionId, 'rewriting': paraphraseFeature, 'voiceSpeed': voiceSpeed});
 				//resetting to 0 counter for callbacks
 				number_of_callbacks=0;
 				myTimerSending = setTimeout(sendFlagSilence, 4000);
