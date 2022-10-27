@@ -2,3 +2,5 @@ env
 __pycache__
 .python-version
 .env
+__init__.pyc
+.pytest_cache
