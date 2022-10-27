@@ -1,15 +1,9 @@
 import pytest
 from fastapi.testclient import TestClient
 from main import app
-from s2s.service import (
-    segment,
-    initialize_segmenterAPI,
-    translate,
-    paraphrase
-)
+from s2s.service import segment, initialize_segmenterAPI, translate, paraphrase
 
 client = TestClient(app)
-
 
 
 def test_segment():
@@ -23,11 +17,13 @@ def test_segment():
     else:
         assert False
 
+
 def test_initialize_segmenterAPI():
     sessionID = "123"
     result = initialize_segmenterAPI(sessionID)
     if result == "Session initiated":
         assert True
+
 
 def test_translate():
     text = "I am from Pakistan"
@@ -39,6 +35,7 @@ def test_translate():
         assert True
     else:
         assert False
+
 
 def test_paraphrase():
     text = "I am from Pakistan"
