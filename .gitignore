@@ -1,12 +1,6 @@
-
-.DS_Store
-static/.DS_Store
-templates/.DS_Store
-.DS_Store
-templates/.DS_Store
-templates/.DS_Store
-.DS_Store
-.DS_Store
 env
-.python-version
 __pycache__
+.python-version
+.env
+*.pyc
+.pytest_cache

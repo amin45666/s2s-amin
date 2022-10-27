@@ -2,6 +2,10 @@ import os
 import uuid
 
 import requests
+from dependency import logging
+from localStoragePy import localStoragePy
+
+localStorage = localStoragePy("s2s", "json")
 from dotenv import *
 
 load_dotenv()
@@ -15,16 +19,24 @@ PARAPHRASE_API_AUTHORIZATION = os.environ.get("PARAPHRASE_API_AUTHORIZATION")
 
 def translate(text, sourceLanguage, targetLanguages):
     """
-    this calls the translation API (now AZURE)
-    """
-    print("Calling Translation API")
+    This calls the translation API (now AZURE)
 
-    # Azure endpoint
+    Parameters
+    ----------
+    text: text to be translated
+    sourceLanguage: source language
+    targetLanguages: list of targeted languages
+
+    Returns
+    -------
+    translated segments
+
+    """
+
     endpoint = TRANSLATE_API_URL
     subscription_key = TRANSLATE_API_KEY
     region = TRANSLATE_API_REGION
 
-    # constructing language parameters for call
     sourceLanguage = "en"
     params = "&from=" + sourceLanguage
     for tl in targetLanguages:
@@ -38,14 +50,12 @@ def translate(text, sourceLanguage, targetLanguages):
         "X-ClientTraceId": str(uuid.uuid4()),
     }
 
-    # You can pass more than one object in body
     body = [{"text": text}]
 
     request = requests.post(constructed_url, headers=headers, json=body)
     response = request.json()
     translations_list = response[0]["translations"]
 
-    # create response data structure
     translations = {sourceLanguage: text}
     for translation_language in translations_list:
         translation = translation_language["text"]
@@ -57,13 +67,26 @@ def translate(text, sourceLanguage, targetLanguages):
 
 def segment(text, asr_status, sessionID, sourceLanguage):
     """
-    this calls the Segmenter
-    """
-    print("Calling Segmentation API")
+    This calls the segmenter API
 
-    # constructing parameters for call. tl should contain more languages
-    pload = {"text": text, "status": asr_status, "sessionID": sessionID, "sourceLanguage": sourceLanguage}
-    endpoint = SEGMENTERAPI + "/parse"
+    Parameters
+    ----------
+    text: original text
+    asr_status: status of asr
+    sessionID: sessionID of room
+    sourceLanguage: source language
+
+    Returns
+    -------
+    segments of original text
+    """
+    pload = {
+        "text": text,
+        "status": asr_status,
+        "sessionID": sessionID,
+        "sourceLanguage": sourceLanguage,
+    }
+    endpoint = f"{SEGMENTERAPI}/parse"
 
     response = requests.post(url=endpoint, json=pload)
     if response.ok:
@@ -79,12 +102,19 @@ def segment(text, asr_status, sessionID, sourceLanguage):
         return result
 
 
-def paraphrase(text, sl):
+def paraphrase(text):
     """
     this calls the paraphrasing LM which is now a huggingface model hosted on their servers
     we may switch to other models. We may want to host it ourselves
+
+    Parameters
+    ----------
+    text: original text
+
+    Returns
+    -------
+    paraphrased text
     """
-    print("Calling Paraphrasing API")
     API_URL = PARAPHRASE_API_URL
     headers = {"Authorization": PARAPHRASE_API_AUTHORIZATION}
 
@@ -98,10 +128,20 @@ def paraphrase(text, sl):
 
 def initialize_segmenterAPI(sessionID):
     """
-    this inizializes a session of the Segmenter for this specific Session ID
+    this initializes a session of the Segmenter for this specific Session ID
+
+    Parameters
+    ----------
+    sessionID: sessionID of room
+
+    Returns
+    -------
+    'Session initiated' if session is successfully started
+
+    OR
+
+    'API initialization error' if session could not start successfully
     """
-    print(PARAPHRASE_API_AUTHORIZATION)
-    # we initialize the session with some parameters. The most important is the Session ID
     pload = {
         "lang": "en",
         "min_one_noun": True,
@@ -109,13 +149,25 @@ def initialize_segmenterAPI(sessionID):
         "delay": 3,
         "sessionID": sessionID,
     }
-    endpoint = SEGMENTERAPI + "/startSession"
+    endpoint = f"{SEGMENTERAPI}/startSession"
 
     response = requests.post(url=endpoint, json=pload)
     if response.ok:
-        result = response.json()
-        print("Initializing API: " + str(result))
-        return result
+        initialize_cache_session()
+        return "Session initiated"
     else:
-        print("Error initializing of API: " + str(response))
-        result = "API initialisation error"
+        return "API initialization error"
+
+
+def initialize_cache_session():
+    """
+    This initializes the cache session and sets the sessionId in local storage
+    """
+    session_settings = {
+        "asr_callbacks": 0,
+        "segment_nr": 0,
+    }
+    logging.info("Service")
+    logging.warning("Service")
+    logging.error("Service")
+    localStorage.setItem("sessionId", session_settings)
