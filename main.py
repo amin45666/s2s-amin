@@ -3,8 +3,11 @@ Speech-to-Speech API.
 
 Exposes methods to manage speech-to-speech cascading system.
 """
-from fastapi import FastAPI
+import ast
+
+from fastapi import FastAPI, Query, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from localStoragePy import localStoragePy
 from pydantic import BaseModel
 
@@ -121,5 +124,29 @@ def parse(data: parseRequestData):
     data_dict = vars(data)
     data_dict["rewriting"] = USE_REWRITING
     data_dict["voiceSpeed"] = VOICE_SPEED_DEFAULT
-
+    print(data_dict)
     return data_orchestrator(data_dict, sourceLanguage, targetLanguages)
+
+
+@app.websocket("/v1_0/meeting/{meeting_id}/source/{source_language}")
+async def websocket_endpoint(
+    websocket: WebSocket,
+    meeting_id: str,
+    source_language: str,
+    target_languages: list[str] = [],
+):
+    await websocket.accept()
+    data = await websocket.receive_text()
+    input_data = ast.literal_eval(data)
+    data_dict = {
+        "asr": input_data["text"],
+        "status": input_data["status"],
+        "room": meeting_id,
+        "sourceLanguage": source_language,
+        "targetLanguages": ["fr"],
+        "rewriting": USE_REWRITING,
+        "voiceSpeed": VOICE_SPEED_DEFAULT,
+    }
+
+    result = data_orchestrator(data_dict, source_language, ["fr"])
+    await websocket.send_text(f"Session cookie or query token value is:{result}")
