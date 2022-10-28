@@ -149,4 +149,4 @@ async def websocket_endpoint(
     }
 
     result = data_orchestrator(data_dict, source_language, ["fr"])
-    await websocket.send_text(f"Session cookie or query token value is:{result}")
+    await websocket.send_text(f"{result}")
