@@ -4,7 +4,7 @@ Speech-to-Speech API.
 Exposes methods to manage speech-to-speech cascading system.
 """
 import ast
-
+from typing import List
 from fastapi import FastAPI, Query, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
@@ -133,7 +133,7 @@ async def websocket_endpoint(
     websocket: WebSocket,
     meeting_id: str,
     source_language: str,
-    target_languages: list[str] = [],
+    targets: List[str] = Query(None),
 ):
     await websocket.accept()
     data = await websocket.receive_text()
@@ -148,5 +148,5 @@ async def websocket_endpoint(
         "voiceSpeed": VOICE_SPEED_DEFAULT,
     }
 
-    result = data_orchestrator(data_dict, source_language, ["fr"])
+    result = data_orchestrator(data_dict, source_language, targets)
     await websocket.send_text(f"{result}")

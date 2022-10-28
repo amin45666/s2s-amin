@@ -145,9 +145,9 @@ def data_orchestrator(data, sourceLanguage, targetLanguages):
     print(
         f"Data received from CLIENT:\n\tsession ID: '{sessionID}'\n\ttext: '{asr_text}'\n\tstatus: '{asr_status}'\n\tasr_callbacks: '{asr_callbacks}'\n\tvoiceSpeed: '{voiceSpeed}'"
     )
-    logging.info("Orchestrator")
-    logging.warning("Orchestrator")
-    logging.error("Orchestrator")
+    # logging.info("Orchestrator")
+    # logging.warning("Orchestrator")
+    # logging.error("Orchestrator")
     mysegment = ""
     if asr_status == 'temporary':
         if asr_callbacks % SAMPLING_RATE == 0:
